@@ -16,8 +16,9 @@ def create_app():
 
     # blueprint
     from views.ranks import ranks
-
     app.register_blueprint(ranks)
+
+    # from views import test
 
     # app.register_blueprint(test.bp)
 
