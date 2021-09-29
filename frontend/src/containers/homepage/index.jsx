@@ -18,7 +18,6 @@ export function Homepage(props) {
     <PageContainer>
         <TopSection />
         <ServicesSection/>
-        <IntroducePage/>
         <Footer/>
     </PageContainer>
     );

@@ -1,11 +1,17 @@
+import { CarouselProvider, Slide, Slider } from "pure-react-carousel";
 import React from "react";
+import HorizontalScroll from "react-scroll-horizontal";
 import styled, { css } from "styled-components";
+import { Card } from "../../components/card";
 import { Marginer } from "../../components/marginer";
+
+import User1Img from "../../assets/pictures/profile_picture_1.jpg";
+import { useMediaQuery } from "react-responsive";
 
 const IntroduceContainer = styled.div`
     width: 100%;
     min-height: 1000px;
-    background-color: #D4F4FA;
+    background: #FFFFFF;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -86,9 +92,13 @@ const IntroduceImage = styled.img`
 
 
 export function IntroducePage(props) {
+
+    const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
+
     return (
     <IntroduceContainer>
         <IntroduceText> 팀원 소개 예시</IntroduceText>
+
         <PeopleIntroContainer >
                 
                 <CardContainer>
