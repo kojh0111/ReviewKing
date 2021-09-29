@@ -10,13 +10,16 @@ import config
 
 
 def create_app():
-    app = Flask(__name__, static_url_path='')
+    app = Flask(__name__, static_url_path="")
     CORS(app)
     # app.config.from_object(config)
 
     # blueprint
-    from views import test
-    app.register_blueprint(test.bp)
+    from views.ranks import ranks
+
+    app.register_blueprint(ranks)
+
+    # app.register_blueprint(test.bp)
 
     # 오류 페이지 등록
     # app.register_error_handler(404, page_not_found)
@@ -24,5 +27,5 @@ def create_app():
     return app
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     create_app().run(port=5000, debug=True)
