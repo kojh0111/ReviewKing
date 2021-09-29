@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import config
 
@@ -8,22 +10,30 @@ import config
 #     return render_template('404.html'), 404
 # ------------------------------------------
 
+db = SQLAlchemy()
+migrate = Migrate()
+
 
 def create_app():
     app = Flask(__name__, static_url_path="")
+    app.config.from_object(config)
+
     CORS(app)
-    # app.config.from_object(config)
+
+    # ORM
+    db.init_app(app)
+    migrate.init_app(app, db)
+
+    import models
 
     # blueprint
     from views.ranks import ranks
+
     app.register_blueprint(ranks)
 
     # from views import test
 
     # app.register_blueprint(test.bp)
-
-    # 오류 페이지 등록
-    # app.register_error_handler(404, page_not_found)
 
     return app
 

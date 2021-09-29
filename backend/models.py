@@ -1,0 +1,67 @@
+from app import db
+
+
+class Restaurants(db.Model):
+    __tablename__ = "restaurants"
+
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100), nullable=True)
+    res_type = db.Column(db.String(50), nullable=True)
+    total_rating = db.Column(db.Float, nullable=True)
+    longitude_x = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
+    latitude_y = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
+
+
+class Reviews(db.Model):
+    __tablename__ = "reviews"
+
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
+    date = db.Column(db.DateTime, nullable=False)
+    rating = db.Column(db.Float, nullable=True)
+    content = db.Column(db.Text(), nullable=True)
+    platform = db.Column(db.String(30), nullable=False)
+    restaurant_id = db.Column(
+        db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
+    )
+
+    restaurants = db.relationship("Restaurants", backref=db.backref("restaurant_set"))
+
+
+class Menus(db.Model):
+    __tablename__ = "menus"
+
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100), nullable=False)
+    restaurant_id = db.Column(
+        db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
+    )
+
+    restaurants = db.relationship("Restaurants", backref=db.backref("restaurant_set"))
+
+
+class Analysis(db.Model):
+    __tablename__ = "analysis"
+
+    id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
+    filename = db.Column(db.String(200), nullable=True)
+    platform = db.Column(db.String(30), nullable=False)
+
+    restaurant_id = db.Column(
+        db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
+    )
+
+    restaurants = db.relationship("Restaurants", backref=db.backref("restaurant_set"))
+
+
+class Users(db.Model):
+    __tablename__ = "users"
+
+    id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
+    email = db.Column(db.String(150), nullable=False)
+    password = db.Column(db.String(150), nullable=False)
+    name = db.Column(db.String(30), nullable=False)
+
+    def __init__(self, email, password, name):
+        self.email = email
+        self.password = password
+        self.name = name
