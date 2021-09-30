@@ -7,12 +7,23 @@ export function TabComponent(props) {
 
     const [index, setIndex] = useState(0);
 
+    let Divstyle = {
+        width:"100%",
+        marginRight:"1em",
+        marginLeft:"1em"
+    }
+
+    let Spanstyle = {
+        width:"100%",
+        fontSize: "1em"
+    }
+
     let style = {
         width:"100%"
     }
 
     let Liststyle = {
-        width:"1000px"
+        width:"100%"
     }
         
     let Panelstyle = {
@@ -27,20 +38,20 @@ export function TabComponent(props) {
     }
 
     return (
-    <div>
+    <div style={Divstyle}>
         <Tabs style={style} selectedIndex={index} onSelect={index => setIndex(index)}>
             <TabList style={Liststyle}>
                 <Tab style={Tabstyle}>
-                    <span>소개 페이지</span>
+                    <span style={Spanstyle }>소개 페이지</span>
                 </Tab>
                 <Tab style={Tabstyle}>
-                    <span>음식점 리뷰</span>
+                    <span style={Spanstyle }>음식점 리뷰</span>
                 </Tab>
                 <Tab style={Tabstyle}>
-                    <span>업종별 순위</span>
+                    <span style={Spanstyle }>업종별 순위</span>
                 </Tab>
                 <Tab style={Tabstyle}>
-                    <span>오늘 뭐먹지?</span>
+                    <span style={Spanstyle }>오늘 뭐먹지?</span>
                 </Tab>
             </TabList>
 

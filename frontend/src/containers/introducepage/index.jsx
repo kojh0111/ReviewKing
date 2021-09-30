@@ -1,28 +1,29 @@
-import { CarouselProvider, Slide, Slider } from "pure-react-carousel";
+
 import React from "react";
-import HorizontalScroll from "react-scroll-horizontal";
+
 import styled, { css } from "styled-components";
-import { Card } from "../../components/card";
 import { Marginer } from "../../components/marginer";
 
-import User1Img from "../../assets/pictures/profile_picture_1.jpg";
+
 import { useMediaQuery } from "react-responsive";
 
 const IntroduceContainer = styled.div`
     width: 100%;
-    min-height: 1000px;
+    min-height: 1400px;
     background: #FFFFFF;
     display: flex;
-    flex-direction: column;
     align-items: center;
     padding: 10px 0;
+    flex-direction: column;
 `;
 
 const PeopleIntroContainer = styled.div`
     width: 100%;
     min-height: 350px;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: space-between;
     align-items: center;
     padding: 10px 0;
 `;
@@ -37,11 +38,13 @@ const ServiceIntroContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-    width: 20%;
+    width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 `;
 
 const CardIcon = styled.img`
@@ -52,7 +55,7 @@ const CardIcon = styled.img`
 `;
 
 const PeopleText = styled.h2`
-    font-size: 15px;
+    font-size: 1em;
     font-weight: 500;
     line-height: 1.4;
     margin-right: 1em;
@@ -61,7 +64,7 @@ const PeopleText = styled.h2`
 `;
 
 const IntroduceText = styled.h2`
-    font-size: 20px;
+    font-size: 1.8em;
     font-weight: 500;
     line-height: 1.4;
     margin: 0;
@@ -72,21 +75,6 @@ const IntroduceImage = styled.img`
     width: 15em;
     height: 15em;
     background-color: #FFBB00;
-    
-    ${({ inline }) =>
-    inline &&
-    css`
-        width: 24px;
-        height: 24px;
-        margin-right: 6px;
-    `};
-
-    ${({ small }) =>
-    small &&
-    css`
-        width: 4.8em;
-        height: 4.8em;
-    `};
 
 `;
 
@@ -134,6 +122,7 @@ export function IntroducePage(props) {
         </PeopleIntroContainer>
 
         <ServiceIntroContainer>
+        <Marginer direction="vertical" margin="6em" />
             <IntroduceText> 서비스 소개 예시</IntroduceText>
             <Marginer direction="vertical" margin="1em" />
             <PeopleText>

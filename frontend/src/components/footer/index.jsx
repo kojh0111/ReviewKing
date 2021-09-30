@@ -17,7 +17,7 @@ const FooterContainer = styled.div`
 `;
 
 const IntroduceText = styled.h1`
-    font-size: 25px;
+    font-size: 1.8em;
     font-weight: 500;
     line-height: 1.4;
     color: #fff;
@@ -77,7 +77,7 @@ const Link = styled.a`
   color: #fff;
   transition: all 200ms ease-in-out;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 1em;
 
   &:not(:last-of-type) {
     margin-right: 11px;
@@ -88,7 +88,7 @@ const Link = styled.a`
   }
 
   @media screen and (max-width: 480px) {
-    font-size: 12px;
+    font-size: 0.8em;
   }
 
   &:hover {
@@ -97,12 +97,14 @@ const Link = styled.a`
 `;
 
 const RightsReserved = styled.div`
+  width: 100%;
+  text-align: center;
   position: absolute;
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  font-size: 12px;
+  font-size: 0.8em;
 `;
 
 export function Footer(props) {

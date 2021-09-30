@@ -12,7 +12,7 @@ import { Navbar } from "../../components/navbar";
 
 const TopContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
     padding: 0;
     background-image: url(${BackgroundImg});
     position: relative;
@@ -28,7 +28,7 @@ const BackgroundFilter = styled.div`
 `;
 
 const IntroduceText = styled.h1`
-    font-size: 34px;
+    font-size: 2.2em;
     font-weight: 500;
     line-height: 1.4;
     color: #fff;

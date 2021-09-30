@@ -33,7 +33,7 @@ const LogoImg = styled.img`
 
 const LogoText = styled.div`
   margin-top: ${({ inline }) => (inline ? 0 : "6px")};
-  font-size: ${({ inline, small }) => inline ? "18px" : small ? "23px" : "40px"};
+  font-size: ${({ inline, small }) => inline ? "1.1em" : small ? "2em" : "2.8em"};
   color: ${({ inline }) => (inline ? "#fff" : theme.primary)};
   font-weight: 900;
 `;
