@@ -16,6 +16,7 @@ class Reviews(db.Model):
     __tablename__ = "reviews"
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100), nullable=True)
     date = db.Column(db.DateTime, nullable=False)
     rating = db.Column(db.Float, nullable=True)
     content = db.Column(db.Text(), nullable=True)
