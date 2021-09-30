@@ -10,7 +10,7 @@ const ButtonWrapper = styled.button`
   color: #fff;
   font-family: Jua;
   font-weight: bold;
-  font-size: ${({ small }) => (small ? "12px" : "16px")};
+  font-size: ${({ small }) => (small ? "0.8em" : "1em")};
   outline: none;
   border: 2px solid transparent;
   transition: all 220ms ease-in-out;
