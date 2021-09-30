@@ -24,7 +24,7 @@ class Reviews(db.Model):
         db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
     )
 
-    restaurants = db.relationship("Restaurants", backref=db.backref("restaurant_set"))
+    restaurants = db.relationship("Restaurants", backref=db.backref("reviews_set"))
 
 
 class Menus(db.Model):
@@ -36,7 +36,7 @@ class Menus(db.Model):
         db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
     )
 
-    restaurants = db.relationship("Restaurants", backref=db.backref("restaurant_set"))
+    restaurants = db.relationship("Restaurants", backref=db.backref("menus_set"))
 
 
 class Analysis(db.Model):
@@ -50,7 +50,7 @@ class Analysis(db.Model):
         db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
     )
 
-    restaurants = db.relationship("Restaurants", backref=db.backref("restaurant_set"))
+    restaurants = db.relationship("Restaurants", backref=db.backref("analysis_set"))
 
 
 class Users(db.Model):
