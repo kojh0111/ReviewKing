@@ -12,7 +12,7 @@ import { Navbar } from "../../components/navbar";
 
 const TopContainer = styled.div`
     width: 100%;
-    // height: 100vh;
+    height: 100vh;
     padding: 0;
     background-image: url(${BackgroundImg});
     position: relative;
