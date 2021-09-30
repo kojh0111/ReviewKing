@@ -11,19 +11,19 @@ app = create_app()
 with app.app_context():
     with open("../data/crawled_reviews.csv", "r", encoding="CP949") as data:
         reader = csv.DictReader(data)
-        # reviews_crawled 형식에 따라 변환 필요
-        for data in crawled_data:
-            date = data["date"]  # 받는 형식에 따라 변환 필요
-            rating = data["rating"]  # 받는 형식에 따라 변환 필요
-            content = data["content"]
-            platform = data["platform"]
-            name = data["name"].replace(" ", "")
+        for lines in reader:
+            date = lines["date"]  # 받는 형식에 따라 변환 필요
+            rating = lines["rating"]  # 받는 형식에 따라 변환 필요
+            content = lines["content"]
+            platform = lines["platform"]
+            name = lines["name"].replace(" ", "")
 
             restaurant = Restaurants.query.filter_by(name=name).first()
             restaur_id = restaurant.id
 
             reviews = Reviews(
                 date=date,
+                name=name,
                 rating=rating,
                 content=content,
                 platform=platform,
@@ -31,4 +31,4 @@ with app.app_context():
             )
             db.session.add(reviews)
             db.session.commit()
-    # db.create_all(app=app)
+    db.create_all(app=app)
