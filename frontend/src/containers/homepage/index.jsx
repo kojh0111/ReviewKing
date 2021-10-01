@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { Footer } from "../../components/footer";
 import { Marginer } from "../../components/marginer";
@@ -15,7 +16,12 @@ const PageContainer = styled.div`
 
 export function Homepage(props) {
     return (
+        
     <PageContainer>
+        <Helmet>
+            <title>리뷰왕</title>
+        </Helmet>
+
         <TopSection />
         <ServicesSection/>
         <Footer/>
