@@ -1,35 +1,49 @@
-import './App.css';
-import React from 'react';
-import { 
-    BrowserRouter as Router, 
-    Switch, 
-    Route } from 'react-router-dom';
+import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Homepage } from './containers/homepage';
+import { Homepage } from "./containers/homepage";
 
-import { RankPage } from './containers/rankpage';
-import { TestPage } from './containers/testpage';
-import { ReviewPage } from './containers/reviewPage';
-import { IntroducePage } from './containers/introducepage';
-
-
+import { RankPage } from "./containers/rankpage";
+import { TestPage } from "./containers/testpage";
+import { ReviewPage } from "./containers/reviewPage";
+import { IntroducePage } from "./containers/introducepage";
+// import { IntroducePage } from './containers/introducepage';
 
 function App() {
   return (
+    <PageContainer>
+      <Helmet>
+        <title>리뷰왕</title>
+      </Helmet>
 
-    <Router>
+      <TopSection />
+
+      <div className="tabContainer">
+        {tabTitle.map((item, index) => {
+          return (
+            <TabMenuItem
+              key={index}
+              title={item.title}
+              path={item.path}
+              exact={item.exact}
+            />
+          );
+        })}
+      </div>
+
+
+      
+
+      <Marginer direction="vertical" margin="2em" />
+      <Router>
         <Switch>
-
           <Route exact path="/">
-            <IntroducePage/>
+            <IntroducePage />
           </Route>
 
-          {/* <Route exact path="/info">
-            <IntroducePage/>
-          </Route> */}
-
           <Route path="/review">
-            <ReviewPage/>
+            <ReviewPage />
           </Route>
 
           <Route path="/rank">
@@ -39,11 +53,14 @@ function App() {
           <Route path="/Test">
             <TestPage />
           </Route>
-
         </Switch>
-    </Router>
-  )
+         {/* <ServicesSection /> */}
+      </Router>
+      
+
+      <Footer />
+    </PageContainer>
+  );
 }
 
 export default App;
-
