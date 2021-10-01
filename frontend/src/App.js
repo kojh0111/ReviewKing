@@ -1,47 +1,66 @@
-import './App.css';
-import React from 'react';
-import { 
-    BrowserRouter as Router, 
-    Switch, 
-    Route } from 'react-router-dom';
-
-import { Homepage } from './containers/homepage';
-
-import { RankPage } from './containers/rankpage';
-import { TestPage } from './containers/testpage';
-import { ReviewPage } from './containers/reviewPage';
-import { IntroducePage } from './containers/introducepage';
-
+import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import styled from "styled-components";
+import { Helmet } from "react-helmet";
+import { RankPage } from "./containers/rankpage";
+import { TestPage } from "./containers/testpage";
+import { ReviewPage } from "./containers/reviewPage";
+import { IntroducePage } from "./containers/introducepage";
+import { Marginer } from "./components/marginer";
+import { TopSection } from "./containers/homepage/topSection";
+import tabTitle from "./const/tabtitle";
+import TabMenuItem from "./components/tabMenuitem/TabMenuItem";
+import { Footer } from "./components/footer";
+import { ServicesSection } from "./containers/homepage/servicesSection";
 
 
 function App() {
   return (
 
-    <Router>
-        <Switch>
+    <div className = "PageContainer">
+        
+        <Helmet>
+            <title>리뷰왕</title>
+        </Helmet>
 
-          <Route exact path="/">
-            <IntroducePage/>
-          </Route>
+        <TopSection />
 
-          {/* <Route exact path="/info">
-            <IntroducePage/>
-          </Route> */}
+      <Router>
 
-          <Route path="/review">
-            <ReviewPage/>
-          </Route>
+        <div className="tabContainer">
+            {tabTitle.map((item, index) => {
+                return <TabMenuItem key={index} title={item.title} path={item.path} exact={item.exact}/>;
+            })}
+        </div>
 
-          <Route path="/rank">
-            <RankPage />
-          </Route>
+          <Switch>
 
-          <Route path="/Test">
-            <TestPage />
-          </Route>
+            <Route exact path="/">
+              <IntroducePage/>
+            </Route>
 
-        </Switch>
-    </Router>
+            <Route path="/review">
+              <ReviewPage/>
+            </Route>
+
+            <Route path="/rank">
+              <RankPage />
+            </Route>
+
+            <Route path="/Test">
+              <TestPage />
+            </Route>
+
+          </Switch>
+
+          <Marginer direction="vertical" margin="2em"/>
+
+      </Router>
+
+    <Footer/>
+    
+    </div>
   )
 }
 

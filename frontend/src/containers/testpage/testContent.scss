@@ -1,0 +1,31 @@
+/* 추가한 코드 */
+
+.TestContainer{
+    width: 100%;
+    min-height: 1400px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    flex-direction: column;
+
+    .TitleText{
+        font-size: 1.8em;
+        font-weight: 500;
+        line-height: 1.4;
+        margin: 0;
+        text-align: center;
+    }
+
+    .bodyText{
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-right: 1em;
+    margin-left: 1em;
+    text-align: center;
+    }
+
+
+}
+

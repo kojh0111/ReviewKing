@@ -1,45 +1,21 @@
 import "./rankContent.scss";
 import React from "react";
-import styled from "styled-components";
 import { Marginer } from "../../components/marginer";
 
-const RankContainer = styled.div`
-    width: 100%;
-    min-height: 1400px;
-    background: #FFFFFF;
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    flex-direction: column;
-`;
 
-const PeopleText = styled.h2`
-    font-size: 1em;
-    font-weight: 500;
-    line-height: 1.4;
-    margin-right: 1em;
-    margin-left: 1em;
-    text-align: center;
-`;
 
-const IntroduceText = styled.h2`
-    font-size: 1.8em;
-    font-weight: 500;
-    line-height: 1.4;
-    margin: 0;
-    text-align: center;
-`;
 
 export function RankContent(props) {
 
     return (
 
-        <RankContainer>
+        <div className="RankContainer">
+
             <Marginer direction="vertical" margin="1em" />
-            <IntroduceText> 업종별 순위 예시</IntroduceText>
+            <h2 className="TitleText"> 업종별 순위 예시</h2>
             <Marginer direction="vertical" margin="1em" />
     
-            <PeopleText>
+            <h3 className="bodyText">
                 업종별 순위 페이지는 업종별 순위를 나타내는 페이지입니다.<br/>
                 <br/>
                 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세 <br/>
@@ -52,8 +28,9 @@ export function RankContent(props) {
                 이 기상과 이 맘으로 충성을 다하여 괴로우나 즐거우나 나라 사랑하세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세 <br/>
                 
                 <br/>
-            </PeopleText>
-        </RankContainer>
+            </h3>
+
+        </div>
     
     );
 }
