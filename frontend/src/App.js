@@ -24,9 +24,9 @@ function App() {
             <IntroducePage/>
           </Route>
 
-          <Route exact path="/info">
+          {/* <Route exact path="/info">
             <IntroducePage/>
-          </Route>
+          </Route> */}
 
           <Route path="/review">
             <ReviewPage/>
