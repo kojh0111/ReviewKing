@@ -29,7 +29,7 @@ def create_app():
     import models
 
     # blueprint
-    from views.ranks import ranks
+    from apis.ranks import ranks
 
     app.register_blueprint(ranks)
 

@@ -23,22 +23,24 @@ with app.app_context():
         mangp = total_rating_res_id.mango
         sikshin = total_rating_res_id.sikshin
 
-        integrated_rating = 0
+        rating_sum = 0
+        reviews_total = 0
         for web in webs:
             # 검색엔진 별 리뷰 수 구하기
             reviews = Reviews.query.filter_by(web=web, restaurant_id=res_id).all()
+            reviews_total += len(reviews)
             # 각 검색엔진 별 리뷰 수 가중치 주어 전체 검색엔진 수로 나누기
-            # sum((검색엔진 별 평점) * (검색엔진 별 리뷰 수)) / len(webs)
+            # sum((검색엔진 별 평점) * (검색엔진 별 리뷰 수)) / reveiws_total
             if web == "naver":
-                integrated_rating += naver * len(reviews)
+                rating_sum += naver * len(reviews)
             if web == "kakao":
-                integrated_rating += kakao * len(reviews)
+                rating_sum += kakao * len(reviews)
             if web == "mango":
-                integrated_rating += mango * len(reviews)
+                rating_sum += mango * len(reviews)
             if web == "sikshin":
-                integrated_rating += sikshin * len(reviews)
+                rating_sum += sikshin * len(reviews)
 
         if res.integrated_rating is None:
             # integrated_rating 데이터 추가
-            res.integrated_rating = integrated_rating / 4
+            res.integrated_rating = rating_sum / reviews_total
             db.session.commit()
