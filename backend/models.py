@@ -7,7 +7,7 @@ class Restaurants(db.Model):
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=True)
     res_type = db.Column(db.String(50), nullable=True)
-    total_rating = db.Column(db.Float, nullable=True)
+    integrated_rating = db.Column(db.Float, nullable=True)
     longitude_x = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     latitude_y = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
 
@@ -54,6 +54,22 @@ class Analysis(db.Model):
     )
 
     restaurants = db.relationship("Restaurants", backref=db.backref("analysis_set"))
+
+
+class TotalRating(db.Model):
+    __tablename__ = "total_rating"
+
+    id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
+    kakao = db.Column(db.Float, nullable=True)
+    naver = db.Column(db.Float, nullable=True)
+    sikshin = db.Column(db.Float, nullable=True)
+    mango = db.Column(db.Float, nullable=True)
+
+    restaurant_id = db.Column(
+        db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
+    )
+
+    restaurants = db.relationship("Restaurants", backref=db.backref("total_rating_set"))
 
 
 class Users(db.Model):
