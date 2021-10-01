@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { Footer } from "../../components/footer";
 import { Marginer } from "../../components/marginer";
-import { IntroducePage } from "../introducepage";
 import { ServicesSection } from "./servicesSection";
 import { TopSection } from "./topSection";
 import "./index.scss";
@@ -43,6 +42,7 @@ export function Homepage(props) {
         <Marginer direction="vertical" margin="2em"/>
 
         <ServicesSection/>
+        
         <Footer/>
     </PageContainer>
     );

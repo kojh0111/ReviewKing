@@ -21,7 +21,7 @@ function App() {
         <Switch>
 
           <Route exact path="/">
-            <Homepage/>
+            <IntroducePage/>
           </Route>
 
           <Route exact path="/info">

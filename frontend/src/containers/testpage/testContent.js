@@ -1,6 +1,17 @@
 import "./testContent.scss";
 import React from "react";
 import styled from "styled-components";
+import { Marginer } from "../../components/marginer";
+
+const TestContainer = styled.div`
+    width: 100%;
+    min-height: 1400px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    flex-direction: column;
+`;
 
 const PeopleText = styled.h2`
     font-size: 1em;
@@ -11,9 +22,23 @@ const PeopleText = styled.h2`
     text-align: center;
 `;
 
+const IntroduceText = styled.h2`
+    font-size: 1.8em;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+`;
+
 export function TestContent(props) {
 
     return (
+
+        <TestContainer>
+
+            <Marginer direction="vertical" margin="1em" />
+            <IntroduceText> 오늘 뭐먹지? 예시</IntroduceText>
+            <Marginer direction="vertical" margin="1em" />
     
             <PeopleText>
                 테스트 페이지는 테스트 내용을 바탕으로 사용자에게 음식을 추천해주는 페이지입니다.<br/>
@@ -24,6 +49,9 @@ export function TestContent(props) {
                 이 기상과 이 맘으로 충성을 다하여 괴로우나 즐거우나 나라 사랑하세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세 <br/>
                 <br/>
             </PeopleText>
+
+        </TestContainer>
+            
             
     );
 }

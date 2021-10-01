@@ -1,6 +1,17 @@
 import "./rankContent.scss";
 import React from "react";
 import styled from "styled-components";
+import { Marginer } from "../../components/marginer";
+
+const RankContainer = styled.div`
+    width: 100%;
+    min-height: 1400px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    flex-direction: column;
+`;
 
 const PeopleText = styled.h2`
     font-size: 1em;
@@ -11,9 +22,22 @@ const PeopleText = styled.h2`
     text-align: center;
 `;
 
+const IntroduceText = styled.h2`
+    font-size: 1.8em;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+`;
+
 export function RankContent(props) {
 
     return (
+
+        <RankContainer>
+            <Marginer direction="vertical" margin="1em" />
+            <IntroduceText> 업종별 순위 예시</IntroduceText>
+            <Marginer direction="vertical" margin="1em" />
     
             <PeopleText>
                 업종별 순위 페이지는 업종별 순위를 나타내는 페이지입니다.<br/>
@@ -29,6 +53,7 @@ export function RankContent(props) {
                 
                 <br/>
             </PeopleText>
-            
+        </RankContainer>
+    
     );
 }
