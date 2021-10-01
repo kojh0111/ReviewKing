@@ -3,7 +3,10 @@ import { Element } from "react-scroll";
 import styled from "styled-components";
 import { Marginer } from "../../components/marginer";
 import { SectionTitle } from "../../components/sectionTitle";
+import TabMenuItem from "../../components/tabMenuitem/TabMenuItem";
 import { TabComponent } from "../../components/tabs";
+import tabTitle from "../../const/tabtitle";
+import { IntroducePage } from "../introducepage";
 
 const ServicesContainer = styled(Element)`
   width: 100%;
@@ -14,13 +17,23 @@ const ServicesContainer = styled(Element)`
   padding: 10px 10px;
 `;
 
+const AllContainer = styled.div`
+
+`;
+
 export function ServicesSection(props) {
   return (
-    <ServicesContainer name="servicesSection">
-      <Marginer direction="vertical" margin="2em" />
-      <SectionTitle>리뷰왕이 제공하는 서비스입니다.</SectionTitle>
-      <Marginer direction="vertical" margin="3em" />
-      <TabComponent/>
-    </ServicesContainer>
+
+    <AllContainer>
+
+      <ServicesContainer name="servicesSection">
+            
+        <IntroducePage/>
+            
+      </ServicesContainer>
+
+    </AllContainer>
+    
+    
   );
 }
