@@ -35,7 +35,7 @@ export function Homepage(props) {
         
         <div className="tabContainer">
             {tabTitle.map((item, index) => {
-                return <TabMenuItem key={index} title={item.title} path={item.path} />;
+                return <TabMenuItem key={index} title={item.title} path={item.path} exact={item.exact}/>;
             })}
         </div>
 
