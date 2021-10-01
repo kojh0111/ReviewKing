@@ -44,6 +44,10 @@ const DownArrowContainer = styled.div`
 `;
 
 export function TopSection(props) {
+
+    const scrollToServiceSection = () => {
+        scroller.scrollTo("servicesSection", { smooth: true, duration: 1500 });
+    };
     
     return (
         <Element name="topSection">
@@ -57,8 +61,8 @@ export function TopSection(props) {
                     <IntroduceText>엘리스 본사 주변의 음식점 리뷰 변화를 분석합니다.</IntroduceText>
                     <Marginer direction="vertical" margin="2em" />
                     <Button>오늘 뭐먹지??</Button>
-                    <DownArrowContainer>
-                        <DownArrow />
+                    <DownArrowContainer onClick={scrollToServiceSection}>
+                        <DownArrow/>
                     </DownArrowContainer>
                 </BackgroundFilter>
             </TopContainer>
