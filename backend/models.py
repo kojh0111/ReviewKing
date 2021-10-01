@@ -33,6 +33,7 @@ class Menus(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
+    category = db.Column(db.String(100), nullable=False)
     img_path = db.Column(db.String(200), nullable=True)
     restaurant_id = db.Column(
         db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
