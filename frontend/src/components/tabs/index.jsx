@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
 import { IntroducePage } from "../../containers/introducepage";
+import { ReviewPage } from "../../containers/reviewPage";
 
 export function TabComponent(props) {
 
@@ -44,15 +46,23 @@ export function TabComponent(props) {
                 <Tab style={Tabstyle}>
                     <span style={Spanstyle }>소개 페이지</span>
                 </Tab>
+
+            <Link to="/review">
                 <Tab style={Tabstyle}>
                     <span style={Spanstyle }>음식점 리뷰</span>
                 </Tab>
+            </Link>
+                
+
+
                 <Tab style={Tabstyle}>
                     <span style={Spanstyle }>업종별 순위</span>
                 </Tab>
+
                 <Tab style={Tabstyle}>
                     <span style={Spanstyle }>오늘 뭐먹지?</span>
                 </Tab>
+
             </TabList>
 
             <div>인덱스 번호 {index}</div>
@@ -60,7 +70,7 @@ export function TabComponent(props) {
                 <IntroducePage/>
             </TabPanel>
             <TabPanel style={Panelstyle}>
-                <div>음식점 리뷰 공간</div>
+                <ReviewPage/>
             </TabPanel>
             <TabPanel style={Panelstyle}>
                 <div>업종별 순위 공간</div>

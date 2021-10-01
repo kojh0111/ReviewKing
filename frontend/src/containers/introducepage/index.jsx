@@ -81,11 +81,12 @@ const IntroduceImage = styled.img`
 
 export function IntroducePage(props) {
 
-    const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
-
     return (
     <IntroduceContainer>
+        
+        <Marginer direction="vertical" margin="1em" />
         <IntroduceText> 팀원 소개 예시</IntroduceText>
+        <Marginer direction="vertical" margin="1em" />
 
         <PeopleIntroContainer >
                 

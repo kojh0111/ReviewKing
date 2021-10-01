@@ -1,10 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
-import { Homepage } from "./containers/homepage";
+import React from 'react';
+import { 
+    BrowserRouter as Router, 
+    Switch, 
+    Route } from 'react-router-dom';
+    
+import { Homepage } from './containers/homepage';
+import { ReviewPage } from './containers/reviewPage';
+
+
 
 function App() {
   return (
-    <Homepage />
+    <Router>
+      <Switch>
+
+        <Route exact path="/">
+          <Homepage/>
+        </Route>
+
+        <Route path="/review">
+          <ReviewPage />
+        </Route>
+
+      </Switch>
+    </Router>
   )
 }
 
