@@ -46,10 +46,6 @@ const PrivacyContainer = styled.div`
   display: flex;
 `;
 
-const SocialContainer = styled.div`
-  display: flex;
-`;
-
 const SocialIcon = styled.div`
   color: #fff;
   font-size: 20px;
@@ -98,13 +94,14 @@ const Link = styled.a`
 
 const RightsReserved = styled.div`
   width: 100%;
+  margin-bottom: 10px;
   text-align: center;
   position: absolute;
   bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  font-size: 0.8em;
+  font-size: 0.9em;
 `;
 
 export function Footer(props) {

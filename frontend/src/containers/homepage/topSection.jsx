@@ -1,9 +1,7 @@
 import React from "react";
 import "./topSection.scss";
 import { Element, scroller } from "react-scroll";
-import styled from "styled-components";
 
-import BackgroundImg from "../../assets/pictures/background.jpg";
 import { Button } from "../../components/button";
 import { DownArrow } from "../../components/downArrow";
 import { Logo } from "../../components/logo";
@@ -35,10 +33,11 @@ export function TopSection(props) {
                     <Marginer direction="vertical" margin="2em" />
 
                     <Button>오늘 뭐먹지??</Button>
+                    
                     <div className="DownArrowContainer" onClick={scrollToServiceSection}>
                         <DownArrow/>
                     </div>
-
+                    
                 </div>
 
             </div>

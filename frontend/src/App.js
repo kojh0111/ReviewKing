@@ -1,7 +1,6 @@
 import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import { RankPage } from "./containers/rankpage";
 import { TestPage } from "./containers/testpage";
@@ -12,7 +11,7 @@ import { TopSection } from "./containers/homepage/topSection";
 import tabTitle from "./const/tabtitle";
 import TabMenuItem from "./components/tabMenuitem/TabMenuItem";
 import { Footer } from "./components/footer";
-import { ServicesSection } from "./containers/homepage/servicesSection";
+
 
 
 function App() {
@@ -37,11 +36,11 @@ function App() {
           <Switch>
 
             <Route exact path="/">
-              <IntroducePage/>
+              <ReviewPage/>
             </Route>
 
-            <Route path="/review">
-              <ReviewPage/>
+            <Route path="/info">
+              <IntroducePage/>
             </Route>
 
             <Route path="/rank">

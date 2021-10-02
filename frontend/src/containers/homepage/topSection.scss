@@ -12,6 +12,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        .DownArrowContainer{
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 
     .IntroduceText{
@@ -23,7 +30,7 @@
         text-align: center;
     }
 
-    .ntroduceText{
+    .IntroduceText{
         font-size: 2.2em;
         font-weight: 500;
         line-height: 1.4;

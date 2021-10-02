@@ -1,6 +1,5 @@
 import "./reviewContent.scss";
 import React from "react";
-import styled from "styled-components";
 import { Marginer } from "../../components/marginer";
 import { DropDown } from "../../components/dropdown";
 

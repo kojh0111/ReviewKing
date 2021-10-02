@@ -1,7 +1,5 @@
 
 import React from "react";
-
-import styled, { css } from "styled-components";
 import { Marginer } from "../../components/marginer";
 import { IntroduceContent } from "./introduceContent";
 
