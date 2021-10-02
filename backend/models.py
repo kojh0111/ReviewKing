@@ -10,6 +10,9 @@ class Restaurants(db.Model):
     integrated_rating = db.Column(db.Float, nullable=True)
     longitude_x = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     latitude_y = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
+
+    categories = db.relationship("Categories", backref=db.backref("restaurants_set"))
 
 
 class Reviews(db.Model):
@@ -33,13 +36,14 @@ class Menus(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
-    category = db.Column(db.String(100), nullable=False)
     img_path = db.Column(db.String(200), nullable=True)
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
     restaurant_id = db.Column(
         db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
     )
 
     restaurants = db.relationship("Restaurants", backref=db.backref("menus_set"))
+    categories = db.relationship("Categories", backref=db.backref("menus_set"))
 
 
 class Analysis(db.Model):
@@ -70,6 +74,13 @@ class TotalRating(db.Model):
     )
 
     restaurants = db.relationship("Restaurants", backref=db.backref("total_rating_set"))
+
+
+class Categories(db.Model):
+    __tablename__ = "categories"
+
+    id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
+    category = db.Column(db.String(100), nullable=True)
 
 
 class Users(db.Model):
