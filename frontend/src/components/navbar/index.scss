@@ -8,12 +8,17 @@
     justify-content: space-between;
 
     .BrandContainer {
-
+        img {
+            width: 24px;
+            height: 24px;
+            margin-right: 6px;
+        }
+        span {
+            font-size: 2em;
+            color: #ffffff;
+        }
     }
 }
-
-
-
 
 
 .AccessibilityContainer{
