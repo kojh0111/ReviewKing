@@ -3,7 +3,6 @@ from flask_restful import Resource, Api, reqparse
 from models import Restaurants, Menus, Reviews
 from sqlalchemy.sql import func
 from app import db
-from get_food_category import categories_csv_to_list
 
 ranks = Blueprint("ranks", __name__)
 api = Api(ranks)

@@ -4,9 +4,9 @@ from models import TotalRating, Reviews, Restaurants
 
 app = create_app()
 
-# ---------------------
-# 받은 csv에 따라 수정 필요
-# ---------------------
+# ------------------------
+# TODO 전체 평점 / 4 로 고치기
+# ------------------------
 
 with app.app_context():
     restaurants = Restaurants.query.all()
