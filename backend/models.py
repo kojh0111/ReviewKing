@@ -17,7 +17,7 @@ class Reviews(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=True)
-    date = db.Column(db.DateTime, nullable=False)
+    date = db.Column(db.DateTime, nullable=True)
     rating = db.Column(db.Float, nullable=True)
     content = db.Column(db.Text(), nullable=True)
     platform = db.Column(db.String(30), nullable=False)
