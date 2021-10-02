@@ -11,7 +11,7 @@ export function RankContent(props) {
 
         <div className="RankContainer">
 
-            <Marginer direction="vertical" margin="1em" />
+            <Marginer direction="vertical" margin="3em" />
             <h2 className="TitleText"> 업종별 순위 예시</h2>
             <Marginer direction="vertical" margin="1em" />
     

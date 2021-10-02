@@ -9,7 +9,7 @@ import { ReviewContent } from "./reviewContent";
 export function ReviewPage(props) {
 
     return (
-        <div className="PageContainer">
+        <div className="ServicePageContainer" name="servicePageContainer">
             
         <Marginer direction="vertical" margin="2em"/>
 

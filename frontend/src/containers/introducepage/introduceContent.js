@@ -11,7 +11,7 @@ export function IntroduceContent(props) {
     
     <div className="IntroduceContainer">
         
-        <Marginer direction="vertical" margin="1em" />
+        <Marginer direction="vertical" margin="3em" />
         <h2 className="TitleText"> 팀원 소개 예시</h2>
         <Marginer direction="vertical" margin="1em" />
 

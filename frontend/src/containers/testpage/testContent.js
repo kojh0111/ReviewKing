@@ -11,7 +11,7 @@ export function TestContent(props) {
 
         <div className="TestContainer">
 
-            <Marginer direction="vertical" margin="1em" />
+            <Marginer direction="vertical" margin="3em" />
                 <h2 className="TitleText"> 오늘 뭐먹지? 예시</h2>
             <Marginer direction="vertical" margin="1em" />
     

@@ -11,7 +11,7 @@ export function ReviewContent(props) {
     return (
     <div className="ReviewContainer">
 
-            <Marginer direction="vertical" margin="1em" />
+            <Marginer direction="vertical" margin="3em" />
                 <h2 className="TitleText">  음식점 리뷰 예시</h2>
             <Marginer direction="vertical" margin="1em" />
 

@@ -1,0 +1,19 @@
+.LogoContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.LogoImg{
+    background-image: url("../../assets/logo/logo_croped.png");
+    width: 8em;
+    height: 8em;
+}
+
+.LogoText{
+    margin-top: 0;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 900;
+}
