@@ -20,7 +20,7 @@ with app.app_context():
 
         naver = total_rating_res_id.naver
         kakao = total_rating_res_id.kakao
-        mangp = total_rating_res_id.mango
+        mango = total_rating_res_id.mango
         sikshin = total_rating_res_id.sikshin
 
         rating_sum = 0
