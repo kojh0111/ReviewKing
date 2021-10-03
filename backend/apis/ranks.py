@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
 from models import Restaurants, Categories, Reviews
 from sqlalchemy.sql import func
@@ -15,12 +15,12 @@ parser.add_argument("category", type=str)
 class Ranks(Resource):
     # 음식 카테고리 제공
     def get(self):
-        data = dict()
+        categories_data = Categories.query.all()
+        categories = set([data.category for data in categories_data])
 
-        food_category_list = categories_csv_to_list()
-        data["categories_of_food"] = food_category_list
+        data = {"categories": list(categories)}
 
-        return data, 200
+        return jsonify(status=200, data=data)
 
     # 선택한 카테고리에 대한 결과 전송
     def post(self):
@@ -38,7 +38,7 @@ class Ranks(Resource):
             res = Restaurants.query.filter_by(id=id).first()
             # 평점, 이름, id 추가
             integrated_rating_ordred.append((res.integrated_rating, res.name, id))
-        print(integrated_rating_ordred)
+        # print(integrated_rating_ordred)
 
         # integrated_rating 기준으로 내림차순 정렬
         integrated_rating_ordred = sorted(integrated_rating_ordred, key=lambda x: -x[0])
@@ -56,9 +56,7 @@ class Ranks(Resource):
 
         data = {"result": top_ranked_res}
 
-        print(data)
-        # return data, 200
-        return
+        return jsonify(status=200, data=data)
 
 
 api.add_resource(Ranks, "/ranks")
