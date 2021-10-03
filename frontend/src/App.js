@@ -11,6 +11,7 @@ import { TopSection } from "./containers/homepage/topSection";
 import tabTitle from "./const/tabtitle";
 import TabMenuItem from "./components/tabMenuitem/TabMenuItem";
 import { Footer } from "./components/footer";
+import { Error } from "./containers/errorpage/error";
 
 
 
@@ -49,6 +50,10 @@ function App() {
 
             <Route path="/Test">
               <TestPage />
+            </Route>
+
+            <Route path="/*">
+              <Error/>
             </Route>
 
           </Switch>
