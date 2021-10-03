@@ -6,7 +6,6 @@ class Restaurants(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=True)
-    res_type = db.Column(db.String(50), nullable=True)
     integrated_rating = db.Column(db.Float, nullable=True)
     longitude_x = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     latitude_y = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
@@ -36,7 +35,7 @@ class Menus(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
-    img_path = db.Column(db.String(200), nullable=True)
+    img_url = db.Column(db.String(200), nullable=True)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
     restaurant_id = db.Column(
         db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
@@ -50,7 +49,7 @@ class Analysis(db.Model):
     __tablename__ = "analysis"
 
     id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
-    filename = db.Column(db.String(200), nullable=True)
+    file_path = db.Column(db.String(200), nullable=True)
     platform = db.Column(db.String(30), nullable=False)
 
     restaurant_id = db.Column(
