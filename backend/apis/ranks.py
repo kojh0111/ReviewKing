@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint
 from flask_restful import Resource, Api, reqparse
-from models import Restaurants, Menus, Reviews
+from models import Restaurants, Categories, Reviews
 from sqlalchemy.sql import func
 from app import db
 
