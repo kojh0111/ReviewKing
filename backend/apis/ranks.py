@@ -26,11 +26,10 @@ class Ranks(Resource):
     def post(self):
         args = parser.parse_args()
         category = args["category"].strip()
-        # print(category)
 
         # 해당 카테고리를 가진 restaurant_id 찾기
-        menus = Menus.query.filter_by(category=category).all()
-        restaurant_ids = list(set([menu.restaurant_id for menu in menus]))
+        categories_data = Categories.query.filter_by(category=category).all()
+        restaurant_ids = list(set([data.restaurant_id for data in categories_data]))
 
         # restaurant_id 이용 전체 평점 기준 ordering
         integrated_rating_ordred = []
@@ -45,7 +44,6 @@ class Ranks(Resource):
 
         top_ranked_res = []
         for rating, res_name, res_id in integrated_rating_ordered:
-            tmp = dict()
             menus = Menu.query.filter_by(restaurant_id=res_id).all()
             tmp = {
                 "name": res_name,
