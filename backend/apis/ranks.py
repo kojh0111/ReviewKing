@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
-from models import Restaurants, Categories, Reviews
+from models import Restaurants, Categories, Reviews, Menus
 from sqlalchemy.sql import func
 from app import db
 
@@ -15,10 +15,21 @@ parser.add_argument("category", type=str)
 class Ranks(Resource):
     # 음식 카테고리 제공
     def get(self):
+        # 카테고리들 모두 불러오기
         categories_data = Categories.query.all()
-        categories = set([data.category for data in categories_data])
+        categories = list(set([data.category for data in categories_data]))
 
-        data = {"categories": list(categories)}
+        # 해당 카테고리의 category_id에 해당하는 menu의 첫번째 img_url 가져오기
+        category_ids = [
+            Categories.query.filter_by(category=cat).first().id for cat in categories
+        ]
+
+        img_urls = [
+            Menus.query.filter_by(category_id=cat_id).first().img_url
+            for cat_id in category_ids
+        ]
+
+        data = {"categories": [pair for pair in zip(categories, img_urls)]}
 
         return jsonify(status=200, data=data)
 
