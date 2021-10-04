@@ -1,7 +1,6 @@
 import './reviewContent.scss';
 import React from 'react';
 import Marginer from '../../components/marginer';
-// import DropDown from '../../components/dropdown';
 
 export default function ReviewContent() {
   return (
@@ -17,7 +16,6 @@ export default function ReviewContent() {
         </h3>
 
         <Marginer direction="vertical" margin="2em" />
-        {/* <DropDown /> */}
 
         <Marginer direction="vertical" margin="3em" />
         <img alt="" className="MapImage" />

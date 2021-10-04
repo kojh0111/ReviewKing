@@ -17,7 +17,9 @@ export default function Error() {
       <Marginer direction="vertical" margin="5em" />
 
       <Link className="button-home" to="/">
-        <button type="button">홈으로</button>
+        <div className="goTohome" type="button">
+          홈으로
+        </div>
       </Link>
     </div>
   );

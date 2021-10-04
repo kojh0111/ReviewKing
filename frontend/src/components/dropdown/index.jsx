@@ -5,10 +5,10 @@
 // import { ReactComponent as ChevronIcon } from '../../assets/icons/chevron.svg';
 // import { ReactComponent as ArrowIcon } from '../../assets/icons/arrow.svg';
 
-// import KoreanName from '../../const/koreanName';
-// import ChineseName from '../../const/chineseName';
-// import JapaneseName from '../../const/japaneseName';
-// import WesternName from '../../const/westernName';
+// import KoreanRestaurantsfrom '../../const/koreanName';
+// import ChineseRestaurants from '../../const/chineseName';
+// import JapaneseRestaurantsfrom '../../const/japaneseName';
+// import WesternRestaurants from '../../const/westernName';
 
 // export default function DropDown() {
 //   return (
@@ -143,7 +143,7 @@
 //             <h2>중식</h2>
 //           </DropdownItem>
 
-//           {ChineseName.map(option => (
+//           {ChineseRestaurants.map(option => (
 //             <DropdownItem leftIcon="🥡">{option}</DropdownItem>
 //           ))}
 //         </div>
@@ -179,7 +179,7 @@
 //             <h2>양식</h2>
 //           </DropdownItem>
 
-//           {WesternName.map(option => (
+//           {WesternRestaurants.map(option => (
 //             <DropdownItem leftIcon="🫕">{option}</DropdownItem>
 //           ))}
 //         </div>

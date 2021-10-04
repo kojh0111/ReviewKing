@@ -22,13 +22,13 @@ export default function Footer() {
       <div className="GuideContainer">
         <div className="PrivacyContainer">
           <a href="#!" className="Link">
-            서비스 소개{' '}
+            서비스 소개
           </a>
 
           <Marginer direction="horizontal" margin="2em" />
 
           <a href="#!" className="Link">
-            서비스 문의{' '}
+            서비스 문의
           </a>
         </div>
         <div className="SocialIcon">

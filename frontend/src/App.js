@@ -12,6 +12,7 @@ import tabTitle from './const/tabtitle';
 import TabMenuItem from './components/tabMenuitem/TabMenuItem';
 import Footer from './components/footer';
 import Error from './containers/errorpage/error';
+import CategoryChoice from './containers/testpage/categoryChoice';
 
 function App() {
   return (
@@ -35,30 +36,19 @@ function App() {
         </div>
 
         <Switch>
-          <Route exact path="/">
-            <ReviewPage />
-          </Route>
-
-          <Route path="/info">
-            <IntroducePage />
-          </Route>
-
-          <Route path="/rank">
-            <RankPage />
-          </Route>
-
-          <Route path="/Test">
-            <TestPage />
-          </Route>
-
-          <Route path="/*">
-            <Error />
-          </Route>
+          <Route path="/" component={ReviewPage} exact={true} />
+          <Route path="/info" component={IntroducePage} exact={true} />
+          <Route path="/rank" component={RankPage} exact={true} />
+          <Route path="/what-to-eat/" component={TestPage} exact={true} />
+          <Route
+            path="/what-to-eat/category"
+            component={CategoryChoice}
+            exact={true}
+          />
+          <Route path="*" component={Error} />
         </Switch>
-
-        <Marginer direction="vertical" margin="2em" />
       </Router>
-
+      <Marginer direction="vertical" margin="2em" />
       <Footer />
     </div>
   );
