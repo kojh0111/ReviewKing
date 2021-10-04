@@ -1,10 +1,10 @@
-import React from "react";
-import "./index.scss";
+import React from 'react';
+import './index.scss';
 
-export function Button(props) {
-  return(
-    <button className="ButtonWrapper" {...props}>
-      {props.children}
+export default function Button() {
+  return (
+    <button type="button" className="ButtonWrapper">
+      오늘 뭐먹지?
     </button>
   );
 }

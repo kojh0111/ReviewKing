@@ -2,13 +2,13 @@ import React from 'react';
 import './topSection.scss';
 import { Element, scroller } from 'react-scroll';
 
-import { Button } from '../../components/button';
-import { DownArrow } from '../../components/downArrow';
+import Button from '../../components/button';
+import DownArrow from '../../components/downArrow';
 import Logo from '../../components/logo';
-import { Marginer } from '../../components/marginer';
-import { Navbar } from '../../components/navbar';
+import Marginer from '../../components/marginer';
+import Navbar from '../../components/navbar';
 
-export function TopSection(props) {
+export default function TopSection() {
   const scrollToServiceSection = () => {
     // TODO.
     scroller.scrollTo('ServicePageContainer', { smooth: true, duration: 1500 });
@@ -29,7 +29,7 @@ export function TopSection(props) {
           </div>
           <Marginer direction="vertical" margin="2em" />
 
-          <Button>오늘 뭐먹지??</Button>
+          <Button />
 
           <div className="DownArrowContainer" onClick={scrollToServiceSection}>
             <DownArrow />

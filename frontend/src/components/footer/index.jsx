@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from '../button';
-import Logo from '../logo';
-import { Marginer } from '../marginer';
 import { faGitlab } from '@fortawesome/free-brands-svg-icons';
+import Button from '../button';
+import Logo from '../logo';
+import Marginer from '../marginer';
 import './index.scss';
 
-export function Footer() {
+export default function Footer() {
   return (
     <div className="FooterContainer">
       <Marginer direction="vertical" margin="3em" />
@@ -21,11 +21,15 @@ export function Footer() {
 
       <div className="GuideContainer">
         <div className="PrivacyContainer">
-          <a className="Link">서비스 소개 </a>
+          <a href="#!" className="Link">
+            서비스 소개{' '}
+          </a>
 
           <Marginer direction="horizontal" margin="2em" />
 
-          <a className="Link">서비스 문의 </a>
+          <a href="#!" className="Link">
+            서비스 문의{' '}
+          </a>
         </div>
         <div className="SocialIcon">
           <FontAwesomeIcon icon={faGitlab} />

@@ -1,23 +1,15 @@
+import React from 'react';
+import Marginer from '../../components/marginer';
+import IntroduceContent from './introduceContent';
 
-import React from "react";
-import { Marginer } from "../../components/marginer";
-import { IntroduceContent } from "./introduceContent";
+import './index.scss';
 
-import "./index.scss";
-
-
-
-
-export function IntroducePage(props) {
-
-    return (
+export default function IntroducePage() {
+  return (
     <div className="ServicePageContainer" name="servicePageContainer">
+      <Marginer direction="vertical" margin="2em" />
 
-        <Marginer direction="vertical" margin="2em"/>
-
-        <IntroduceContent/>
-        
+      <IntroduceContent />
     </div>
-
-    );
+  );
 }

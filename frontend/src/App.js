@@ -2,16 +2,16 @@ import './App.scss';
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { RankPage } from './containers/rankpage';
-import { TestPage } from './containers/testpage';
-import { ReviewPage } from './containers/reviewPage';
-import { IntroducePage } from './containers/introducepage';
-import { Marginer } from './components/marginer';
-import { TopSection } from './containers/homepage/topSection';
+import RankPage from './containers/rankpage';
+import TestPage from './containers/testpage';
+import ReviewPage from './containers/reviewPage';
+import IntroducePage from './containers/introducepage';
+import Marginer from './components/marginer';
+import TopSection from './containers/homepage/topSection';
 import tabTitle from './const/tabtitle';
 import TabMenuItem from './components/tabMenuitem/TabMenuItem';
-import { Footer } from './components/footer';
-import { Error } from './containers/errorpage/error';
+import Footer from './components/footer';
+import Error from './containers/errorpage/error';
 
 function App() {
   return (
@@ -24,16 +24,14 @@ function App() {
 
       <Router>
         <div className="tabContainer">
-          {tabTitle.map((item, idx) => {
-            return (
-              <TabMenuItem
-                key={idx}
-                title={item.title}
-                path={item.path}
-                exact={item.exact}
-              />
-            );
-          })}
+          {tabTitle.map(item => (
+            <TabMenuItem
+              key={item.title}
+              title={item.title}
+              path={item.path}
+              exact={item.exact}
+            />
+          ))}
         </div>
 
         <Switch>
