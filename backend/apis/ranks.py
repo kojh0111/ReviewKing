@@ -29,7 +29,9 @@ class Ranks(Resource):
             for cat_id in category_ids
         ]
 
-        data = {"categories": [pair for pair in zip(categories, img_urls)]}
+        data = dict()
+        for cat, url in zip(categories, img_urls):
+            data[f"{cat}"] = url
 
         return jsonify(status=200, data=data)
 
