@@ -33,9 +33,9 @@ def create_app():
 
     app.register_blueprint(ranks)
 
-    # from views import test
+    from apis.what_to_eat import what_to_eat
 
-    # app.register_blueprint(test.bp)
+    app.register_blueprint(what_to_eat)
 
     return app
 
