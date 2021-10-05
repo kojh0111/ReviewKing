@@ -3,7 +3,6 @@ from flask_restful import Resource, Api, reqparse
 from models import Restaurants, Categories, Reviews, TotalRating, Menus
 from sqlalchemy.sql import func
 from app import db
-import random
 
 ranks = Blueprint("ranks", __name__)
 api = Api(ranks)
