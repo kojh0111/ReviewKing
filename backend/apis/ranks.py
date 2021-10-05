@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
-from models import Restaurants, Categories, Reviews, Menus
+from models import Restaurants, Categories, Reviews, TotalRating, Menus
 from sqlalchemy.sql import func
 from app import db
+import random
 
 ranks = Blueprint("ranks", __name__)
 api = Api(ranks)
@@ -20,10 +21,12 @@ class Ranks(Resource):
 
         data = dict()
         for category_data in categories_data:
-            restaurants = Restaurants.query.filter_by(category_id=category_data.id).first()
+            restaurant = Restaurants.query.filter_by(
+                category_id=category_data.id
+            ).first()
             # 랜덤하게 img_url 선택하기
-            img_url = random.sample(restaurants, 1)[0].img_url
-            data[f'{category_data.category}'] = img_url
+            img_url = restaurant.img_url
+            data[f"{category_data.category}"] = img_url
 
         return jsonify(status=200, data=data)
 
@@ -43,13 +46,16 @@ class Ranks(Resource):
 
         data = dict()
         rank = 1
-        for restaurant in restaurants_rated
+        for restaurant in restaurants_rated:
             menus = Menus.query.filter_by(restaurant_id=restaurant.id).all()
+            total_rating = TotalRating.query.filter_by(
+                restaurant_id=restaurant.id
+            ).first()
             tmp = {
-                "integrated_rating": restaurant.integrated_rating,
+                "integrated_rating": total_rating.integrated_rating,
                 "img_url": restaurant.img_url,
                 "menus": [menu.name for menu in menus],
-                "rank": rank
+                "rank": rank,
             }
             data[f"{restaurant.name}"] = tmp
             rank += 1
