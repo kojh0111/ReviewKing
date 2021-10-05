@@ -40,32 +40,27 @@ class Ranks(Resource):
         args = parser.parse_args()
         category = args["category"].strip()
 
-        # 해당 카테고리를 가진 restaurant_id 찾기
-        categories_data = Categories.query.filter_by(category=category).all()
-        restaurant_ids = list(set([data.restaurant_id for data in categories_data]))
+        category_id = Categories.query.filter_by(category=category).first().id
 
-        # restaurant_id 이용 전체 평점 기준 ordering
-        integrated_rating_ordred = []
-        for id in restaurant_ids:
-            res = Restaurants.query.filter_by(id=id).first()
-            # 평점, 이름, id 추가
-            integrated_rating_ordred.append((res.integrated_rating, res.name, id))
-        # print(integrated_rating_ordred)
+        # 해당 카테고리의 상위 평점 3개의 음식점 제공
+        restaurants_rated = (
+            Restaurants.query.join(TotalRating)
+            .filter(Restaurants.category_id == category_id)
+            .order_by(TotalRating.integrated_rating.desc())[:3]
+        )
 
-        # integrated_rating 기준으로 내림차순 정렬
-        integrated_rating_ordred = sorted(integrated_rating_ordred, key=lambda x: -x[0])
-
-        top_ranked_res = []
-        for rating, res_name, res_id in integrated_rating_ordered:
-            menus = Menu.query.filter_by(restaurant_id=res_id).all()
+        data = dict()
+        rank = 1
+        for restaurant in restaurants_rated
+            menus = Menus.query.filter_by(restaurant_id=restaurant.id).all()
             tmp = {
-                "name": res_name,
-                "integrated_rating": rating,
+                "integrated_rating": restaurant.integrated_rating,
+                "img_url": restaurant.img_url,
                 "menus": [menu.name for menu in menus],
+                "rank": rank
             }
-            top_ranks_res.append(tmp)
-
-        data = {"result": top_ranked_res}
+            data[f"{restaurant.name}"] = tmp
+            rank += 1
 
         return jsonify(status=200, data=data)
 
