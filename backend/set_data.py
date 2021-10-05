@@ -112,3 +112,30 @@ class Insert:
                     db.session.add(total_rating)
                     db.session.commit()
             db.create_all(app=app)
+
+    # 메뉴 데이터 넣기
+    def menus(self):
+        with app.app_context():
+            with open(f"./dataset/menus.csv", "r", encoding="utf8") as data:
+                reader = csv.DictReader(data, delimiter="|")
+                for lines in reader:
+                    name = lines["name"]
+                    properties = lines["properties"]
+
+                    restaurant_id = Restaurants.query.filter_by(name=name).first().id
+                    category_id = (
+                        Restaurants.query.filter_by(restaurant_id=restaurant_id)
+                        .first()
+                        .id
+                    )
+
+                    menu = Menus(
+                        name=name,
+                        properties=properties,
+                        restaurant_id=restaurant_id,
+                        category_id=category_id,
+                    )
+
+                    db.session.add(menu)
+                    db.session.commit()
+            db.create_all(app=app)
