@@ -1,7 +1,7 @@
 import csv
 from app import create_app
 from app import db
-from models import Categories, Restaurants, Reviews, TotalRating
+from models import Categories, Restaurants, Reviews, TotalRating, Menus
 
 app = create_app()
 app.app_context().push()
@@ -10,16 +10,14 @@ app.app_context().push()
 def categories():
     if Categories.query.first() is None:
         with app.app_context():
-            with open(
-                f"./dataset/restaurant_categories.csv", "r", encoding="utf8"
-            ) as data:
+            with open(f"./dataset/all_restaurant.csv", "r", encoding="utf8") as data:
                 reader = csv.DictReader(data, delimiter=",")
                 categories = set([lines["category"] for lines in reader])
-            categories = list(categories)
-            for category in categories:
-                category_data = Categories(category=category)
-                db.session.add(category_data)
-                db.session.commit()
+                categories = list(categories)
+                for category in categories:
+                    category_data = Categories(category=category)
+                    db.session.add(category_data)
+                    db.session.commit()
             db.create_all(app=app)
 
 
@@ -27,14 +25,12 @@ def categories():
 def restaurants():
     if Restaurants.query.first() is None:
         with app.app_context():
-            with open(
-                f"./dataset/restaurant_categories.csv", "r", encoding="utf8"
-            ) as data:
-                reader = csv.DictReader(data, delimiter="|")
+            with open(f"./dataset/all_restaurant.csv", "r", encoding="utf8") as data:
+                reader = csv.DictReader(data, delimiter=",")
                 for lines in reader:
                     name = lines["name"]
-                    latitude_x = lines["lat"]
-                    longitude_y = lines["lon"]
+                    latitude_y = lines["lat"]
+                    longitude_x = lines["lng"]
                     category = lines["category"]
                     img_url = lines["img_url"]
 
@@ -59,13 +55,21 @@ def restaurants():
 def reviews():
     if Reviews.query.first() is None:
         with app.app_context():
-            with open(f"./dataset/reviews.csv", "r", encoding="utf8") as data:
+            with open(f"./dataset/all_review.csv", "r", encoding="utf8") as data:
                 reader = csv.DictReader(data, delimiter="|")
                 for lines in reader:
                     name = lines["name"]
                     platform = lines["platform"]
-                    date = lines["date"].replace(".", "-")
-                    rating = float(lines["rating"])
+                    date = lines["date"]
+                    if date == "":
+                        date = None
+                    else:
+                        date = date.replace(".", "-")
+                    rating = lines["rating"]
+                    if rating == "":
+                        rating = None
+                    else:
+                        rating = float(rating)
                     content = lines["content"]
 
                     restaurant = Restaurants.query.filter_by(name=name).first()
@@ -89,30 +93,39 @@ def reviews():
 def total_rating():
     if TotalRating.query.first() is None:
         with app.app_context():
-            with open(f"./dataset/total_rating.csv", "r", encoding="utf8") as data:
+            with open(f"./dataset/all_total.csv", "r", encoding="utf8") as data:
                 reader = csv.DictReader(data, delimiter="|")
                 for lines in reader:
                     name = lines["name"]
+                    integrated_rating = lines["p_total_rating"]
                     naver = lines["naver"]
+                    if naver == "":
+                        naver = None
+                    else:
+                        naver = float(naver)
                     kakao = lines["kakao"]
+                    if kakao == "":
+                        kakao = None
+                    else:
+                        kakao = float(kakao)
                     mango = lines["mango"]
+                    if mango == "":
+                        mango = None
+                    else:
+                        mango = float(mango)
                     siksin = lines["siksin"]
-
-                    integrated_rating_list = [naver, kakao, mango, siksin]
-                    arr = [
-                        rating
-                        for rating in integrated_rating_list
-                        if rating is not None
-                    ]
-                    integrated_rating = sum(arr)
+                    if siksin == "":
+                        siksin = None
+                    else:
+                        siksin = float(siksin)
 
                     restaurant_id = Restaurants.query.filter_by(name=name).first().id
                     total_rating = TotalRating(
                         naver=naver,
                         kakao=kakao,
                         mango=mango,
-                        sikshin=sikshin,
-                        integrated_rating=integrated_rating,
+                        siksin=siksin,
+                        integrated_rating=str(integrated_rating),
                         restaurant_id=restaurant_id,
                     )
 
@@ -152,6 +165,7 @@ def menus():
 
 if __name__ == "__main__":
     categories()
+    restaurants()
     reviews()
     total_rating()
-    menus()
+    # menus()
