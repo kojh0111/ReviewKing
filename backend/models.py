@@ -35,6 +35,7 @@ class Menus(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
+    proeprty = db.Column(db.String(150), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
     restaurant_id = db.Column(
         db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
