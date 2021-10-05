@@ -17,21 +17,13 @@ class Ranks(Resource):
     def get(self):
         # 카테고리들 모두 불러오기
         categories_data = Categories.query.all()
-        categories = list(set([data.category for data in categories_data]))
-
-        # 해당 카테고리의 category_id에 해당하는 menu의 첫번째 img_url 가져오기
-        category_ids = [
-            Categories.query.filter_by(category=cat).first().id for cat in categories
-        ]
-
-        img_urls = [
-            Menus.query.filter_by(category_id=cat_id).first().img_url
-            for cat_id in category_ids
-        ]
 
         data = dict()
-        for cat, url in zip(categories, img_urls):
-            data[f"{cat}"] = url
+        for category_data in categories_data:
+            restaurants = Restaurants.query.filter_by(category_id=category_data.id).first()
+            # 랜덤하게 img_url 선택하기
+            img_url = random.sample(restaurants, 1)[0].img_url
+            data[f'{category_data.category}'] = img_url
 
         return jsonify(status=200, data=data)
 
