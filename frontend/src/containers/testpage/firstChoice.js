@@ -1,10 +1,10 @@
-import './categoryChoice.scss';
+import './firstChoice.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Marginer from '../../components/marginer';
 import TastesCategory from '../../const/tastesCategory';
 
-export default function CategoryChoice() {
+export default function FirstChoice() {
   return (
     <div className="CategoryContainer">
       <Marginer direction="vertical" margin="2em" />
@@ -25,7 +25,7 @@ export default function CategoryChoice() {
           </button>
         </Link>
 
-        <Link to="/">
+        <Link to="/what-to-eat/category/second-choice">
           <button type="button" className="button-next">
             다음
           </button>

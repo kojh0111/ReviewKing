@@ -12,7 +12,9 @@ import tabTitle from './const/tabtitle';
 import TabMenuItem from './components/tabMenuitem/TabMenuItem';
 import Footer from './components/footer';
 import Error from './containers/errorpage/error';
-import CategoryChoice from './containers/testpage/categoryChoice';
+import FirstChoice from './containers/testpage/firstChoice';
+import SecondChoice from './containers/testpage/secondChoice';
+import TestResult from './containers/testpage/testResult';
 
 function App() {
   return (
@@ -42,7 +44,17 @@ function App() {
           <Route path="/what-to-eat/" component={TestPage} exact={true} />
           <Route
             path="/what-to-eat/category"
-            component={CategoryChoice}
+            component={FirstChoice}
+            exact={true}
+          />
+          <Route
+            path="/what-to-eat/category/second-choice"
+            component={SecondChoice}
+            exact={true}
+          />
+          <Route
+            path="/what-to-eat/category/second-choice/result"
+            component={TestResult}
             exact={true}
           />
           <Route path="*" component={Error} />
