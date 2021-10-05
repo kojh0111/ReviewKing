@@ -6,7 +6,6 @@ class Restaurants(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=True)
-    integrated_rating = db.Column(db.Float, nullable=True)
     longitude_x = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     latitude_y = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
@@ -67,6 +66,7 @@ class TotalRating(db.Model):
     naver = db.Column(db.Float, nullable=True)
     sikshin = db.Column(db.Float, nullable=True)
     mango = db.Column(db.Float, nullable=True)
+    integrated_rating = db.Column(db.Float, nullable=True)
 
     restaurant_id = db.Column(
         db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
