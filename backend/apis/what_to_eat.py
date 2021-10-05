@@ -3,7 +3,6 @@ from flask_restful import Resource, Api, reqparse
 from models import Restaurants, Categories, Reviews, Menus
 from app import db
 import random
-import heapq
 
 what_to_eat = Blueprint("what-to-eat", __name__)
 api = Api(what_to_eat)
