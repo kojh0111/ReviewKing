@@ -8,7 +8,7 @@ class Restaurants(db.Model):
     name = db.Column(db.String(100), nullable=True)
     longitude_x = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     latitude_y = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
-    img_url = db.Column(db.String(200), nullable=True)
+    img_url = db.Column(db.Text(), nullable=True)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
 
     categories = db.relationship("Categories", backref=db.backref("restaurants_set"))
