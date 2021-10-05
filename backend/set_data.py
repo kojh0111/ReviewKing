@@ -4,25 +4,28 @@ from app import db
 from models import Restaurants, Reviews, Categories, TotalRating
 
 app = create_app()
+app.app_context().push()
 
 
-class Insert:
-    def categories(self):
+def categories():
+    if Categories.query.first() is None:
         with app.app_context():
             with open(
                 f"./dataset/restaurant_categories.csv", "r", encoding="utf8"
             ) as data:
-                reader = csv.DictReader(data, delimiter="|")
+                reader = csv.DictReader(data, delimiter=",")
                 categories = set([lines["category"] for lines in reader])
             categories = list(categories)
             for category in categories:
-                category_data = Category(category=category)
+                category_data = Categories(category=category)
                 db.session.add(category_data)
                 db.session.commit()
             db.create_all(app=app)
 
-    # 음식점과 위치, 업종, 데이터 넣기
-    def restaurants(self):
+
+# 음식점과 위치, 업종, 데이터 넣기
+def restaurants():
+    if Restaurants.query.first() is None:
         with app.app_context():
             with open(
                 f"./dataset/restaurant_categories.csv", "r", encoding="utf8"
@@ -51,8 +54,10 @@ class Insert:
                     db.session.commit()
             db.create_all(app=app)
 
-    # 플랫폼별 크롤링한 리뷰 넣기
-    def crawled_reviews(self):
+
+# 플랫폼별 크롤링한 리뷰 넣기
+def reviews():
+    if Reviews.query.first() is None:
         with app.app_context():
             with open(f"./dataset/reviews.csv", "r", encoding="utf8") as data:
                 reader = csv.DictReader(data, delimiter="|")
@@ -79,8 +84,10 @@ class Insert:
                         db.session.commit()
             db.create_all(app=app)
 
-    # 플랫폼별 총 평점 넣기
-    def total_rating(self):
+
+# 플랫폼별 총 평점 넣기
+def total_rating():
+    if TotalRating.query.first() is None:
         with app.app_context():
             with open(f"./dataset/total_rating.csv", "r", encoding="utf8") as data:
                 reader = csv.DictReader(data, delimiter="|")
@@ -113,8 +120,10 @@ class Insert:
                     db.session.commit()
             db.create_all(app=app)
 
-    # 메뉴 데이터 넣기
-    def menus(self):
+
+# 메뉴 데이터 넣기
+def menus():
+    if Menus.query.first() is None:
         with app.app_context():
             with open(f"./dataset/menus.csv", "r", encoding="utf8") as data:
                 reader = csv.DictReader(data, delimiter="|")
@@ -139,3 +148,10 @@ class Insert:
                     db.session.add(menu)
                     db.session.commit()
             db.create_all(app=app)
+
+
+if __name__ == "__main__":
+    categories()
+    reviews()
+    total_rating()
+    menus()
