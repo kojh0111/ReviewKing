@@ -2,7 +2,7 @@ import './categoryChoice.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Marginer from '../../components/marginer';
-import MenuCategory from '../../const/menuCategory';
+import TastesCategory from '../../const/tastesCategory';
 
 export default function CategoryChoice() {
   return (
@@ -11,7 +11,7 @@ export default function CategoryChoice() {
       <h1>카테고리를 선택하세요</h1>
       <Marginer direction="vertical" margin="2em" />
       <div className="choiceContainer">
-        {MenuCategory.map(option => (
+        {TastesCategory.map(option => (
           <button type="button" className="menuCategory">
             <img alt="" className="CategoryImage" /> {option}
           </button>
