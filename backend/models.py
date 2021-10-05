@@ -8,6 +8,7 @@ class Restaurants(db.Model):
     name = db.Column(db.String(100), nullable=True)
     longitude_x = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     latitude_y = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
+    img_url = db.Column(db.String(200), nullable=True)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
 
     categories = db.relationship("Categories", backref=db.backref("restaurants_set"))
@@ -34,7 +35,6 @@ class Menus(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
-    img_url = db.Column(db.String(200), nullable=True)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
     restaurant_id = db.Column(
         db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
@@ -64,7 +64,7 @@ class TotalRating(db.Model):
     id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
     kakao = db.Column(db.Float, nullable=True)
     naver = db.Column(db.Float, nullable=True)
-    sikshin = db.Column(db.Float, nullable=True)
+    siksin = db.Column(db.Float, nullable=True)
     mango = db.Column(db.Float, nullable=True)
     integrated_rating = db.Column(db.Float, nullable=True)
 
