@@ -1,7 +1,7 @@
 import csv
 from app import create_app
 from app import db
-from models import Restaurants, Reviews, Categories, TotalRating
+from models import Categories, Restaurants, Reviews, TotalRating
 
 app = create_app()
 app.app_context().push()
