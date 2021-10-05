@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
-from models import Restaurants, Categories, Reviews, Menus
+from models import Restaurants, Categories, Reviews, TotalRating, Menus
 from app import db
 import random
 
@@ -19,11 +19,13 @@ class WhatToEat(Resource):
         random_ids = random.sample(category_ids, 10)  # 무작위로 10개 뽑기
 
         data = dict()
-        for id in random_ids:
+        for random_id in random_ids:
             restaurant = (
-                Restaurants.query.join(Categories).filter(category_id == id).first()
+                Restaurants.query.join(Categories)
+                .filter(Restaurants.category_id == random_id)
+                .first()
             )
-            category = restaurant.category
+            category = Categories.query.filter_by(id=random_id).first().category
             img_url = restaurant.img_url
             data[f"{category}"] = img_url
 
@@ -46,15 +48,18 @@ class WhatToEat(Resource):
         data = dict()
         # 상위 3개 가져오기
         for restaurant in restaurants_rated:
+            total_rating = TotalRating.query.filter_by(
+                restaurant_id=restaurant.id
+            ).first()
             tmp = {
                 "name": restaurant.name,
-                "integrated_rating": restaurant.integrated_rating,
+                "integrated_rating": total_rating.integrated_rating,
                 "longitude": restaurant.longitude_x,
                 "latitude": restaurant.latitude_y,
-                "naver": restaurant.naver,
-                "kakao": restaurant.kakao,
-                "mango": restaurant.mango,
-                "siksin": restaurant.siksin,
+                "naver": total_rating.naver,
+                "kakao": total_rating.kakao,
+                "mango": total_rating.mango,
+                "siksin": total_rating.siksin,
             }
             data[f"{restaurant.name}"] = tmp
 
