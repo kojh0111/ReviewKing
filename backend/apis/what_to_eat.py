@@ -15,7 +15,6 @@ parser.add_argument("category", type=str)
 
 class WhatToEat(Resource):
     def get(self):
-        data = dict()
         categories = Categories.query.all()
         category_ids = [cat.id for cat in categories]
         random_ids = random.sample(category_ids, 10)  # 무작위로 10개 뽑기
@@ -27,7 +26,7 @@ class WhatToEat(Resource):
             )
             category = restaurant.category
             img_url = restaurant.img_url
-            data[f'{category}'] = img_url
+            data[f"{category}"] = img_url
 
         return jsonify(status=200, data=data)
 
