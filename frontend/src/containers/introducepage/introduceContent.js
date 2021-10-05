@@ -1,6 +1,7 @@
 import './introduceContent.scss';
 import React from 'react';
 import Marginer from '../../components/marginer';
+import Members from '../../const/member';
 
 export default function IntroduceContent() {
   return (
@@ -10,35 +11,13 @@ export default function IntroduceContent() {
       <Marginer direction="vertical" margin="1em" />
 
       <div className="PeopleIntroContainer">
-        <div className="CardContainer">
-          <img alt="" className="CardIcon" />
-          <h2 className="PeopleText">고정현</h2>
-          <h2 className="PeopleText">팀장님</h2>
-        </div>
-
-        <div className="CardContainer">
-          <img alt="" className="CardIcon" />
-          <h2 className="PeopleText">김지훈</h2>
-          <h2 className="PeopleText">백엔드</h2>
-        </div>
-
-        <div className="CardContainer">
-          <img alt="" className="CardIcon" />
-          <h2 className="PeopleText">최유림</h2>
-          <h2 className="PeopleText">프론트엔드</h2>
-        </div>
-
-        <div className="CardContainer">
-          <img alt="" className="CardIcon" />
-          <h2 className="PeopleText">김진경</h2>
-          <h2 className="PeopleText">프론트엔드</h2>
-        </div>
-
-        <div className="CardContainer">
-          <img alt="" className="CardIcon" />
-          <h2 className="PeopleText">문성권</h2>
-          <h2 className="PeopleText">백엔드</h2>
-        </div>
+        {Members.map(option => (
+          <div className="CardContainer">
+            <img alt="" className="CardIcon" />
+            <h2 className="PeopleText">{option.name}</h2>
+            <h2 className="PeopleText">{option.role}</h2>
+          </div>
+        ))}
       </div>
 
       <div className="ServiceIntroContainer">
