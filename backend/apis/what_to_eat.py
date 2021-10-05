@@ -56,7 +56,7 @@ class WhatToEat(Resource):
                 "mango": restaurant.mango,
                 "siksin": restaurant.siksin,
             }
-            data[f"{res.name}"] = tmp
+            data[f"{restaurant.name}"] = tmp
 
         return jsonify(status=200, data=data)
 
