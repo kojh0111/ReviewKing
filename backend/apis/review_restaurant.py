@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
-from models import Restaurants, Categories, Reviews
+from models import Restaurants, Categories, Reviews, TotalRating
 
 reviews = Blueprint("reviews", __name__)
 api = Api(reviews)
@@ -40,12 +40,15 @@ class ReviewRestaurant(Resource):
 
         data = dict()
         for restaurant in restaurants:
+            total_rating = TotalRating.query.filter(
+                restaurant.id == TotalRating.restaurant_id
+            ).first()
             tmp = {
                 "name": restaurant.name,
-                "naver": restaurant.naver,
-                "kakao": restaurant.kakao,
-                "mango": restaurant.mango,
-                "siksin": restaurant.siksin,
+                "naver": total_rating.naver,
+                "kakao": total_rating.kakao,
+                "mango": total_rating.mango,
+                "siksin": total_rating.siksin,
                 "reviews": Reviews.query.filter(
                     restaurant.id == Reviews.restaurant_id
                 ).all(),
