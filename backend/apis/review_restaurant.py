@@ -7,7 +7,7 @@ api = Api(reviews)
 
 # request를 받기 위해서는 parser에 argument 추가 필요
 parser = reqparse.RequestParser()
-parser.add_argument("category", type=str)
+parser.add_argument("restaurant_name", type=str)
 
 
 class ReviewRestaurant(Resource):
@@ -18,14 +18,15 @@ class ReviewRestaurant(Resource):
 
         data = dict()
         for restaurant in restaurant_data:
+            category = Categories.query.filter(
+                Categories.id == restaurant.category_id
+            ).first()
             tmp = {
                 "name": restaurant.name,
                 "lng": restaurant.longitude_x,
                 "lat": restaurant.latitude_y,
                 "img": restaurant.img_url,
-                "category": Categories.query.filter(
-                    Categories.id == restaurant.category_id
-                ).first(),
+                "category": category.category,
             }
             data[f"{restaurant.name}"] = tmp
 
@@ -36,7 +37,7 @@ class ReviewRestaurant(Resource):
         args = parser.parse_args()
         name = args["restaurant_name"].strip()
 
-        restaurants = Restaurants.query.filter(Restaurants.name.like(f"%{name}%"))
+        restaurants = Restaurants.query.filter(Restaurants.name.like(f"%{name}%")).all()
 
         data = dict()
         for restaurant in restaurants:
@@ -49,9 +50,9 @@ class ReviewRestaurant(Resource):
                 "kakao": total_rating.kakao,
                 "mango": total_rating.mango,
                 "siksin": total_rating.siksin,
-                "reviews": Reviews.query.filter(
-                    restaurant.id == Reviews.restaurant_id
-                ).all(),
+                "reviews": [
+                    Reviews.query.filter(restaurant.id == Reviews.restaurant_id).all()
+                ],
             }
             data[f"{restaurant.name}"] = tmp
 
