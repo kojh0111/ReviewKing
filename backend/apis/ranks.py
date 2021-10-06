@@ -45,19 +45,22 @@ class Ranks(Resource):
 
         data = dict()
         rank = 1
+        result = []
         for restaurant in restaurants_rated:
             menus = Menus.query.filter_by(restaurant_id=restaurant.id).all()
             total_rating = TotalRating.query.filter_by(
                 restaurant_id=restaurant.id
             ).first()
             tmp = {
+                "name": restaurant.name,
                 "integrated_rating": total_rating.integrated_rating,
                 "img_url": restaurant.img_url,
                 "menus": [menu.name for menu in menus],
                 "rank": rank,
             }
-            data[f"{restaurant.name}"] = tmp
+            result.append(tmp)
             rank += 1
+        data["result"] = result
 
         return jsonify(status=200, data=data)
 
