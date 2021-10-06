@@ -1,5 +1,7 @@
 import os
+import dotenv
 
+dotenv.load_dotenv()
 pw = os.environ.get("DB_PASSWORD")
 
 db_info = {
