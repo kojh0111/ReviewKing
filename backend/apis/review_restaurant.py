@@ -44,14 +44,19 @@ class ReviewRestaurant(Resource):
             total_rating = TotalRating.query.filter(
                 restaurant.id == TotalRating.restaurant_id
             ).first()
-            reviews = Reviews.query.filter(restaurant.id == Reviews.restaurant_id).all()
+            restaurant_reviews = Reviews.query.filter(
+                restaurant.id == Reviews.restaurant_id
+            ).all()
             tmp = {
                 "name": restaurant.name,
                 "naver": total_rating.naver,
                 "kakao": total_rating.kakao,
                 "mango": total_rating.mango,
                 "siksin": total_rating.siksin,
-                "reviews": [review.content for review in reviews],
+                "reviews": [
+                    restaurant_review.content
+                    for restaurant_review in restaurant_reviews
+                ],
             }
             data[f"{restaurant.name}"] = tmp
 
