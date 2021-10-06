@@ -1,11 +1,11 @@
-.TopContainer{
+.TopContainer {
     width: 100%;
     height: 100vh;
     padding: 0;
-    background-image: url('../../assets/pictures/background.jpg');
+    background-image: url("../../assets/pictures/background.jpg");
     position: relative;
 
-    .Background{
+    .Background {
         width: 100%;
         height: 100%;
         background-color: rgba(55, 55, 55, 0.89);
@@ -13,7 +13,7 @@
         flex-direction: column;
         align-items: center;
 
-        .DownArrowContainer{
+        .DownArrowContainer {
             position: absolute;
             bottom: 25px;
             left: 50%;
@@ -21,7 +21,7 @@
         }
     }
 
-    .IntroduceText{
+    .IntroduceText {
         font-size: 2.2em;
         font-weight: 500;
         line-height: 1.4;
@@ -30,7 +30,7 @@
         text-align: center;
     }
 
-    .IntroduceText{
+    .IntroduceText {
         font-size: 2.2em;
         font-weight: 500;
         line-height: 1.4;
@@ -38,6 +38,4 @@
         margin: 0;
         text-align: center;
     }
-
 }
-

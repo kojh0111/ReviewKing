@@ -1,7 +1,7 @@
 .TabWrapper {
   width: 25%;
   height: 5rem;
-  background-color: #EAEAEA;
+  background-color: #eaeaea;
   color: black;
   display: flex;
   flex-direction: row;
@@ -18,10 +18,8 @@
   padding: 0.5rem 1rem;
   text-decoration: none;
   font-weight: 500;
-  
 
   &:hover {
     color: #ff5722;
   }
-
 }

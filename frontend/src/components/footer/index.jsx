@@ -57,7 +57,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-
+      <Marginer direction="vertical" margin="2em" />
       <div className="RightsReserved">
         &copy; 2021 ReviewKing All rights reserved
       </div>

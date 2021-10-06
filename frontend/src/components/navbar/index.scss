@@ -1,4 +1,4 @@
-.NavbarContainer{
+.NavbarContainer {
     width: 100%;
     height: 50px;
     padding: 0 2em;
@@ -22,13 +22,12 @@
     }
 }
 
-
-.AccessibilityContainer{
+.AccessibilityContainer {
     display: flex;
     flex-direction: row;
 }
 
-.LoginButton{
+.LoginButton {
     background-color: transparent;
     border: none;
     color: #fff;
@@ -37,7 +36,7 @@
 }
 
 .LoginButton:hover {
-    background-color: #00B997;
+    background-color: #00b997;
     border: none;
     color: #fff;
 }

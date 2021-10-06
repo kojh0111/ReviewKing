@@ -1,4 +1,4 @@
-.ArrowContainer{
+.ArrowContainer {
     width: 46px;
     height: 46px;
     border-radius: 50%;
@@ -10,16 +10,13 @@
     transition: all 250ms ease-in-out;
     cursor: pointer;
 
-    
-    .ArrowIcon{ 
+    .ArrowIcon {
         margin-top: 3px;
         color: #fff;
         font-size: 29px;
     }
-
 }
 
-
 .ArrowContainer:hover {
-    border: 2px solid #00B997;
+    border: 2px solid #00b997;
 }
