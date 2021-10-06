@@ -41,7 +41,7 @@ export default function TestResult() {
       <Marginer direction="vertical" margin="3em" />
 
       <div className="buttonContainer">
-        <Link to="/what-to-eat/category/second-choice">
+        <Link to="/what-to-eat/category/second-choice/">
           <button type="button" className="button-prev">
             이전
           </button>

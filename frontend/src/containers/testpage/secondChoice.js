@@ -19,13 +19,13 @@ export default function SecondChoice() {
       </div>
 
       <div className="buttonContainer">
-        <Link to="/what-to-eat/category">
+        <Link to="/what-to-eat/category/">
           <button type="button" className="button-prev">
             이전
           </button>
         </Link>
 
-        <Link to="/what-to-eat/category/second-choice/result">
+        <Link to="/what-to-eat/category/second-choice/result/">
           <button type="button" className="button-next">
             완료
           </button>

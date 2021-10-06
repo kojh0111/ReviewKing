@@ -19,7 +19,7 @@ export default function TestContent() {
       <img alt="" className="TestInfoImage" />
       <Marginer direction="vertical" margin="2em" />
 
-      <Link to="/what-to-eat/category">
+      <Link to="/what-to-eat/category/">
         <button type="button" className="button-start">
           테스트 시작
         </button>

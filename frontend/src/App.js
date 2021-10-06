@@ -15,6 +15,7 @@ import Error from './containers/errorpage/error';
 import FirstChoice from './containers/testpage/firstChoice';
 import SecondChoice from './containers/testpage/secondChoice';
 import TestResult from './containers/testpage/testResult';
+import RankResult from './containers/rankpage/rankResult';
 
 function App() {
   return (
@@ -23,9 +24,8 @@ function App() {
         <title>리뷰왕</title>
       </Helmet>
 
-      <TopSection />
-
       <Router>
+        <TopSection />
         <div className="tabContainer">
           {tabTitle.map(item => (
             <TabMenuItem
@@ -41,6 +41,7 @@ function App() {
           <Route path="/" component={ReviewPage} exact={true} />
           <Route path="/info" component={IntroducePage} exact={true} />
           <Route path="/rank" component={RankPage} exact={true} />
+          <Route path="/rank/result/" component={RankResult} exact={true} />
           <Route path="/what-to-eat/" component={TestPage} exact={true} />
           <Route
             path="/what-to-eat/category"
@@ -58,10 +59,11 @@ function App() {
             exact={true}
           />
           <Route path="*" component={Error} />
+
+          <Marginer direction="vertical" margin="2em" />
         </Switch>
+        <Footer />
       </Router>
-      <Marginer direction="vertical" margin="2em" />
-      <Footer />
     </div>
   );
 }

@@ -25,7 +25,7 @@ export default function FirstChoice() {
           </button>
         </Link>
 
-        <Link to="/what-to-eat/category/second-choice">
+        <Link to="/what-to-eat/category/second-choice/">
           <button type="button" className="button-next">
             다음
           </button>

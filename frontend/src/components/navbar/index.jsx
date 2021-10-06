@@ -1,10 +1,15 @@
 import React from 'react';
+import { scroller } from 'react-scroll';
 import BeemaLogo from '../../assets/logo/logo_croped.png';
 import Button from '../button';
 import Marginer from '../marginer';
 import './index.scss';
 
 export default function Navbar() {
+  const scrollToServiceSection = () => {
+    scroller.scrollTo('ServicePageContainer', { smooth: true, duration: 1500 });
+  };
+
   return (
     <div className="NavbarContainer">
       <div className="BrandContainer">
@@ -13,7 +18,10 @@ export default function Navbar() {
       </div>
 
       <div className="AccessibilityContainer">
-        <Button style={{ fontSize: '0.8em', padding: '5px 8px' }}>
+        <Button
+          style={{ fontSize: '0.8em', padding: '5px 8px' }}
+          onClick={scrollToServiceSection}
+        >
           오늘 뭐먹지?
         </Button>
         <Marginer direction="horizontal" margin="8px" />

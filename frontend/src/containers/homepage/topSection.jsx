@@ -28,7 +28,7 @@ export default function TopSection() {
           </div>
           <Marginer direction="vertical" margin="2em" />
 
-          <Button>오늘 뭐먹지?</Button>
+          <Button onClick={scrollToServiceSection}>오늘 뭐먹지?</Button>
 
           <div className="DownArrowContainer" onClick={scrollToServiceSection}>
             <DownArrow />
