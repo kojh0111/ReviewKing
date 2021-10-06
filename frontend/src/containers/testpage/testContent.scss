@@ -1,0 +1,52 @@
+.TestContainer {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  flex-direction: column;
+
+  .TitleText {
+    font-size: 1.8em;
+    font-weight: 500;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+  }
+
+  .bodyText {
+    font-size: 1em;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-right: 1em;
+    margin-left: 1em;
+    text-align: center;
+  }
+}
+
+.button-start {
+  padding: 7px 15px;
+  border-radius: 5px;
+  background-color: #f29661;
+  color: #fff;
+  font-family: Jua;
+  font-weight: bold;
+  font-size: 1em;
+  outline: none;
+  border: 2px solid transparent;
+  transition: all 220ms ease-in-out;
+  cursor: pointer;
+}
+
+.button-start:hover {
+  background-color: #ffc19e;
+  border: 2px solid #f29661;
+}
+
+.TestInfoImage {
+  width: 85%;
+  height: 25em;
+  background-color: #abf200;
+}
