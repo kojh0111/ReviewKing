@@ -4,7 +4,7 @@ pw = os.environ.get("DB_PASSWORD")
 
 db_info = {
     "user": "root",
-    "password": "1234",
+    "password": pw,
     "host": "localhost",
     "port": 3306,
     "database": "reviewking",
