@@ -1,12 +1,19 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Error from './containers/errorpage/error';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Switch>
+        <Route path="/" component={App} exact={true} />
+        <Route path="/*" component={Error} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root'),
 );

@@ -11,7 +11,6 @@ import TopSection from './containers/homepage/topSection';
 import tabTitle from './const/tabtitle';
 import TabMenuItem from './components/tabMenuitem/TabMenuItem';
 import Footer from './components/footer';
-import Error from './containers/errorpage/error';
 import FirstChoice from './containers/testpage/firstChoice';
 import SecondChoice from './containers/testpage/secondChoice';
 import TestResult from './containers/testpage/testResult';
@@ -58,7 +57,6 @@ function App() {
             component={TestResult}
             exact={true}
           />
-          <Route path="*" component={Error} />
 
           <Marginer direction="vertical" margin="2em" />
         </Switch>
