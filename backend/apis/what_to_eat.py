@@ -42,11 +42,13 @@ class WhatToEat(Resource):
         restaurants_rated = (
             Restaurants.query.join(TotalRating)
             .filter(Restaurants.category_id == category_id)
-            .order_by(TotalRating.integrated_rating.desc())[:4]
+            .order_by(TotalRating.integrated_rating.desc())[:3]
         )
 
         data = dict()
         # 상위 3개 가져오기
+        rank = 1
+        result = []
         for restaurant in restaurants_rated:
             total_rating = TotalRating.query.filter_by(
                 restaurant_id=restaurant.id
@@ -60,8 +62,12 @@ class WhatToEat(Resource):
                 "kakao": total_rating.kakao,
                 "mango": total_rating.mango,
                 "siksin": total_rating.siksin,
+                "rank": rank,
             }
-            data[f"{restaurant.name}"] = tmp
+            result.append(tmp)
+            rank += 1
+
+        data["result"] = result
 
         return jsonify(status=200, data=data)
 
