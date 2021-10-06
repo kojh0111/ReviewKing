@@ -33,6 +33,10 @@ def create_app():
 
     app.register_blueprint(ranks)
 
+    from apis.review_restaurant import reviews
+
+    app.register_blueprint(reviews)
+
     from apis.what_to_eat import what_to_eat
 
     app.register_blueprint(what_to_eat)
