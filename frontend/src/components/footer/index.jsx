@@ -15,7 +15,7 @@ export default function Footer() {
   };
 
   const ToastifyOnClickHandler = () => {
-    return toast.info('reviewking@gmail.com로 \n문의 주세요.', {
+    return toast.info('reviewking@gmail.com로 문의 주세요.', {
       className: 'custom-toast',
       draggable: true,
       position: toast.POSITION.BOTTOM_CENTER,
@@ -52,7 +52,10 @@ export default function Footer() {
           <a href="https://kdt-gitlab.elice.io/002-part3-deliveryservice/team7/sample-project">
             <FontAwesomeIcon
               icon={faGitlab}
-              style={{ color: '#fff', textDecoration: 'none' }}
+              style={{
+                color: '#fff',
+                textDecoration: 'none',
+              }}
             />
           </a>
         </div>
