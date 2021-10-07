@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, render_template
 from flask_restful import Resource, Api, reqparse
 from models import Restaurants, Categories, Reviews, TotalRating
+from plots.restaurant_map import restaurant_map
 
 reviews = Blueprint("reviews", __name__)
 api = Api(reviews)
@@ -30,7 +31,11 @@ class ReviewRestaurant(Resource):
             }
             data[f"{restaurant.name}"] = tmp
 
-        return jsonify(status=200, data=data)
+        restaurant_map(data)
+
+        return render_template("restaurant_map.html")
+
+        # return jsonify(status=200, data=data)
 
     # 검색어에 대한 결과 전송
     def post(self):
