@@ -2,12 +2,14 @@ import os
 import dotenv
 
 dotenv.load_dotenv()
-pw = os.environ.get("DB_PASSWORD")
+PASSWORD = os.environ.get("DB_PASSWORD")
+HOST = os.environ.get("DB_PASSWORD")
+
 
 db_info = {
-    "user": "root",
-    "password": pw,
-    "host": "localhost",
+    "user": "jihun",
+    "password": PASSWORD,
+    "host": HOST,
     "port": 3306,
     "database": "reviewking",
 }

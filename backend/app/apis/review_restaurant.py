@@ -37,7 +37,8 @@ class ReviewRestaurant(Resource):
         args = parser.parse_args()
         name = args["restaurant_name"].strip()
 
-        restaurants = Restaurants.query.filter(Restaurants.name.like(f"%{name}%")).all()
+        restaurants = Restaurants.query.filter(
+            Restaurants.name.like(f"%{name}%")).all()
 
         data = dict()
         for restaurant in restaurants:
@@ -59,6 +60,7 @@ class ReviewRestaurant(Resource):
                 ],
             }
             data[f"{restaurant.name}"] = tmp
+        print(data)
 
         return jsonify(status=200, data=data)
 
