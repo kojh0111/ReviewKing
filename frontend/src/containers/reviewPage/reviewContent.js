@@ -3,12 +3,14 @@ import React from 'react';
 import Marginer from '../../components/marginer';
 import SearchBar from '../../components/searchBar/searchBar';
 import Map from '../../components/map/map';
+import ReviewSites from '../../const/reviewSites';
 
 export default function ReviewContent() {
   return (
     <div className="ReviewContainer">
       <Marginer direction="vertical" margin="3em" />
       <h2 className="TitleText"> 음식점 리뷰 예시</h2>
+
       <Marginer direction="vertical" margin="1em" />
 
       <div className="ReviewIntroContainer">
@@ -34,7 +36,18 @@ export default function ReviewContent() {
 
         <Marginer direction="vertical" margin="3em" />
 
-        <Marginer direction="vertical" margin="1em" />
+        <div className="ReviewRatingContainer">
+          {ReviewSites.map(option => (
+            <div className="reviewSite">
+              <h1>{option.name}</h1>
+              <Marginer direction="vertical" margin="1em" />
+              <h2>{option.rating}</h2>
+              <Marginer direction="vertical" margin="2em" />
+            </div>
+          ))}
+        </div>
+
+        <Marginer direction="vertical" margin="2em" />
         <img alt="" className="WordCloudImage" />
         <Marginer direction="vertical" margin="1em" />
         <h3 className="bodyText">워드클라우드가 출력되는 공간</h3>

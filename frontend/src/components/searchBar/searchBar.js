@@ -3,7 +3,9 @@ import './searchBar.scss';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
-import ReviewPageTest from '../../const/reviewPageTest';
+import dummy from '../../const/response.json';
+
+const data = Object.values(dummy.data);
 
 export default function SearchBar() {
   const [filterData, setFilterData] = useState([]);
@@ -12,7 +14,7 @@ export default function SearchBar() {
   const FilterOnChangeHandler = e => {
     const searchWord = e.target.value;
     setClearWord(searchWord);
-    const newFilter = ReviewPageTest.filter(value => {
+    const newFilter = data.filter(value => {
       return value.name.includes(searchWord);
     });
     setFilterData(newFilter);
@@ -22,6 +24,7 @@ export default function SearchBar() {
     setFilterData([]);
     setClearWord('');
   };
+
   return (
     <div className="SearchContainer">
       <div className="searchInput">
@@ -42,7 +45,7 @@ export default function SearchBar() {
       {filterData.length !== 0 && (
         <div className="dataResult">
           {filterData.slice(0, 10).map(option => (
-            <Link to="/review/">
+            <Link to={`/${option.name}`}>
               <div className="dataItem">{option.name}</div>
             </Link>
           ))}
