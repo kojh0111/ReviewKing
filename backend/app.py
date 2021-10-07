@@ -29,6 +29,10 @@ def create_app():
     import models
 
     # blueprint
+    from apis.all_restaurant import home
+
+    app.register_blueprint(home)
+
     from apis.ranks import ranks
 
     app.register_blueprint(ranks)
