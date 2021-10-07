@@ -2,7 +2,7 @@ import './reviewContent.scss';
 import React from 'react';
 import Marginer from '../../components/marginer';
 import SearchBar from '../../components/searchBar/searchBar';
-import Map from '../../components/map/map';
+// import Map from '../../components/map/map';
 
 export default function ReviewContent() {
   return (
@@ -24,7 +24,7 @@ export default function ReviewContent() {
         <Marginer direction="vertical" margin="2em" />
 
         <Marginer direction="vertical" margin="1em" />
-        <Map />
+        {/* <Map /> */}
         <Marginer direction="vertical" margin="1em" />
 
         <h3 className="bodyText">
