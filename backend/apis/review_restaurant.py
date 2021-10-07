@@ -25,6 +25,8 @@ class ReviewRestaurant(Resource):
 
             data = {
                 "name": restaurant_data.name,
+                "lat": restaurant_data.latitude_y,
+                "lng": restaurant_data.longitude_x,
                 "naver": total_rating.naver,
                 "kakao": total_rating.kakao,
                 "mango": total_rating.mango,
@@ -40,4 +42,4 @@ class ReviewRestaurant(Resource):
             return jsonify(status=404)
 
 
-api.add_resource(ReviewRestaurant, "/<int:id>")
+api.add_resource(ReviewRestaurant, "/reviews/<int:id>")
