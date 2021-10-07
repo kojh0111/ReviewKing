@@ -1,3 +1,5 @@
+@import "../../styles/variable";
+
 ul {
     list-style: none;
     margin: 0;
@@ -10,7 +12,7 @@ a {
 }
 
 a:hover {
-    color: #ff5722;
+    color: $main_orange;
     text-decoration: none;
 }
 
@@ -20,9 +22,9 @@ a:hover {
     width: 30%;
     margin-left: auto;
     margin-right: auto;
-    background-color: #fff;
+    background-color: $main_white;
     padding: 0 1rem;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid $main_white;
     display: flex;
     flex-direction: column;
 }
@@ -71,11 +73,11 @@ a:hover {
 
 .dropdown {
     position: relative;
-    top: 1.5em;
+    top: 1.5rem;
     width: 300px;
     background-color: #242526;
     border-radius: 8px;
-    padding: 0 0.5em;
+    padding: 0 0.5rem;
     transition: height 500ms ease;
     overflow: hidden;
 }

@@ -6,9 +6,9 @@ import Members from '../../const/member';
 export default function IntroduceContent() {
   return (
     <div className="IntroduceContainer">
-      <Marginer direction="vertical" margin="3em" />
+      <Marginer direction="vertical" margin="3rem" />
       <h2 className="TitleText"> 팀원 소개 예시</h2>
-      <Marginer direction="vertical" margin="1em" />
+      <Marginer direction="vertical" margin="1rem" />
 
       <div className="PeopleIntroContainer">
         {Members.map(option => (
@@ -21,9 +21,9 @@ export default function IntroduceContent() {
       </div>
 
       <div className="ServiceIntroContainer">
-        <Marginer direction="vertical" margin="4em" />
+        <Marginer direction="vertical" margin="4rem" />
         <h2 className="TitleText"> 서비스 소개 예시</h2>
-        <Marginer direction="vertical" margin="2em" />
+        <Marginer direction="vertical" margin="2rem" />
 
         <h3 className="bodyText">
           소개 페이지는 리뷰왕 프로젝트를 함께하는 동료들을 소개하고 프로젝트의
@@ -43,11 +43,11 @@ export default function IntroduceContent() {
 
         <img alt="" className="IntroduceImage" />
 
-        <Marginer direction="vertical" margin="1em" />
+        <Marginer direction="vertical" margin="1rem" />
 
         <h2 className="bodyText"> 서비스 사진 예시 입니다.</h2>
 
-        <Marginer direction="vertical" margin="1em" />
+        <Marginer direction="vertical" margin="1rem" />
 
         <h3 className="bodyText">
           동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화

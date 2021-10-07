@@ -1,4 +1,4 @@
-$primary: #00b997;
+@import "../../styles/variable";
 
 .LogoContainer {
     display: flex;
@@ -6,9 +6,9 @@ $primary: #00b997;
     align-items: center;
 
     .LogoText {
-        font-size: 2.8em;
+        font-size: 2.8rem;
         font-weight: 900;
-        color: $primary;
+        color: $main_green;
         font-weight: 900;
         margin-top: 6px;
     }
@@ -16,16 +16,16 @@ $primary: #00b997;
 
 .LogoImg {
     background-image: url("../../assets/logo/logo_croped.png");
-    width: 8em;
-    height: 8em;
+    width: 8rem;
+    height: 8rem;
 }
 
 .LogoContainer.small {
     .LogoText {
-        font-size: 2em;
+        font-size: 2rem;
     }
     img {
-        width: 4.8em;
-        height: 4.8em;
+        width: 4.8rem;
+        height: 4.8rem;
     }
 }

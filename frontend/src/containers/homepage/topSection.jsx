@@ -18,15 +18,15 @@ export default function TopSection() {
       <div className="TopContainer">
         <div className="Background">
           <Navbar />
-          <Marginer direction="vertical" margin="8em" />
+          <Marginer direction="vertical" margin="8rem" />
           <Logo />
 
-          <Marginer direction="vertical" margin="4em" />
+          <Marginer direction="vertical" margin="4rem" />
           <div className="IntroduceText">코로나 발생 전과 후,</div>
           <div className="IntroduceText">
             엘리스 본사 주변의 음식점 리뷰 변화를 분석합니다.
           </div>
-          <Marginer direction="vertical" margin="2em" />
+          <Marginer direction="vertical" margin="2rem" />
 
           <Button onClick={scrollToServiceSection}>오늘 뭐먹지?</Button>
 

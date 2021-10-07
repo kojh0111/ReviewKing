@@ -24,16 +24,16 @@ export default function Footer() {
 
   return (
     <div className="FooterContainer">
-      <Marginer direction="vertical" margin="3em" />
+      <Marginer direction="vertical" margin="3rem" />
       <Logo />
-      <Marginer direction="vertical" margin="1em" />
+      <Marginer direction="vertical" margin="1rem" />
       <h1 className="IntroduceText">코로나 발생 전과 후,</h1>
       <h1 className="IntroduceText">
         엘리스 본사 주변의 음식점 리뷰 변화를 분석합니다.
       </h1>
-      <Marginer direction="vertical" margin="1em" />
+      <Marginer direction="vertical" margin="1rem" />
       <Button onClick={scrollToServiceSection}>오늘 뭐먹지??</Button>
-      <Marginer direction="vertical" margin="5em" />
+      <Marginer direction="vertical" margin="5rem" />
 
       <div className="GuideContainer">
         <div className="PrivacyContainer">
@@ -41,7 +41,7 @@ export default function Footer() {
             <div className="Link">서비스 소개</div>
           </Link>
 
-          <Marginer direction="horizontal" margin="2em" />
+          <Marginer direction="horizontal" margin="2rem" />
 
           <ToastContainer autoClose={8000} />
           <div className="Link" onClick={ToastifyOnClickHandler}>
@@ -53,14 +53,14 @@ export default function Footer() {
             <FontAwesomeIcon
               icon={faGitlab}
               style={{
-                color: '#fff',
+                color: '$main_white',
                 textDecoration: 'none',
               }}
             />
           </a>
         </div>
       </div>
-      <Marginer direction="vertical" margin="2em" />
+      <Marginer direction="vertical" margin="2rem" />
       <div className="RightsReserved">
         &copy; 2021 ReviewKing All rights reserved
       </div>

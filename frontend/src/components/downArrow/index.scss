@@ -1,3 +1,5 @@
+@import "../../styles/variable";
+
 .ArrowContainer {
     width: 46px;
     height: 46px;
@@ -12,11 +14,11 @@
 
     .ArrowIcon {
         margin-top: 3px;
-        color: #fff;
+        color: $main_white;
         font-size: 29px;
     }
 }
 
 .ArrowContainer:hover {
-    border: 2px solid #00b997;
+    border: 2px solid $main_green;
 }

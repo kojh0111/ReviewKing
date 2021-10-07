@@ -7,9 +7,9 @@ import MenuCategory from '../../const/menuCategory';
 export default function RankContent() {
   return (
     <div className="RankContainer">
-      <Marginer direction="vertical" margin="3em" />
+      <Marginer direction="vertical" margin="3rem" />
       <h2 className="TitleText"> 업종별 순위 예시</h2>
-      <Marginer direction="vertical" margin="4em" />
+      <Marginer direction="vertical" margin="4rem" />
 
       <div className="choiceRankContainer">
         {MenuCategory.map(category => (
@@ -21,7 +21,7 @@ export default function RankContent() {
         ))}
       </div>
 
-      <Marginer direction="vertical" margin="8em" />
+      <Marginer direction="vertical" margin="8rem" />
     </div>
   );
 }

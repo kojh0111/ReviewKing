@@ -1,3 +1,5 @@
+@import "../../styles/variable";
+
 .TabWrapper {
   width: 25%;
   height: 5rem;
@@ -13,13 +15,13 @@
 
 .menu-item {
   width: 100%;
-  font-size: 1em;
+  font-size: 1.2rem;
   color: #333;
   padding: 0.5rem 1rem;
   text-decoration: none;
   font-weight: 500;
 
   &:hover {
-    color: #ff5722;
+    color: $main_orange;
   }
 }

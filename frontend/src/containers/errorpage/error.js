@@ -7,14 +7,14 @@ import errorpageImage from '../../assets/pictures/pagenotfound.jpg';
 export default function Error() {
   return (
     <div className="ErrorContainer">
-      <Marginer direction="vertical" margin="5em" />
+      <Marginer direction="vertical" margin="5rem" />
       <div className="errorText">404</div>
 
-      <Marginer direction="vertical" margin="1em" />
+      <Marginer direction="vertical" margin="1rem" />
       <div className="errorText">페이지를 찾을 수 없습니다.</div>
 
       <img src={errorpageImage} className="errorImage" alt="not found" />
-      <Marginer direction="vertical" margin="5em" />
+      <Marginer direction="vertical" margin="5rem" />
 
       <Link className="button-home" to="/">
         <div className="goTohome" type="button">

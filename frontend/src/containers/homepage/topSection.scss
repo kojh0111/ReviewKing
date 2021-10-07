@@ -1,3 +1,5 @@
+@import "../../styles/variable";
+
 .TopContainer {
     width: 100%;
     height: 100vh;
@@ -22,19 +24,19 @@
     }
 
     .IntroduceText {
-        font-size: 2.2em;
+        font-size: 2.2rem;
         font-weight: 500;
         line-height: 1.4;
-        color: #fff;
+        color: $main_white;
         margin: 0;
         text-align: center;
     }
 
     .IntroduceText {
-        font-size: 2.2em;
+        font-size: 2.2rem;
         font-weight: 500;
         line-height: 1.4;
-        color: #fff;
+        color: $main_white;
         margin: 0;
         text-align: center;
     }

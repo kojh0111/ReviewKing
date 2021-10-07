@@ -19,7 +19,7 @@ export default function Navbar() {
 
       <div className="AccessibilityContainer">
         <Button
-          style={{ fontSize: '0.8em', padding: '5px 8px' }}
+          style={{ fontSize: '0.8rem', padding: '5px 8px' }}
           onClick={scrollToServiceSection}
         >
           오늘 뭐먹지?

@@ -7,9 +7,9 @@ import MenuChoice from '../../const/menuChoice';
 export default function SecondChoice() {
   return (
     <div className="CategoryContainer">
-      <Marginer direction="vertical" margin="2em" />
+      <Marginer direction="vertical" margin="2rem" />
       <h1>음식을 선택하세요</h1>
-      <Marginer direction="vertical" margin="2em" />
+      <Marginer direction="vertical" margin="2rem" />
       <div className="choiceContainer">
         {MenuChoice.map(option => (
           <button type="button" className="menuCategory">

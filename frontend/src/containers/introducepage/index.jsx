@@ -7,7 +7,7 @@ import './index.scss';
 export default function IntroducePage() {
   return (
     <div className="ServicePageContainer" name="servicePageContainer">
-      <Marginer direction="vertical" margin="2em" />
+      <Marginer direction="vertical" margin="2rem" />
 
       <IntroduceContent />
     </div>

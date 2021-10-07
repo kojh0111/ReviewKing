@@ -1,3 +1,5 @@
+@import "../../styles/variable";
+
 .ErrorContainer {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,7 @@
 }
 
 .errorText {
-  font-size: 4em;
+  font-size: 4rem;
   text-align: center;
 }
 
@@ -14,7 +16,7 @@
 }
 
 a.button-home .goTohome {
-  background-color: #ea4355;
+  background-color: $main_red;
   font-size: 2rem;
   color: white;
   text-decoration: none;
@@ -23,14 +25,14 @@ a.button-home .goTohome {
   padding-left: 2rem;
   padding-right: 2rem;
   display: block;
-  border: 3px solid #ea4355;
+  border: 3px solid $main_red;
   border-radius: 20px;
   text-align: center;
   transition: 0.3s linear all;
 }
 
 a.button-home .goTohome:hover {
-  background-color: darken($color: #ea4355, $amount: 10%);
-  border: 3px solid darken($color: #ea4355, $amount: 10%);
-  box-shadow: 0 0 8px 0 #ea4355;
+  background-color: darken($color: $main_red, $amount: 10%);
+  border: 3px solid darken($color: $main_red, $amount: 10%);
+  box-shadow: 0 0 8px 0 $main_red;
 }

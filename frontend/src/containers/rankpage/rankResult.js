@@ -10,41 +10,42 @@ export default function RankResult() {
 
   return (
     <div className="ResultContainer">
-      <Marginer direction="vertical" margin="2em" />
+      <Marginer direction="vertical" margin="2rem" />
       <h1 style={{ display: 'flex' }}>
-        <div style={{ color: '#ff5722' }}>{category}</div>을(를) 선택하셨습니다.
+        <div style={{ color: '$main_orange' }}>{category}</div>을(를)
+        선택하셨습니다.
       </h1>
-      <Marginer direction="vertical" margin="1em" />
+      <Marginer direction="vertical" margin="1rem" />
       <h1>다음과 같은 음식점을 추천합니다.</h1>
-      <Marginer direction="vertical" margin="4em" />
+      <Marginer direction="vertical" margin="4rem" />
 
       <div className="RankResultContainer">
         {Recommend.map(option => (
           <button type="button" className="restaurantsChoice">
-            <Marginer direction="vertical" margin="1em" />
-            <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
-            <Marginer direction="vertical" margin="1em" />
+            <Marginer direction="vertical" margin="1rem" />
+            <h1 style={{ color: '$main_orange' }}>{option.name}</h1>
+            <Marginer direction="vertical" margin="1rem" />
             <h3>{option.address}</h3>
-            <Marginer direction="vertical" margin="1em" />
+            <Marginer direction="vertical" margin="1rem" />
             <h3>추천 메뉴 1. {option.menu1}</h3>
             <h3>추천 메뉴 2. {option.menu2}</h3>
             <h3>추천 메뉴 3. {option.menu3}</h3>
-            <Marginer direction="vertical" margin="1em" />
+            <Marginer direction="vertical" margin="1rem" />
             <div className="ratingContainer">
               <h3>종합 평점 :&nbsp;</h3>
-              <h3 style={{ color: '#ff5722' }}>{option.rating}</h3>
+              <h3 style={{ color: '$main_orange' }}>{option.rating}</h3>
             </div>
-            <Marginer direction="vertical" margin="1em" />
+            <Marginer direction="vertical" margin="1rem" />
           </button>
         ))}
       </div>
-      <Marginer direction="vertical" margin="1em" />
+      <Marginer direction="vertical" margin="1rem" />
 
-      <Marginer direction="vertical" margin="4em" />
+      <Marginer direction="vertical" margin="4rem" />
       <img alt="" className="ResultImage" />
 
       <div className="buttonContainer">
-        <Marginer direction="vertical" margin="2em" />
+        <Marginer direction="vertical" margin="2rem" />
         <Link to="/rank/">
           <button type="button" className="button-prev">
             이전
@@ -57,7 +58,7 @@ export default function RankResult() {
           </button>
         </Link>
       </div>
-      <Marginer direction="vertical" margin="3em" />
+      <Marginer direction="vertical" margin="3rem" />
     </div>
   );
 }
