@@ -37,10 +37,16 @@ function App() {
         </div>
 
         <Switch>
-          <Route path="/" component={ReviewPage} exact={true} />
-          <Route path="/info" component={IntroducePage} exact={true} />
+          <Route path="/" component={IntroducePage} exact={true} />
+
+          <Route path="/review" component={ReviewPage} exact={true} />
+          <Route path="/review/:name" component={ReviewPage} exact={true} />
           <Route path="/rank" component={RankPage} exact={true} />
-          <Route path="/rank/result" component={RankResult} exact={true} />
+          <Route
+            path="/rank/result/:category"
+            component={RankResult}
+            exact={true}
+          />
           <Route path="/what-to-eat" component={TestPage} exact={true} />
           <Route
             path="/what-to-eat/category"

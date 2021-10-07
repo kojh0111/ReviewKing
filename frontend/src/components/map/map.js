@@ -5,17 +5,18 @@ import dummy from '../../const/response.json';
 const data = Object.values(dummy.data);
 console.log(data);
 
+// 전체지도 생성
 export default function Map() {
   useEffect(() => {
     // eslint-disable-next-line no-use-before-define
     mapscript();
   }, []);
 
-  const CategoryList = data.map(value => {
-    return value.category;
-  });
-
-  console.log(CategoryList);
+  // Category만 따로 뽑아 저장
+  // const CategoryList = data.map(value => {
+  //   return value.category;
+  // });
+  // console.log(CategoryList);
 
   const mapscript = () => {
     const container = document.getElementById('map');

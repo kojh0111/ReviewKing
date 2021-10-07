@@ -1,14 +1,19 @@
 import './rankResult.scss';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Marginer from '../../components/marginer';
 import Recommend from '../../const/recomend';
 
 export default function RankResult() {
+  const { category } = useParams();
+  console.log(category);
+
   return (
     <div className="ResultContainer">
       <Marginer direction="vertical" margin="2em" />
-      <h1>0000을 선택하셨습니다.</h1>
+      <h1 style={{ display: 'flex' }}>
+        <div style={{ color: '#ff5722' }}>{category}</div>을(를) 선택하셨습니다.
+      </h1>
       <Marginer direction="vertical" margin="1em" />
       <h1>다음과 같은 음식점을 추천합니다.</h1>
       <Marginer direction="vertical" margin="4em" />
@@ -39,6 +44,7 @@ export default function RankResult() {
       <img alt="" className="ResultImage" />
 
       <div className="buttonContainer">
+        <Marginer direction="vertical" margin="2em" />
         <Link to="/rank/">
           <button type="button" className="button-prev">
             이전
@@ -51,6 +57,7 @@ export default function RankResult() {
           </button>
         </Link>
       </div>
+      <Marginer direction="vertical" margin="3em" />
     </div>
   );
 }

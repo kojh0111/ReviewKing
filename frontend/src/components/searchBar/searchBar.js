@@ -45,7 +45,7 @@ export default function SearchBar() {
       {filterData.length !== 0 && (
         <div className="dataResult">
           {filterData.slice(0, 10).map(option => (
-            <Link to={`/${option.name}`}>
+            <Link to={`/review/${option.name}`}>
               <div className="dataItem">{option.name}</div>
             </Link>
           ))}

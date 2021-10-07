@@ -1,11 +1,15 @@
 import './reviewContent.scss';
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Marginer from '../../components/marginer';
 import SearchBar from '../../components/searchBar/searchBar';
 import Map from '../../components/map/map';
 import ReviewSites from '../../const/reviewSites';
 
 export default function ReviewContent() {
+  const { name } = useParams();
+  console.log(name);
+
   return (
     <div className="ReviewContainer">
       <Marginer direction="vertical" margin="3em" />
@@ -19,13 +23,18 @@ export default function ReviewContent() {
           수 있는 페이지입니다. (설명이 들어갈 공간)
         </h3>
 
-        <Marginer direction="vertical" margin="4em" />
+        <Marginer direction="vertical" margin="2em" />
+        <div className="NameContainer">
+          <h3 className="bodyText">선택하신 음식점:</h3>
+          <h3 className="bodyText" style={{ color: '#ff5722' }}>
+            {name}
+          </h3>
+        </div>
+        <Marginer direction="vertical" margin="2em" />
 
         <SearchBar />
 
         <Marginer direction="vertical" margin="2em" />
-
-        <Marginer direction="vertical" margin="1em" />
         <Map />
         <Marginer direction="vertical" margin="1em" />
 
