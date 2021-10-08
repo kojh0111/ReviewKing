@@ -3,7 +3,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Marginer from '../../components/marginer';
 import SearchBar from '../../components/searchBar/searchBar';
-// import Map from '../../components/map/map';
+import Map from '../../components/map/map';
 import ReviewSites from '../../const/reviewSites';
 import dummy from '../../const/responses.json';
 
@@ -19,8 +19,6 @@ export default function ReviewResult() {
       return value;
     }
   });
-
-  console.log(selectedData);
 
   return (
     <div className="ReviewContainer">
@@ -64,7 +62,7 @@ export default function ReviewResult() {
         <h3 className="bodyText">워드클라우드가 출력되는 공간</h3>
 
         <Marginer direction="vertical" margin="2rem" />
-        {/* <Map data={selectedData} /> */}
+        <Map data={JSON.stringify(selectedData)} />
         <Marginer direction="vertical" margin="1rem" />
 
         <h3 className="bodyText">
