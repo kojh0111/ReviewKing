@@ -32,4 +32,4 @@ class WhatToEatCategories(Resource):
         return jsonify(status=200, data=data)
 
 
-api.add_resource(WhatToEat, "/what-to-eat")
+api.add_resource(WhatToEatCategories, "/what-to-eat")

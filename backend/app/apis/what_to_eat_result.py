@@ -54,4 +54,4 @@ class WhatToEatResult(Resource):
             return jsonify(status=404)
 
 
-api.add_resource(WhatToEat, "/what-to-eat/<int:id>")
+api.add_resource(WhatToEatResult, "/what-to-eat/<int:id>")
