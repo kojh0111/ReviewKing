@@ -5,7 +5,7 @@ from sqlalchemy.sql import func
 from app import db
 
 ranks_categories = Blueprint("ranks_categories", __name__)
-api = Api(ranks)
+api = Api(ranks_categories)
 
 # request를 받기 위해서는 parser에 argument 추가 필요
 parser = reqparse.RequestParser()
