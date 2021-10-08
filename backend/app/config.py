@@ -3,7 +3,7 @@ import dotenv
 
 dotenv.load_dotenv()
 PASSWORD = os.environ.get("DB_PASSWORD")
-HOST = os.environ.get("DB_PASSWORD")
+HOST = os.environ.get("HOST")
 
 
 db_info = {
