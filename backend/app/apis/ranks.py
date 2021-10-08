@@ -19,13 +19,18 @@ class Ranks(Resource):
         categories_data = Categories.query.all()
 
         data = dict()
+        result = []
         for category_data in categories_data:
             restaurant = Restaurants.query.filter_by(
                 category_id=category_data.id
             ).first()
-            # 랜덤하게 img_url 선택하기
-            img_url = restaurant.img_url
-            data[f"{category_data.category}"] = img_url
+            tmp = {
+                "category_id": category_data.id,
+                "category": category_data.category,
+                "img_url": restaurant.img_url,
+            }
+            result.append(tmp)
+        data["result"] = result
 
         return jsonify(status=200, data=data)
 
