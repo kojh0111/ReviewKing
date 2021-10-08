@@ -49,6 +49,14 @@ def create_app():
 
     app.register_blueprint(what_to_eat)
 
+    from apis.what_to_eat_categories import what_to_eat_categories
+
+    app.register_blueprint(what_to_eat_categories)
+
+    from apis.what_to_eat_result import what_to_eat_result
+
+    app.register_blueprint(what_to_eat_result)
+
     return app
 
 
