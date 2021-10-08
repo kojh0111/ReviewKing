@@ -12,7 +12,7 @@ export default function Map(props) {
     const container = document.getElementById('map');
     const options = {
       center: new kakao.maps.LatLng(37.5043, 127.04925),
-      level: 6,
+      level: 5,
     };
 
     // map
@@ -21,7 +21,7 @@ export default function Map(props) {
     const imageSrc =
       'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png'; // 마커이미지의 주소.
 
-    const imageSize = new kakao.maps.Size(20, 25); // 마커이미지의 크기
+    const imageSize = new kakao.maps.Size(23, 26); // 마커이미지의 크기
     const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
     // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다

@@ -1,5 +1,6 @@
 import './reviewContent.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 import Marginer from '../../components/marginer';
 import SearchBar from '../../components/searchBar/searchBar';
 import Map from '../../components/map/map';
@@ -9,6 +10,28 @@ const allData = Object.values(dummy.data);
 console.log(allData);
 
 export default function ReviewContent() {
+  // API로 부터 선릉역 주변 식당 정보 받아옴 (category, img, lat, lng, name)
+  const GetRestaurantsInfoAPI = async () => {
+    const RestaurantsResponse = await axios.get(``);
+    return RestaurantsResponse.data;
+  };
+
+  // key값을 POST로 전달하는 API
+  const PostRestaurantsAPI = async () => {
+    const PushResponse = await axios.post(``);
+    const Key = PushResponse.data.name;
+    const pullResponse = await axios.get(`${Key}`);
+    return pullResponse;
+  };
+
+  // 콘솔 확인
+  console.log(GetRestaurantsInfoAPI);
+  console.log(PostRestaurantsAPI);
+
+  useEffect(() => {
+    GetRestaurantsInfoAPI();
+  }, []);
+
   return (
     <div className="ReviewContainer">
       <Marginer direction="vertical" margin="3rem" />

@@ -62,7 +62,7 @@ export default function ReviewResult() {
         <h3 className="bodyText">워드클라우드가 출력되는 공간</h3>
 
         <Marginer direction="vertical" margin="2rem" />
-        <Map data={JSON.stringify(selectedData)} />
+        <Map data={[selectedData]} />
         <Marginer direction="vertical" margin="1rem" />
 
         <h3 className="bodyText">
