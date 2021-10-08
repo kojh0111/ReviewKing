@@ -3,7 +3,7 @@ import './searchBar.scss';
 import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
-import dummy from '../../const/response.json';
+import dummy from '../../const/responses.json';
 
 const data = Object.values(dummy.data);
 

@@ -26,5 +26,7 @@ module.exports = {
     'react/jsx-boolean-value': 0,
     'react/no-array-index-key': 0,
     'arrow-body-style': 0,
+    'array-callback-return': 0,
+    'consistent-return': 0,
   },
 };

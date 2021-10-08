@@ -1,22 +1,12 @@
 /* global kakao */
 import React, { useEffect } from 'react';
-import dummy from '../../const/response.json';
-
-const data = Object.values(dummy.data);
-console.log(data);
 
 // 전체지도 생성
-export default function Map() {
+export default function Map(props) {
   useEffect(() => {
     // eslint-disable-next-line no-use-before-define
     mapscript();
   }, []);
-
-  // Category만 따로 뽑아 저장
-  // const CategoryList = data.map(value => {
-  //   return value.category;
-  // });
-  // console.log(CategoryList);
 
   const mapscript = () => {
     const container = document.getElementById('map');
@@ -41,7 +31,7 @@ export default function Map() {
       imageOption,
     );
 
-    data.forEach(el => {
+    props.data.forEach(el => {
       // 마커를 생성합니다
       // eslint-disable-next-line no-new
       new kakao.maps.Marker({

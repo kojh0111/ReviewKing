@@ -3,17 +3,29 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import Marginer from '../../components/marginer';
 import SearchBar from '../../components/searchBar/searchBar';
-import Map from '../../components/map/map';
+// import Map from '../../components/map/map';
 import ReviewSites from '../../const/reviewSites';
+import dummy from '../../const/responses.json';
 
 export default function ReviewResult() {
   const { name } = useParams();
   console.log(name);
 
+  const data = Object.values(dummy.data);
+
+  // 선택한 음식점의 정보만 가져옴(selectedData)
+  const selectedData = data.find(value => {
+    if (value.name === name) {
+      return value;
+    }
+  });
+
+  console.log(selectedData);
+
   return (
     <div className="ReviewContainer">
       <Marginer direction="vertical" margin="3rem" />
-      <h2 className="TitleText"> 음식점 리뷰 예시</h2>
+      <h2 className="TitleText"> 음식점 리뷰 결과 예시</h2>
 
       <Marginer direction="vertical" margin="1rem" />
 
@@ -52,7 +64,7 @@ export default function ReviewResult() {
         <h3 className="bodyText">워드클라우드가 출력되는 공간</h3>
 
         <Marginer direction="vertical" margin="2rem" />
-        <Map />
+        {/* <Map data={selectedData} /> */}
         <Marginer direction="vertical" margin="1rem" />
 
         <h3 className="bodyText">

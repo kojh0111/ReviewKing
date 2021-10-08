@@ -1,14 +1,14 @@
 import './reviewContent.scss';
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import Marginer from '../../components/marginer';
 import SearchBar from '../../components/searchBar/searchBar';
 import Map from '../../components/map/map';
+import dummy from '../../const/responses.json';
+
+const allData = Object.values(dummy.data);
+console.log(allData);
 
 export default function ReviewContent() {
-  const { name } = useParams();
-  console.log(name);
-
   return (
     <div className="ReviewContainer">
       <Marginer direction="vertical" margin="3rem" />
@@ -25,16 +25,15 @@ export default function ReviewContent() {
         <Marginer direction="vertical" margin="2rem" />
         <div className="NameContainer">
           <h3 className="bodyText">선택하신 음식점:</h3>
-          <h3 className="bodyText" style={{ color: '#ff5722' }}>
-            {name}
-          </h3>
         </div>
         <Marginer direction="vertical" margin="2rem" />
 
         <SearchBar />
 
         <Marginer direction="vertical" margin="4rem" />
-        <Map />
+
+        <Map data={allData} />
+
         <Marginer direction="vertical" margin="2rem" />
 
         <h3 className="bodyText">
