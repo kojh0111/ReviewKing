@@ -54,12 +54,12 @@ function App() {
             exact={true}
           />
           <Route
-            path="/what-to-eat/category/second-choice"
+            path="/what-to-eat/category/:tastes"
             component={SecondChoice}
             exact={true}
           />
           <Route
-            path="/what-to-eat/category/second-choice/result"
+            path="/what-to-eat/category/:tastes/:menus"
             component={TestResult}
             exact={true}
           />

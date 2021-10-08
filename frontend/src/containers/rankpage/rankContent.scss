@@ -1,11 +1,14 @@
 @import "../../styles/variable";
 
 .RankContainer {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background: $main_white;
   display: flex;
+  align-items: center;
+  padding: 10px 0;
   flex-direction: column;
-  text-align: center;
 
   h1 {
     font-size: 2rem;

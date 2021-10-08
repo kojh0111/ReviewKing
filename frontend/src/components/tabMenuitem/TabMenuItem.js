@@ -1,7 +1,12 @@
 import './TabMenuItem.scss';
 import { NavLink } from 'react-router-dom';
+import { scroller } from 'react-scroll';
 
 function TabMenuItem(props) {
+  const scrollToServiceSection = () => {
+    scroller.scrollTo('ServicePageContainer', { smooth: true, duration: 1500 });
+  };
+
   return (
     <div className="TabWrapper">
       <NavLink
@@ -11,6 +16,7 @@ function TabMenuItem(props) {
         activeStyle={{
           color: '#FF5722',
         }}
+        onClick={scrollToServiceSection}
       >
         {props.title}
       </NavLink>

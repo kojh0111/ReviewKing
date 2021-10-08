@@ -26,7 +26,7 @@ export default function ReviewContent() {
         <Marginer direction="vertical" margin="2rem" />
         <div className="NameContainer">
           <h3 className="bodyText">선택하신 음식점:</h3>
-          <h3 className="bodyText" style={{ color: '$main_orange' }}>
+          <h3 className="bodyText" style={{ color: '#ff5722' }}>
             {name}
           </h3>
         </div>
@@ -50,7 +50,7 @@ export default function ReviewContent() {
             <div className="reviewSite">
               <h1>{option.name}</h1>
               <Marginer direction="vertical" margin="1rem" />
-              <h2>{option.rating}</h2>
+              <h2 style={{ color: '#ff5722' }}>{option.rating}</h2>
               <Marginer direction="vertical" margin="2rem" />
             </div>
           ))}

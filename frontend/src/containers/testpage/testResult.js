@@ -1,16 +1,19 @@
 import './testResult.scss';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Marginer from '../../components/marginer';
 import Recommend from '../../const/recomend';
 import ReviewSites from '../../const/reviewSites';
 import Accordion from '../../components/accordion/accordion';
 
 export default function TestResult() {
+  const { menus } = useParams();
+  console.log(menus);
+
   return (
     <div className="CategoryContainer">
       <Marginer direction="vertical" margin="2rem" />
-      <h1>000을 드시고 싶은 당신에게 </h1>
+      <h1>{menus}를(을) 드시고 싶은 당신에게 </h1>
       <Marginer direction="vertical" margin="1rem" />
       <h1>다음과 같은 음식점을 추천합니다.</h1>
       <Marginer direction="vertical" margin="4rem" />

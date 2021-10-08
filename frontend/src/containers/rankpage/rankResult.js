@@ -12,8 +12,7 @@ export default function RankResult() {
     <div className="ResultContainer">
       <Marginer direction="vertical" margin="2rem" />
       <h1 style={{ display: 'flex' }}>
-        <div style={{ color: '$main_orange' }}>{category}</div>을(를)
-        선택하셨습니다.
+        <div style={{ color: '#ff5722' }}>{category}</div>을(를) 선택하셨습니다.
       </h1>
       <Marginer direction="vertical" margin="1rem" />
       <h1>다음과 같은 음식점을 추천합니다.</h1>
@@ -23,7 +22,7 @@ export default function RankResult() {
         {Recommend.map(option => (
           <button type="button" className="restaurantsChoice">
             <Marginer direction="vertical" margin="1rem" />
-            <h1 style={{ color: '$main_orange' }}>{option.name}</h1>
+            <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
             <Marginer direction="vertical" margin="1rem" />
             <h3>{option.address}</h3>
             <Marginer direction="vertical" margin="1rem" />
@@ -33,7 +32,7 @@ export default function RankResult() {
             <Marginer direction="vertical" margin="1rem" />
             <div className="ratingContainer">
               <h3>종합 평점 :&nbsp;</h3>
-              <h3 style={{ color: '$main_orange' }}>{option.rating}</h3>
+              <h3 style={{ color: '#ff5722' }}>{option.rating}</h3>
             </div>
             <Marginer direction="vertical" margin="1rem" />
           </button>

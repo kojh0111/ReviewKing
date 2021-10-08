@@ -11,10 +11,12 @@ export default function FirstChoice() {
       <h1>카테고리를 선택하세요</h1>
       <Marginer direction="vertical" margin="2rem" />
       <div className="choiceContainer">
-        {TastesCategory.map(option => (
-          <button type="button" className="menuCategory">
-            <img alt="" className="CategoryImage" /> {option}
-          </button>
+        {TastesCategory.map(tastes => (
+          <Link to={`/what-to-eat/category/${tastes}`}>
+            <button type="button" className="menuCategory">
+              <img alt="" className="CategoryImage" /> {tastes}
+            </button>
+          </Link>
         ))}
       </div>
 
