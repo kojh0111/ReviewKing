@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
@@ -29,6 +29,10 @@ def create_app():
     import models
 
     # blueprint
+    from apis.all_restaurant import restaurantlist
+
+    app.register_blueprint(restaurantlist)
+
     from apis.ranks import ranks
 
     app.register_blueprint(ranks)
