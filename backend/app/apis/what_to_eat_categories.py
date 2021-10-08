@@ -4,8 +4,8 @@ from models import Restaurants, Categories, Reviews, TotalRating, Menus
 from app import db
 import random
 
-what_to_eat_categoreis = Blueprint("what_to_eat_categoreis", __name__)
-api = Api(what_to_eat_categoreis)
+eat_categoreis = Blueprint("eat-categoreis", __name__)
+api = Api(eat_categoreis)
 
 # request를 받기 위해서는 parser에 argument 추가 필요
 parser = reqparse.RequestParser()

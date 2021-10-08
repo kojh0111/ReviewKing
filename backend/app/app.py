@@ -41,17 +41,17 @@ def create_app():
 
     app.register_blueprint(ranks_categories)
 
+    from apis.what_to_eat_categories import eat_categories
+
+    app.register_blueprint(eat_categories)
+
+    from apis.what_to_eat_result import eat_result
+
+    app.register_blueprint(eat_result)
+
     from apis.review_restaurant import reviews
 
     app.register_blueprint(reviews)
-
-    from apis.what_to_eat_categories import what_to_eat_categories
-
-    app.register_blueprint(what_to_eat_categories)
-
-    from apis.what_to_eat_result import what_to_eat_result
-
-    app.register_blueprint(what_to_eat_result)
 
     return app
 
