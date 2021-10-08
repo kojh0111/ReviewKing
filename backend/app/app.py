@@ -33,9 +33,13 @@ def create_app():
 
     app.register_blueprint(restaurantlist)
 
-    from apis.ranks import ranks
+    from apis.ranks_result import ranks_result
 
-    app.register_blueprint(ranks)
+    app.register_blueprint(ranks_result)
+
+    from apis.ranks_categories import ranks_categories
+
+    app.register_blueprint(ranks_categories)
 
     from apis.review_restaurant import reviews
 
