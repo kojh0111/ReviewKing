@@ -11,7 +11,9 @@ export default function SecondChoice() {
   return (
     <div className="CategoryContainer">
       <Marginer direction="vertical" margin="2rem" />
-      <h1>{tastes} 음식을 선택하세요</h1>
+      <h1 style={{ display: 'flex' }}>
+        <div style={{ color: '#ff5722' }}>{tastes}</div>&nbsp;음식을 선택하세요
+      </h1>
       <Marginer direction="vertical" margin="2rem" />
       <div className="choiceContainer">
         {MenuChoice.map(menus => (
@@ -27,12 +29,6 @@ export default function SecondChoice() {
         <Link to="/what-to-eat/category/">
           <button type="button" className="button-prev">
             이전
-          </button>
-        </Link>
-
-        <Link to="/what-to-eat/category/second-choice/result/">
-          <button type="button" className="button-next">
-            완료
           </button>
         </Link>
       </div>

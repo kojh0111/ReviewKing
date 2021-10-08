@@ -1,11 +1,12 @@
-import './reviewContent.scss';
+import './reviewResult.scss';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import Marginer from '../../components/marginer';
 import SearchBar from '../../components/searchBar/searchBar';
 import Map from '../../components/map/map';
+import ReviewSites from '../../const/reviewSites';
 
-export default function ReviewContent() {
+export default function ReviewResult() {
   const { name } = useParams();
   console.log(name);
 
@@ -32,17 +33,33 @@ export default function ReviewContent() {
         <Marginer direction="vertical" margin="2rem" />
 
         <SearchBar />
+        <Marginer direction="vertical" margin="3rem" />
 
-        <Marginer direction="vertical" margin="4rem" />
-        <Map />
+        <div className="ReviewRatingContainer">
+          {ReviewSites.map(option => (
+            <div className="reviewSite">
+              <h1>{option.name}</h1>
+              <Marginer direction="vertical" margin="1rem" />
+              <h2 style={{ color: '#ff5722' }}>{option.rating}</h2>
+              <Marginer direction="vertical" margin="2rem" />
+            </div>
+          ))}
+        </div>
+
         <Marginer direction="vertical" margin="2rem" />
+        <img alt="" className="WordCloudImage" />
+        <Marginer direction="vertical" margin="1rem" />
+        <h3 className="bodyText">워드클라우드가 출력되는 공간</h3>
+
+        <Marginer direction="vertical" margin="2rem" />
+        <Map />
+        <Marginer direction="vertical" margin="1rem" />
 
         <h3 className="bodyText">
           지도 혹은 음식점 리스트가 나오면 사용자가 선택하는 공간 (사용자와
           상호작용)
         </h3>
-
-        <Marginer direction="vertical" margin="3rem" />
+        <Marginer direction="vertical" margin="6rem" />
       </div>
     </div>
   );

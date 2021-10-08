@@ -15,6 +15,7 @@ import FirstChoice from './containers/testpage/firstChoice';
 import SecondChoice from './containers/testpage/secondChoice';
 import TestResult from './containers/testpage/testResult';
 import RankResult from './containers/rankpage/rankResult';
+import SelectedReviewPage from './containers/selectedReviewPage';
 
 function App() {
   return (
@@ -40,7 +41,11 @@ function App() {
           <Route path="/" component={IntroducePage} exact={true} />
 
           <Route path="/review" component={ReviewPage} exact={true} />
-          <Route path="/review/:name" component={ReviewPage} exact={true} />
+          <Route
+            path="/review/:name"
+            component={SelectedReviewPage}
+            exact={true}
+          />
           <Route path="/rank" component={RankPage} exact={true} />
           <Route
             path="/rank/result/:category"

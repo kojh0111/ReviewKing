@@ -26,12 +26,6 @@ export default function FirstChoice() {
             이전
           </button>
         </Link>
-
-        <Link to="/what-to-eat/category/second-choice/">
-          <button type="button" className="button-next">
-            다음
-          </button>
-        </Link>
       </div>
     </div>
   );
