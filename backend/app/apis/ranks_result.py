@@ -15,11 +15,12 @@ parser.add_argument("category", type=str)
 class RanksResult(Resource):
     def get(self, id=None):
         # 해당 카테고리의 상위 평점 3개의 음식점 제공
-        restaurant = Restaurants.query.filter_by(category_id=id).first()
-        if restaurant:
+        category = Categories.query.filter_by(id=id).first()
+        if category:
+            category_id = category_id.id
             restaurants_rated = (
                 Restaurants.query.join(TotalRating)
-                .filter(Restaurants.category_id == id)
+                .filter(Restaurants.category_id == category_id)
                 .order_by(TotalRating.integrated_rating.desc())
             )
             data = dict()
