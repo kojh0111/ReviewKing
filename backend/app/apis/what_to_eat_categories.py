@@ -4,8 +4,8 @@ from models import Restaurants, Categories, Reviews, TotalRating, Menus
 from app import db
 import random
 
-eat_categoreis = Blueprint("eat-categoreis", __name__)
-api = Api(eat_categoreis)
+eat_categories = Blueprint("eat-categories", __name__)
+api = Api(eat_categories)
 
 # request를 받기 위해서는 parser에 argument 추가 필요
 parser = reqparse.RequestParser()
@@ -18,18 +18,23 @@ class WhatToEatCategories(Resource):
         category_ids = [cat.id for cat in categories]
         random_ids = random.sample(category_ids, 10)  # 무작위로 10개 뽑기
 
-        data = dict()
+        result = []
         for random_id in random_ids:
             restaurant = (
                 Restaurants.query.join(Categories)
                 .filter(Restaurants.category_id == random_id)
                 .first()
             )
-            category = Categories.query.filter_by(id=random_id).first().category
+            category = Categories.query.filter_by(id=random_id).first()
             img_url = restaurant.img_url
-            data[f"{category}"] = img_url
+            tmp = {
+                "category_id": category.id,
+                "category": category.category,
+                "img_url": img_url,
+            }
+            result.append(tmp)
 
-        return jsonify(status=200, data=data)
+        return jsonify(status=200, data=result)
 
 
 api.add_resource(WhatToEatCategories, "/what-to-eat")

@@ -18,7 +18,6 @@ class RanksCategories(Resource):
         # 카테고리들 모두 불러오기
         categories_data = Categories.query.all()
 
-        data = dict()
         result = []
         for category_data in categories_data:
             restaurant = Restaurants.query.filter_by(
@@ -30,9 +29,8 @@ class RanksCategories(Resource):
                 "img_url": restaurant.img_url,
             }
             result.append(tmp)
-        data["result"] = result
 
-        return jsonify(status=200, data=data)
+        return jsonify(status=200, data=result)
 
 
 api.add_resource(RanksCategories, "/ranks")

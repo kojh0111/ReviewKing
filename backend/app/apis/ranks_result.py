@@ -17,13 +17,13 @@ class RanksResult(Resource):
         # 해당 카테고리의 상위 평점 3개의 음식점 제공
         category = Categories.query.filter_by(id=id).first()
         if category:
-            category_id = category_id.id
+            category_id = category.id
             restaurants_rated = (
                 Restaurants.query.join(TotalRating)
                 .filter(Restaurants.category_id == category_id)
                 .order_by(TotalRating.integrated_rating.desc())
             )
-            data = dict()
+
             rank = 1
             result = []
             for restaurant in restaurants_rated:
@@ -42,9 +42,8 @@ class RanksResult(Resource):
                 }
                 result.append(tmp)
                 rank += 1
-            data["result"] = result
 
-            return jsonify(status=200, data=data)
+            return jsonify(status=200, data=result)
         else:
             return jsonify(status=404)
 

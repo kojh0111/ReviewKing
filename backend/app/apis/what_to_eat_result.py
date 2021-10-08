@@ -13,7 +13,7 @@ parser.add_argument("category", type=str)
 
 
 class WhatToEatResult(Resource):
-    def post(self, id=None):
+    def get(self, id=None):
         category = Categories.query.filter_by(id=id).first()
 
         if category:
@@ -24,8 +24,6 @@ class WhatToEatResult(Resource):
                 .filter(Restaurants.category_id == category_id)
                 .order_by(TotalRating.integrated_rating.desc())[:3]
             )
-
-            data = dict()
             # 상위 3개 가져오기
             rank = 1
             result = []
@@ -47,9 +45,7 @@ class WhatToEatResult(Resource):
                 result.append(tmp)
                 rank += 1
 
-            data["result"] = result
-
-            return jsonify(status=200, data=data)
+            return jsonify(status=200, data=result)
         else:
             return jsonify(status=404)
 
