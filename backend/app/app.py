@@ -45,10 +45,6 @@ def create_app():
 
     app.register_blueprint(reviews)
 
-    from apis.what_to_eat import what_to_eat
-
-    app.register_blueprint(what_to_eat)
-
     from apis.what_to_eat_categories import what_to_eat_categories
 
     app.register_blueprint(what_to_eat_categories)
