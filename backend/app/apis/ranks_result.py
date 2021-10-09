@@ -37,7 +37,8 @@ class RanksResult(Resource):
                     "name": restaurant.name,
                     "integrated_rating": total_rating.integrated_rating,
                     "img_url": restaurant.img_url,
-                    "menus": [menu.name for menu in menus],
+                    "latitude": restaurant.latitude_x,
+                    "longitude": restaurant.longitude_y,
                     "rank": rank,
                 }
                 result.append(tmp)

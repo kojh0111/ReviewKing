@@ -33,13 +33,8 @@ class WhatToEatResult(Resource):
                 ).first()
                 tmp = {
                     "name": restaurant.name,
+                    "restaurnt_id": restaurant.id,
                     "integrated_rating": total_rating.integrated_rating,
-                    "longitude": restaurant.longitude_x,
-                    "latitude": restaurant.latitude_y,
-                    "naver": total_rating.naver,
-                    "kakao": total_rating.kakao,
-                    "mango": total_rating.mango,
-                    "siksin": total_rating.siksin,
                     "rank": rank,
                 }
                 result.append(tmp)
