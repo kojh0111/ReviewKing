@@ -20,6 +20,18 @@ export default function ReviewResult() {
     }
   });
 
+  // const selectedTestData = () => {
+  //   const selectedTestData = data.find(value => {
+  //     if (value.name === name) {
+  //       return value;
+  //     }
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   selectedTestData();
+  // }, []);
+
   return (
     <div className="ReviewContainer">
       <Marginer direction="vertical" margin="3rem" />
