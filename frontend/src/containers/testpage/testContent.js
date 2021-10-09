@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import './testContent.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -16,7 +17,12 @@ export default function TestContent() {
       </h3>
 
       <Marginer direction="vertical" margin="2rem" />
-      <img alt="" className="TestInfoImage" />
+      <object
+        type="image/svg+xml"
+        data="/static/media/-naver.2e6b221b.svg"
+        className="svg"
+        style={{ width: '70%' }}
+      />
       <Marginer direction="vertical" margin="2rem" />
 
       <Link to="/what-to-eat/category/">

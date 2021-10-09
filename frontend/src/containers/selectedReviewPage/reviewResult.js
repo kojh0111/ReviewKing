@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import './reviewResult.scss';
 import React from 'react';
 import { useParams } from 'react-router-dom';
@@ -69,7 +70,12 @@ export default function ReviewResult() {
         </div>
 
         <Marginer direction="vertical" margin="2rem" />
-        <img alt="" className="WordCloudImage" />
+        <object
+          type="image/svg+xml"
+          data="/static/media/-naver.2e6b221b.svg"
+          className="svg"
+          style={{ width: '70%' }}
+        />
         <Marginer direction="vertical" margin="1rem" />
         <h3 className="bodyText">워드클라우드가 출력되는 공간</h3>
 

@@ -1,31 +1,31 @@
 import './rankResult.scss';
-import React from 'react';
-// import useEffect from 'react';
-// import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
 import Marginer from '../../components/marginer';
 import Recommend from '../../const/recomend';
 
 export default function RankResult() {
+  const [data, setData] = useState();
   const { category } = useParams();
   console.log(category);
 
   // API로 부터 상위 3개 식당 정보 받아옴 (이미지 url, 평점, 메뉴, 이름, 순위) => key: category_id
-  // const GetTopThreeAPI = async () => {
-  //   const TopThreeResponse = await axios
-  //     .get(``)
-  //     .then(Response => {
-  //       console.log(Response.data);
-  //     })
-  //     .catch(Error => {
-  //       console.log(Error);
-  //     });
-  //   return TopThreeResponse.data;
-  // };
+  // API로 받아온 데이터 console로 확인
+  const GetTopThreeAPI = async () => {
+    const TopThreeResponse = await axios.get(
+      `http://3.139.100.234:5000/ranks/${category}`,
+    );
+    setData(TopThreeResponse.data);
+    console.log('TopThreeResponse', TopThreeResponse.data);
+    return TopThreeResponse.data;
+  };
 
-  // useEffect(() => {
-  //   GetTopThreeAPI();
-  // }, []);
+  useEffect(() => {
+    GetTopThreeAPI();
+  }, []);
+
+  console.log(data);
 
   return (
     <div className="ResultContainer">
@@ -80,19 +80,3 @@ export default function RankResult() {
     </div>
   );
 }
-
-// TODO. API 완성되면 test 해볼 부분 => 식당명 뜨나 확인!
-// {
-//   GetTopThreeAPI.map(option => (
-//     <button type="button" className="restaurantsChoice">
-//       <Marginer direction="vertical" margin="1rem" />
-//       <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
-//       <Marginer direction="vertical" margin="1rem" />
-//       <div className="ratingContainer">
-//         <h3>종합 평점 :&nbsp;</h3>
-//         <h3 style={{ color: '#ff5722' }}>{option.integrated_rating}</h3>
-//       </div>
-//       <Marginer direction="vertical" margin="1rem" />
-//     </button>
-//   ));
-// }
