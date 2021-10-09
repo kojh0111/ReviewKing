@@ -16,7 +16,7 @@ db_info = {
 
 SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{db_info['user']}:{db_info['password']}@{db_info['host']}:{db_info['port']}/{db_info['database']}?charset=utf8mb4"
 SQLALCHEMY_POOL_RECYCLE = 28  # value less than backend’s timeout
-SQLALCHEMY_POOL_TIMEOUT = 7  # value less than backend’s timeout
+SQLALCHEMY_POOL_TIMEOUT = 120  # session 연결까지 얼마나 기다릴 지를 의미
 SQLALCHEMY_PRE_PING = True
 SQLALCHEMY_ENGINE_OPTIONS = {
     "pool_recycle": SQLALCHEMY_POOL_RECYCLE,
