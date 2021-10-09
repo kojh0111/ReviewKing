@@ -15,6 +15,16 @@ db_info = {
 }
 
 SQLALCHEMY_DATABASE_URI = f"mysql+pymysql://{db_info['user']}:{db_info['password']}@{db_info['host']}:{db_info['port']}/{db_info['database']}?charset=utf8mb4"
+SQLALCHEMY_POOL_RECYCLE = 28  # value less than backend’s timeout
+SQLALCHEMY_POOL_TIMEOUT = 7  # value less than backend’s timeout
+SQLALCHEMY_PRE_PING = True
+SQLALCHEMY_ENGINE_OPTIONS = {
+    "pool_recycle": SQLALCHEMY_POOL_RECYCLE,
+    "pool_timeout": SQLALCHEMY_POOL_TIMEOUT,
+    "pool_pre_ping": SQLALCHEMY_PRE_PING,
+    "pool_size": 100,
+    "max_overflow": 64,
+}
 
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
