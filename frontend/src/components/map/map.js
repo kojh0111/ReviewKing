@@ -54,3 +54,6 @@ export default function Map(props) {
     </>
   );
 }
+
+// TODO. 로컬에서 MAP 정상작동 하였으나, 현재 Review page에서 오류 발생 => 해결해야함
+// 이상하게 코드를 추가로 작성하고 저장하면, 마커가 뜸... => 로딩관련 알아볼것

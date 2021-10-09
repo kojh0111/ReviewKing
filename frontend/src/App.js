@@ -40,9 +40,9 @@ function App() {
         <Switch>
           <Route path="/" component={IntroducePage} exact={true} />
 
-          <Route path="/review" component={ReviewPage} exact={true} />
+          <Route path="/reviews" component={ReviewPage} exact={true} />
           <Route
-            path="/review/:name"
+            path="/reviews/:id"
             component={SelectedReviewPage}
             exact={true}
           />

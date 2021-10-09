@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Marginer from '../../components/marginer';
-import Recommend from '../../const/recomend';
 
 export default function RankResult() {
-  const [data, setData] = useState();
+  const [rankResult, setRankResult] = useState([]);
   const { category } = useParams();
   console.log(category);
 
@@ -16,8 +15,8 @@ export default function RankResult() {
     const TopThreeResponse = await axios.get(
       `http://3.139.100.234:5000/ranks/${category}`,
     );
-    setData(TopThreeResponse.data);
-    console.log('TopThreeResponse', TopThreeResponse.data);
+    setRankResult(TopThreeResponse.data.data);
+    console.log('GetTopThreeAPI complete');
     return TopThreeResponse.data;
   };
 
@@ -25,7 +24,7 @@ export default function RankResult() {
     GetTopThreeAPI();
   }, []);
 
-  console.log(data);
+  console.log('rankResult data', rankResult);
 
   return (
     <div className="ResultContainer">
@@ -38,20 +37,16 @@ export default function RankResult() {
       <Marginer direction="vertical" margin="4rem" />
 
       <div className="RankResultContainer">
-        {Recommend.map(option => (
+        {rankResult.map(option => (
           <button type="button" className="restaurantsChoice">
             <Marginer direction="vertical" margin="1rem" />
             <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
             <Marginer direction="vertical" margin="1rem" />
-            <h3>{option.address}</h3>
-            <Marginer direction="vertical" margin="1rem" />
-            <h3>추천 메뉴 1. {option.menu1}</h3>
-            <h3>추천 메뉴 2. {option.menu2}</h3>
-            <h3>추천 메뉴 3. {option.menu3}</h3>
+            <h3>순위 {option.rank}</h3>
             <Marginer direction="vertical" margin="1rem" />
             <div className="ratingContainer">
               <h3>종합 평점 :&nbsp;</h3>
-              <h3 style={{ color: '#ff5722' }}>{option.rating}</h3>
+              <h3 style={{ color: '#ff5722' }}>{option.integrated_rating}</h3>
             </div>
             <Marginer direction="vertical" margin="1rem" />
           </button>
@@ -80,3 +75,6 @@ export default function RankResult() {
     </div>
   );
 }
+
+// TODO. useParams이 아닌카테고리 이름을 받아와야 함... => 000을(를) 선택하셨습니다.
+// <img /> 대신에 map 컴포넌트 삽입해야함. 상위 3개 음식점 위치 삽입해야 함. => data는 rankResult이용

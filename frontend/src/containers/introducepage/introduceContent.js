@@ -64,3 +64,5 @@ export default function IntroduceContent() {
     </div>
   );
 }
+
+// TODO. 이미지 구해서 슬슬 작성할 것!

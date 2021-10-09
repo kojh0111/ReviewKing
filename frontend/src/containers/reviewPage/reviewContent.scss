@@ -49,29 +49,11 @@
   }
 }
 
-.ReviewRatingContainer {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-  justify-items: center;
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  h3 {
-    font-size: 1.2rem;
-  }
-
-  .reviewSite {
-    width: 100%;
-    text-align: center;
-  }
-}
-
 .NameContainer {
   display: flex;
   flex-direction: row;
+}
+
+#map {
+  border: 3px solid black;
 }

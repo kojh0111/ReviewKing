@@ -1,27 +1,27 @@
 const Recommend = [
   {
-    name: '엘리스 분식',
-    address: '서울 강남구 강남대로110길 15 1층 102호',
-    menu1: '골뱅이 소면',
-    menu2: '등갈비 스테이크',
-    menu3: '치킨너겟',
-    rating: '5/3.4',
+    img_url:
+      'https://search.pstatic.net/common/?autoRotate=true&amp;type=w278_sharpen&amp;src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20181220_196%2F1545276802569MKsTE_JPEG%2FMQ6V2OEk3wo0FQOOk2pKRAxl.jpg',
+    integrated_rating: 5.0,
+    menus: [],
+    name: '도마다리뼈다귀감자탕',
+    rank: 1,
   },
   {
-    name: '엘리스 손만두',
-    address: '서울 강남구 논현로85길 43',
-    menu1: '비빔밥',
-    menu2: '산채 비빔밥',
-    menu3: '비빔만두',
-    rating: '5/4.4',
+    img_url:
+      'https://search.pstatic.net/common/?autoRotate=true&amp;type=w278_sharpen&amp;src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20200613_272%2F1592034524432eBJUE_JPEG%2FCvvBxLUjsdG1sXmJv9b7DDOC.jpeg.jpg',
+    integrated_rating: 5.0,
+    menus: [],
+    name: '동해식당',
+    rank: 2,
   },
   {
-    name: '엘리스 반점',
-    address: '서울 강남구 강남대로98길 12-5',
-    menu1: '짜장면',
-    menu2: '간짜장',
-    menu3: '짬뽕',
-    rating: '5/4.7',
+    img_url:
+      'https://search.pstatic.net/common/?autoRotate=true&amp;type=w278_sharpen&amp;src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20210705_123%2F1625429689768YwEpQ_JPEG%2FTX7Xxd3PB5Jiznay7kFYxAuN.jpg',
+    integrated_rating: 4.99,
+    menus: [],
+    name: '명품유쾌 강남본점',
+    rank: 3,
   },
 ];
 

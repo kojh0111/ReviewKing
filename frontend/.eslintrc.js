@@ -29,5 +29,6 @@ module.exports = {
     'array-callback-return': 0,
     'consistent-return': 0,
     'no-new-object': 0,
+    'no-console': 0,
   },
 };
