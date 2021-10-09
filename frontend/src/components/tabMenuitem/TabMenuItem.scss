@@ -1,0 +1,27 @@
+@import "../../styles/variable";
+
+.TabWrapper {
+  width: 25%;
+  height: 5rem;
+  background-color: #eaeaea;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.menu-item {
+  width: 100%;
+  font-size: 1.2rem;
+  color: #333;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    color: $main_orange;
+  }
+}

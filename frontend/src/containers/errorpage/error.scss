@@ -1,0 +1,38 @@
+@import "../../styles/variable";
+
+.ErrorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.errorText {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.errorImage {
+  width: 50%;
+}
+
+a.button-home .goTohome {
+  background-color: $main_red;
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  display: block;
+  border: 3px solid $main_red;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.3s linear all;
+}
+
+a.button-home .goTohome:hover {
+  background-color: darken($color: $main_red, $amount: 10%);
+  border: 3px solid darken($color: $main_red, $amount: 10%);
+  box-shadow: 0 0 8px 0 $main_red;
+}

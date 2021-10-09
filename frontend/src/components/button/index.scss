@@ -1,0 +1,20 @@
+@import "../../styles/variable";
+
+.ButtonWrapper {
+    padding: 7px 15px;
+    border-radius: 5px;
+    background-color: $main_green;
+    color: $main_white;
+    font-family: Jua;
+    font-weight: bold;
+    font-size: 1rem;
+    outline: none;
+    border: 2px solid transparent;
+    transition: all 220ms ease-in-out;
+    cursor: pointer;
+}
+
+.ButtonWrapper:hover {
+    background-color: transparent;
+    border: 2px solid $main_green;
+}
