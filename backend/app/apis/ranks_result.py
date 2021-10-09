@@ -25,7 +25,7 @@ class RanksResult(Resource):
             )
 
             rank = 1
-            result = []
+            result = [category.category]
             for restaurant in restaurants_rated:
                 if rank == 4:
                     break
