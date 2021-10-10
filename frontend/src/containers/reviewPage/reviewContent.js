@@ -4,28 +4,43 @@ import axios from 'axios';
 import Marginer from '../../components/marginer';
 import SearchBar from '../../components/searchBar/searchBar';
 import Map from '../../components/map/map';
-// import dummy from '../../const/responses.json';
-
-// const allData = Object.values(dummy.data);
 
 export default function ReviewContent() {
   const [reviewContent, setReviewContent] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   // API로 부터 선릉역 주변 식당 정보 받아옴 (category, img, lat, lng, name)
   const GetRestaurantsInfoAPI = async () => {
-    const RestaurantsResponse = await axios.get(
-      `http://3.139.100.234:5000/reviews`,
-    );
-    setReviewContent(RestaurantsResponse.data.data);
-    console.log('ReviewContent GetRestaurantsInfoAPI complete');
-    return RestaurantsResponse.data;
+    setError(null);
+    setReviewContent(null);
+    setLoading(true);
+    const RestaurantsResponse = await axios
+      .get(`http://3.139.100.234:5000/reviews`)
+      .then(response => {
+        setReviewContent(response.data.data);
+      })
+      .catch(e => {
+        setError(e);
+      });
+    setLoading(false);
+    return RestaurantsResponse;
   };
 
   useEffect(() => {
     GetRestaurantsInfoAPI();
   }, []);
 
-  console.log('ReviewContent', reviewContent);
+  if (loading)
+    return (
+      <div className="notice-container">
+        <div className="loader" />
+        <Marginer direction="vertical" margin="2rem" />
+        <div className="notice">로딩중....</div>
+      </div>
+    );
+  if (error) return <div className="notice-error">에러가 발생했습니다</div>;
+  if (!reviewContent) return null;
 
   return (
     <div className="ReviewContainer">

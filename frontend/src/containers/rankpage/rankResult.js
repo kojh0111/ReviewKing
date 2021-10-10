@@ -6,25 +6,42 @@ import Marginer from '../../components/marginer';
 
 export default function RankResult() {
   const [rankResult, setRankResult] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { category } = useParams();
-  console.log(category);
 
   // API로 부터 상위 3개 식당 정보 받아옴 (이미지 url, 평점, 메뉴, 이름, 순위) => key: category_id
-  // API로 받아온 데이터 console로 확인
   const GetTopThreeAPI = async () => {
-    const TopThreeResponse = await axios.get(
-      `http://3.139.100.234:5000/ranks/${category}`,
-    );
-    setRankResult(TopThreeResponse.data.data);
-    console.log('GetTopThreeAPI complete');
-    return TopThreeResponse.data;
+    // 요청이 시작 할 때 초기화
+    setError(null);
+    setRankResult(null);
+    setLoading(true);
+    const TopThreeResponse = await axios
+      .get(`http://3.139.100.234:5000/ranks/${category}`)
+      .then(response => {
+        setRankResult(response.data.data);
+      })
+      .catch(e => {
+        setError(e);
+      });
+    setLoading(false);
+    return TopThreeResponse;
   };
 
   useEffect(() => {
     GetTopThreeAPI();
   }, []);
 
-  console.log('rankResult data', rankResult);
+  if (loading)
+    return (
+      <div className="notice-container">
+        <div className="loader" />
+        <Marginer direction="vertical" margin="2rem" />
+        <div className="notice">로딩중....</div>
+      </div>
+    );
+  if (error) return <div className="notice-error ">에러가 발생했습니다</div>;
+  if (!rankResult) return null;
 
   return (
     <div className="ResultContainer">

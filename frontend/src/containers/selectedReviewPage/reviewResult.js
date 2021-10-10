@@ -4,30 +4,46 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import Marginer from '../../components/marginer';
-// import Map from '../../components/map/map';
 
 export default function ReviewResult() {
   const [reviewResult, setReviewResult] = useState([]);
-
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { id } = useParams();
-  console.log(id);
 
   // API로 부터 선릉역 주변 식당 정보 받아옴 (category, img, lat, lng, name)
-  // test 도쿄등심
+
   const GetSelectedInfoAPI = async () => {
-    const SelectedResponse = await axios.get(
-      `http://3.139.100.234:5000/reviews/${id}`,
-    );
-    setReviewResult(SelectedResponse.data.data);
-    console.log('GetSelectedInfo API complete');
-    return SelectedResponse.data;
+    // 요청이 시작 할 때 초기화
+    setError(null);
+    setReviewResult(null);
+    setLoading(true);
+    const SelectedResponse = await axios
+      .get(`http://3.139.100.234:5000/reviews/${id}`)
+      .then(response => {
+        setReviewResult(response.data.data);
+      })
+      .catch(e => {
+        setError(e);
+      });
+    setLoading(false);
+    return SelectedResponse;
   };
 
   useEffect(() => {
     GetSelectedInfoAPI();
   }, []);
 
-  console.log('ReviewResult data', reviewResult);
+  if (loading)
+    return (
+      <div className="notice-container">
+        <div className="loader" />
+        <Marginer direction="vertical" margin="2rem" />
+        <div className="notice">로딩중....</div>
+      </div>
+    );
+  if (error) return <div className="notice-error ">에러가 발생했습니다</div>;
+  if (!reviewResult) return null;
 
   return (
     <div className="ReviewContainer">
