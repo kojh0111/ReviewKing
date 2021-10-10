@@ -8,8 +8,8 @@ HOST = os.environ.get("HOST")
 
 db_info = {
     "user": "jihun",
-    "password": PASSWORD,
-    "host": HOST,
+    "password": "1A5E255F",
+    "host": "reviewking.cpyzmx2pckio.us-east-2.rds.amazonaws.com",
     "port": 3306,
     "database": "reviewking",
 }
