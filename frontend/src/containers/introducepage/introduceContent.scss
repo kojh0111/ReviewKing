@@ -2,21 +2,55 @@
 
 .IntroduceContainer {
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 1600px;
+    line-height: 1.4;
+    margin: 0 auto;
     min-height: 1400px;
-    background: $main_white;
     display: flex;
     align-items: center;
     padding: 10px 0;
     flex-direction: column;
 
     .TitleText {
-        font-size: 1.8rem;
-        font-weight: 500;
-        line-height: 1.4;
-        margin: 0;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 40px;
         text-align: center;
+    }
+   
+
+    .ServiceIntroContainer {
+        width: 100%;
+        min-height: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+        text-align: center;
+        margin-bottom: 20px;
+
+        .Intro {
+            font-size: 2.5rem;
+        }
+
+        .Description {
+            font-size: 1.8rem;
+            font-weight: 500;
+            line-height: 1.4;
+            margin: 2rem 1rem;
+            text-align: left;
+            span {
+                display: block;
+            }
+            span:nth-child(2) {
+                margin-bottom: 1rem;
+            }
+            span:nth-child(2n+1) {
+                font-size: 2.4rem;
+                color: $main_orange;
+            }
+        }
+
     }
 
     .PeopleIntroContainer {
@@ -35,55 +69,23 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
         }
 
-        .CardContainer .CardIcon {
-            width: 8rem;
-            height: 8rem;
-            background-color: #a566ff;
-        }
-
-        .CardContainer .PeopleText {
-            font-size: 1rem;
-            font-weight: 500;
-            line-height: 1.4;
-            margin-right: 1rem;
-            margin-left: 1rem;
-            text-align: center;
-        }
-    }
-
-    .ServiceIntroContainer {
-        width: 100%;
-        min-height: 600px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px 0;
-
-        .TitleText {
-            font-size: 1.8rem;
-            font-weight: 500;
-            line-height: 1.4;
-            margin: 0;
-            text-align: center;
-        }
-
-        .bodyText {
-            font-size: 1rem;
-            font-weight: 500;
-            line-height: 1.4;
-            margin-right: 1rem;
-            margin-left: 1rem;
-            text-align: center;
-        }
-
-        .IntroduceImage {
-            width: 15rem;
-            height: 15rem;
-            background-color: #ffbb00;
+        .CardContainer {
+            .CardIcon {
+                width: 8rem;
+                height: 8rem;
+                background-color: $main_white;
+            }
+            .PeopleText {
+                margin: 0.25rem 1rem 0 1rem;
+                font-size: 1rem;
+                font-weight: 500;
+                line-height: 1.4;
+                text-align: center;
+            }
         }
     }
+
 }
