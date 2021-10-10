@@ -1,5 +1,5 @@
 import React from 'react';
-import { scroller } from 'react-scroll';
+import { Link } from 'react-router-dom';
 import BeemaLogo from '../../assets/logo/logo_croped.png';
 import Button from '../button';
 import Marginer from '../marginer';
@@ -7,19 +7,18 @@ import './index.scss';
 
 export default function Navbar() {
   const scrollToServiceSection = () => {
-    scroller.scrollTo('ServicePageContainer', { smooth: true, duration: 1500 });
+    window.scrollTo({ top: document.documentElement.clientHeight, behavior: 'smooth' });
   };
 
   return (
     <div className="NavbarContainer">
-      <div className="BrandContainer">
+      <Link to="/" className="BrandContainer">
         <img src={BeemaLogo} alt="logo" />
         <span>리뷰왕</span>
-      </div>
+      </Link>
 
       <div className="AccessibilityContainer">
         <Button
-          style={{ fontSize: '0.8rem', padding: '5px 8px' }}
           onClick={scrollToServiceSection}
         >
           오늘 뭐먹지?
