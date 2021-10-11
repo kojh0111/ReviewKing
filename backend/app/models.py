@@ -81,7 +81,7 @@ class Categories(db.Model):
 
     id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
     category = db.Column(db.String(100), nullable=True)
-    sub_category = db.Column(db.String(100), nullable=True)
+    subcategory = db.Column(db.String(100), nullable=True)
 
 
 class Users(db.Model):
