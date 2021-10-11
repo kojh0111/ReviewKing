@@ -1,10 +1,12 @@
 import './TabMenuItem.scss';
 import { NavLink } from 'react-router-dom';
-import { scroller } from 'react-scroll';
 
 function TabMenuItem(props) {
   const scrollToServiceSection = () => {
-    scroller.scrollTo('ServicePageContainer', { smooth: true, duration: 1500 });
+    window.scrollTo({
+      top: document.documentElement.clientHeight,
+      behavior: 'smooth',
+    });
   };
 
   return (

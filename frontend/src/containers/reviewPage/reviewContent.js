@@ -45,7 +45,7 @@ export default function ReviewContent() {
   return (
     <div className="ReviewContainer">
       <Marginer direction="vertical" margin="3rem" />
-      <h2 className="TitleText"> 음식점 리뷰 </h2>
+      <h2 className="TitleText">음식점 리뷰</h2>
 
       <Marginer direction="vertical" margin="2rem" />
 

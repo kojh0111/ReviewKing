@@ -1,6 +1,8 @@
 @import "../../styles/variable";
+@import url(//font.elice.io/EliceDigitalBaeum.css);
 
 .RankContainer {
+  background-color: rgb(249, 250, 252);
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -70,13 +72,15 @@
   .notice {
     height: 40rem;
     font-size: 3rem;
-    color: $main_orange;
+    color: $main_purple;
+    font-family: "Elice Digital Baeum";
+    font-weight: 700;
   }
 }
 
 .loader {
-  border: 16px solid $main_gray; /* Light grey */
-  border-top: 16px solid $main_orange; /* Blue */
+  border: 16px solid $main_gray;
+  border-top: 16px solid $main_purple;
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -101,5 +105,5 @@
   justify-content: center;
   height: 40rem;
   font-size: 3rem;
-  color: $main_orange;
+  color: $main_purple;
 }

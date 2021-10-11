@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import Marginer from '../../components/marginer';
+import Map from '../../components/map/map';
 
 export default function ReviewResult() {
   const [reviewResult, setReviewResult] = useState([]);
@@ -108,7 +109,7 @@ export default function ReviewResult() {
         </h3>
 
         <Marginer direction="vertical" margin="2rem" />
-        {/* <Map data={[selectedData]} /> */}
+        <Map data={[reviewResult]} />
         <Marginer direction="vertical" margin="1rem" />
 
         <h3 className="bodyText">

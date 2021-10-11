@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import Marginer from '../../components/marginer';
+import Map from '../../components/map/map';
 
 export default function RankResult() {
   const [rankResult, setRankResult] = useState([]);
@@ -32,6 +33,8 @@ export default function RankResult() {
     GetTopThreeAPI();
   }, []);
 
+  console.log(rankResult);
+
   if (loading)
     return (
       <div className="notice-container">
@@ -56,23 +59,27 @@ export default function RankResult() {
       <div className="RankResultContainer">
         {rankResult.map(option => (
           <button type="button" className="restaurantsChoice">
-            <Marginer direction="vertical" margin="1rem" />
-            <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
-            <Marginer direction="vertical" margin="1rem" />
-            <h3>순위 {option.rank}</h3>
-            <Marginer direction="vertical" margin="1rem" />
-            <div className="ratingContainer">
-              <h3>종합 평점 :&nbsp;</h3>
-              <h3 style={{ color: '#ff5722' }}>{option.integrated_rating}</h3>
+            <div className="top">
+              <img className="rankImage" alt="" src={option.img_url} />
+              <Marginer direction="vertical" margin="1rem" />
             </div>
-            <Marginer direction="vertical" margin="1rem" />
+            <div className="down">
+              <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
+              <Marginer direction="vertical" margin="1rem" />
+              <h3>순위 {option.rank}</h3>
+              <Marginer direction="vertical" margin="1rem" />
+              <div className="ratingContainer">
+                <h3>종합 평점 :&nbsp;</h3>
+                <h3 style={{ color: '#ff5722' }}>{option.integrated_rating}</h3>
+              </div>
+            </div>
           </button>
         ))}
       </div>
       <Marginer direction="vertical" margin="1rem" />
 
       <Marginer direction="vertical" margin="4rem" />
-      <img alt="" className="ResultImage" />
+      <Map data={[rankResult]} />
 
       <div className="buttonContainer">
         <Marginer direction="vertical" margin="2rem" />

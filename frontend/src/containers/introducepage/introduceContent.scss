@@ -1,6 +1,8 @@
 @import "../../styles/variable";
+@import url(//font.elice.io/EliceDigitalBaeum.css);
 
 .IntroduceContainer {
+    background-color: rgb(249, 250, 252);
     width: 80%;
     max-width: 1600px;
     line-height: 1.4;
@@ -16,8 +18,15 @@
         font-weight: 700;
         margin-bottom: 40px;
         text-align: center;
+        font-family: "Elice Digital Baeum";
+        color: rgb(82, 79, 161);
+        font-weight: 700;
+        color: #fff;
+        padding: 0.7rem 3rem;
+        border-radius: 10px;
+        background: rgb(82, 79, 161);
+        box-shadow: rgb(0, 0, 0, 0.12) 0px 2px 4px 0px;
     }
-   
 
     .ServiceIntroContainer {
         width: 100%;
@@ -31,6 +40,15 @@
 
         .Intro {
             font-size: 2.5rem;
+            font-family: "Elice Digital Baeum";
+            color: rgb(86, 75, 190);
+            font-weight: 700;
+        }
+
+        .subIntro {
+            font-family: "Elice Digital Baeum";
+            color: rgb(110, 106, 146);
+            font-size: 1rem;
         }
 
         .Description {
@@ -45,12 +63,11 @@
             span:nth-child(2) {
                 margin-bottom: 1rem;
             }
-            span:nth-child(2n+1) {
+            span:nth-child(2n + 1) {
                 font-size: 2.4rem;
                 color: $main_orange;
             }
         }
-
     }
 
     .PeopleIntroContainer {
@@ -73,19 +90,21 @@
         }
 
         .CardContainer {
+            padding: 1rem;
+
             .CardIcon {
                 width: 8rem;
                 height: 8rem;
                 background-color: $main_white;
+                background-image: url(../../assets/pictures/kim_j_k.png);
             }
             .PeopleText {
+                font-family: "Elice Digital Baeum";
                 margin: 0.25rem 1rem 0 1rem;
                 font-size: 1rem;
-                font-weight: 500;
                 line-height: 1.4;
                 text-align: center;
             }
         }
     }
-
 }
