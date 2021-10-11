@@ -96,16 +96,15 @@ export default function ReviewResult() {
         </div>
 
         <Marginer direction="vertical" margin="4rem" />
-        <object
-          type="image/svg+xml"
-          data="/static/media/-naver.2e6b221b.svg"
+        <img
+          src={reviewResult.kakaoWC}
           className="svg"
           style={{ width: '80%' }}
         />
         <Marginer direction="vertical" margin="1rem" />
         <h3 className="bodyText">
           리뷰왕은 검색하신 음식점의 대한 정보를 크롤링하여 사용자에게
-          제공합니다.
+          워드클라우드 형태로 제공합니다.
         </h3>
 
         <Marginer direction="vertical" margin="2rem" />

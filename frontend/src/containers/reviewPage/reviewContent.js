@@ -56,7 +56,7 @@ export default function ReviewContent() {
 
         <Marginer direction="vertical" margin="2rem" />
 
-        <SearchBar />
+        <SearchBar data={reviewContent} />
 
         <Marginer direction="vertical" margin="4rem" />
 
