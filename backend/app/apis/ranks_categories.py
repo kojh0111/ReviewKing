@@ -23,13 +23,16 @@ class RanksCategories(Resource):
             restaurant = Restaurants.query.filter_by(
                 category_id=category_data.id
             ).first()
+            if restaurant:
+                img_url = restaurant.img_url
+            else:
+                img_url = None
             tmp = {
                 "category_id": category_data.id,
                 "category": category_data.category,
-                "img_url": restaurant.img_url,
+                "img_url": img_url,
             }
             result.append(tmp)
-
         return jsonify(status=200, data=result)
 
 
