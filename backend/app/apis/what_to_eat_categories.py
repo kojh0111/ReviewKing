@@ -29,7 +29,7 @@ class WhatToEatCategories(Resource):
             img_url = restaurant.img_url
             tmp = {
                 "category_id": category.id,
-                "category": category.category,
+                "category": category.subcategory,
                 "img_url": img_url,
             }
             result.append(tmp)
