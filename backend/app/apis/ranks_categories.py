@@ -33,7 +33,7 @@ class RanksCategories(Resource):
                 "img_url": img_url,
             }
             result.append(tmp)
-        return jsonify(status=200, data=result)
+        return jsonify(status=200, categories=result)
 
 
 api.add_resource(RanksCategories, "/ranks")

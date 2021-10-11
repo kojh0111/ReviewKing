@@ -18,7 +18,7 @@ class WhatToEatCategories(Resource):
         categories = Categories.query.all()
         category_ids = [cat.id for cat in categories]
         random_ids = random.sample(category_ids, 10)  # 무작위로 10개 뽑기
-        #
+
         result = []
         for random_id in random_ids:
             restaurant = Restaurants.query.filter_by(category_id=random_id).first()
@@ -31,12 +31,13 @@ class WhatToEatCategories(Resource):
             }
             result.append(tmp)
 
-        return jsonify(status=200, data=result)
+        return jsonify(status=200, category=result)
 
     def post(self):
         args = parser.parse_args()
 
         categories = args["category"]
+        print(categories)
         return
         # categories_data = Categories.query.filter(Categories.id.in_(categories)).all()
 

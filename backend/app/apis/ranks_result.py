@@ -46,7 +46,7 @@ class RanksResult(Resource):
                 result.append(tmp)
                 rank += 1
 
-            return jsonify(status=200, data=result)
+            return jsonify(status=200, result=result)
         else:
             return jsonify(status=404)
 

@@ -30,7 +30,7 @@ class Restaurantlist(Resource):
             }
             data.append(tmp)
 
-        return jsonify(status=200, data=data)
+        return jsonify(status=200, restaurants=data)
 
 
 api.add_resource(Restaurantlist, "/reviews")

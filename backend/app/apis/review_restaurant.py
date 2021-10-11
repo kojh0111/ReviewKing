@@ -46,7 +46,7 @@ class ReviewRestaurant(Resource):
                 "siksinWC": wordclouds[3],
                 "id": restaurant_data.id,
             }
-            return jsonify(status=200, data=data)
+            return jsonify(status=200, restaurant=data)
         else:
             return jsonify(status=404)
 
