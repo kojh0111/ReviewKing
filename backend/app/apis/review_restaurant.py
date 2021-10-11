@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
-from models import Restaurants, Reviews, TotalRating
+from models import Restaurants, Reviews, TotalRating, Analysis
 
 reviews = Blueprint("reviews", __name__)
 api = Api(reviews)
@@ -19,9 +19,18 @@ class ReviewRestaurant(Resource):
             total_rating = TotalRating.query.filter(
                 TotalRating.restaurant_id == restaurant_data.id
             ).first()
-            restaurant_reviews = Reviews.query.filter(
-                restaurant_data.id == Reviews.restaurant_id
-            ).all()
+
+            # order: naver, kakao, mango, siksin
+            wordclouds = []
+
+            for platform in ["naver", "kakao", "mango", "siksin"]:
+                wordcloud = Analysis.query.filter_by(
+                    restaurant_id=restaurant_data.id, platform=platform
+                ).first()
+                if wordcloud:
+                    wordclouds.append(wordcloud.file_path)
+                else:
+                    wordclouds.append(None)
 
             data = {
                 "name": restaurant_data.name,
@@ -31,10 +40,10 @@ class ReviewRestaurant(Resource):
                 "kakao": total_rating.kakao,
                 "mango": total_rating.mango,
                 "siksin": total_rating.siksin,
-                "reviews": [
-                    [restaurant_review.content, restaurant_review.platform]
-                    for restaurant_review in restaurant_reviews
-                ],
+                "naverWC": wordclouds[0],
+                "kakaoWC": wordclouds[1],
+                "mangoWC": wordclouds[2],
+                "siksinWC": wordclouds[3],
                 "id": restaurant_data.id,
             }
             return jsonify(status=200, data=data)
