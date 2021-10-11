@@ -9,12 +9,14 @@ api = Api(eat_result)
 
 # request를 받기 위해서는 parser에 argument 추가 필요
 parser = reqparse.RequestParser()
-parser.add_argument("category", type=str)
+parser.add_argument("subcategory", type=str, location="json")
 
 
 class WhatToEatResult(Resource):
-    def get(self, id=None):
-        category = Categories.query.filter_by(id=id).first()
+    def post(self):
+        args = parser.parse_args()
+
+        category = Categories.query.filter_by(subcategory=subcategory).first()
 
         if category:
             category_id = category.id
