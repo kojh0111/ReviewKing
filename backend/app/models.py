@@ -8,7 +8,7 @@ class Restaurants(db.Model):
     name = db.Column(db.String(100), nullable=True)
     longitude_x = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     latitude_y = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
-    img_url = db.Column(db.Text(), nullable=True)
+    img_url = db.Column(db.String(3600), nullable=True)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
 
     categories = db.relationship("Categories", backref=db.backref("restaurants_set"))
@@ -30,26 +30,37 @@ class Reviews(db.Model):
     restaurants = db.relationship("Restaurants", backref=db.backref("reviews_set"))
 
 
-class Menus(db.Model):
-    __tablename__ = "menus"
+class KeyResLink(db.Model):
+    __tablename__ = "keyreslink"
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(100), nullable=False)
-    proeprties = db.Column(db.String(150), nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
-    restaurant_id = db.Column(
-        db.Integer, db.ForeignKey("restaurants.id", ondelete="CASCADE"), nullable=False
-    )
 
-    restaurants = db.relationship("Restaurants", backref=db.backref("menus_set"))
-    categories = db.relationship("Categories", backref=db.backref("menus_set"))
+    restaurant_id = db.Column(
+        db.Integer, db.ForeignKey("restaurants.id"), nullable=False
+    )
+    keyword_id = db.Column(db.Integer, db.ForeignKey("keywords.id"), nullable=True)
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=True)
+
+    restaurants = db.relationship("Restaurants", backref=db.backref("keyreslink_set"))
+    keywords = db.relationship("Keywords", backref=db.backref("keyreslink_set"))
+    categories = db.relationship("Categories", backref=db.backref("keyreslink_set"))
+
+
+class Keywords(db.Model):
+    __tablename__ = "keywords"
+
+    id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
+    keyword = db.Column(db.String(100), nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
+
+    categories = db.relationship("Categories", backref=db.backref("kewywords_set"))
 
 
 class Analysis(db.Model):
     __tablename__ = "analysis"
 
     id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
-    file_path = db.Column(db.String(200), nullable=True)
+    file_path = db.Column(db.String(300), nullable=True)
     platform = db.Column(db.String(30), nullable=False)
 
     restaurant_id = db.Column(
