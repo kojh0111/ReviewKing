@@ -5,6 +5,7 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import Marginer from '../../components/marginer';
 import Map from '../../components/map/map';
+import WordCloudTabs from '../../components/wordcloudTab/Tabs';
 
 export default function ReviewResult() {
   const [reviewResult, setReviewResult] = useState([]);
@@ -46,6 +47,8 @@ export default function ReviewResult() {
   if (error) return <div className="notice-error ">에러가 발생했습니다</div>;
   if (!reviewResult) return null;
 
+  console.log(reviewResult);
+
   return (
     <div className="ReviewContainer">
       <Marginer direction="vertical" margin="3rem" />
@@ -61,30 +64,6 @@ export default function ReviewResult() {
             {reviewResult.name}
           </h2>
         </div>
-        <Marginer direction="vertical" margin="4rem" />
-
-        <div className="ReviewRatingContainer">
-          <div className="kakaoRating">
-            <h1>카카오</h1>
-            <Marginer direction="vertical" margin="1rem" />
-            <h2 style={{ color: '#ff5722' }}>{reviewResult.kakao}</h2>
-          </div>
-          <div className="mangoRating">
-            <h1>망고 플레이트</h1>
-            <Marginer direction="vertical" margin="1rem" />
-            <h2 style={{ color: '#ff5722' }}>{reviewResult.mango}</h2>
-          </div>
-          <div className="naverRating">
-            <h1>네이버</h1>
-            <Marginer direction="vertical" margin="1rem" />
-            <h2 style={{ color: '#ff5722' }}>{reviewResult.naver}</h2>
-          </div>
-          <div className="siksinRating">
-            <h1>식신</h1>
-            <Marginer direction="vertical" margin="1rem" />
-            <h2 style={{ color: '#ff5722' }}>{reviewResult.siksin}</h2>
-          </div>
-        </div>
         <Marginer direction="vertical" margin="3rem" />
 
         <div className="buttonContainer">
@@ -94,14 +73,11 @@ export default function ReviewResult() {
             </button>
           </Link>
         </div>
+        <Marginer direction="vertical" margin="2rem" />
 
-        <Marginer direction="vertical" margin="4rem" />
-        <img
-          src={reviewResult.kakaoWC}
-          className="svg"
-          style={{ width: '80%' }}
-        />
-        <Marginer direction="vertical" margin="1rem" />
+        <WordCloudTabs data={reviewResult} />
+
+        <Marginer direction="vertical" margin="2rem" />
         <h3 className="bodyText">
           리뷰왕은 검색하신 음식점의 대한 정보를 크롤링하여 사용자에게
           워드클라우드 형태로 제공합니다.
