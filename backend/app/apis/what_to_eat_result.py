@@ -34,7 +34,9 @@ class WhatToEatResult(Resource):
                 tmp = {
                     "name": restaurant.name,
                     "restaurnt_id": restaurant.id,
-                    "integrated_rating": round(float(total_rating.integrated_rating), 2),
+                    "integrated_rating": round(
+                        float(total_rating.integrated_rating), 2
+                    ),
                     "rank": rank,
                 }
                 result.append(tmp)
