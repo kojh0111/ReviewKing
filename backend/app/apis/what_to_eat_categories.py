@@ -9,7 +9,7 @@ api = Api(eat_categories)
 
 # request를 받기 위해서는 parser에 argument 추가 필요
 parser = reqparse.RequestParser()
-parser.add_argument("category", type=str)
+parser.add_argument("subcategory", type=str, location="json")
 
 
 class WhatToEatCategories(Resource):
@@ -17,7 +17,7 @@ class WhatToEatCategories(Resource):
         categories = Categories.query.all()
         category_ids = [cat.id for cat in categories]
         random_ids = random.sample(category_ids, 10)  # 무작위로 10개 뽑기
-
+        #
         result = []
         for random_id in random_ids:
             restaurant = (
@@ -26,7 +26,10 @@ class WhatToEatCategories(Resource):
                 .first()
             )
             category = Categories.query.filter_by(id=random_id).first()
-            img_url = restaurant.img_url
+            if restaurant:
+                img_url = restaurant.img_url
+            else:
+                img_url = None
             tmp = {
                 "category_id": category.id,
                 "category": category.subcategory,
@@ -35,6 +38,14 @@ class WhatToEatCategories(Resource):
             result.append(tmp)
 
         return jsonify(status=200, data=result)
+
+    # def post(self):
+    #     args = parser.parse_args()
+    #     subcategories = args["subcategory"]
+
+    #     categories = Categories.query.all()
+    #     category_ids = [cat.id for cat in categories]
+    #     random_ids = random.sample(category_ids, 10)  # 무작위로 10개 뽑기
 
 
 api.add_resource(WhatToEatCategories, "/what-to-eat")

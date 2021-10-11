@@ -15,38 +15,40 @@ parser.add_argument("subcategory", type=str, location="json")
 class WhatToEatResult(Resource):
     def post(self):
         args = parser.parse_args()
+        subcategories = args["subcategory"]
+        return
+        # for subcategory in subcategories:
+        #     category = Categories.query.filter_by(subcategory=subcategory).first()
 
-        category = Categories.query.filter_by(subcategory=subcategory).first()
+        #     if category:
+        #         category_id = category.id
+        #         # 해당 카테고리의 상위 평점 3개의 음식점 제공
+        #         restaurants_rated = (
+        #             Restaurants.query.join(TotalRating)
+        #             .filter(Restaurants.category_id == category_id)
+        #             .order_by(TotalRating.integrated_rating.desc())[:3]
+        #         )
+        #     # 상위 3개 가져오기
+        #     rank = 1
+        #     result = []
+        #     for restaurant in restaurants_rated:
+        #         total_rating = TotalRating.query.filter_by(
+        #             restaurant_id=restaurant.id
+        #         ).first()
+        #         tmp = {
+        #             "name": restaurant.name,
+        #             "restaurnt_id": restaurant.id,
+        #             "integrated_rating": round(
+        #                 float(total_rating.integrated_rating), 2
+        #             ),
+        #             "rank": rank,
+        #         }
+        #         result.append(tmp)
+        #         rank += 1
 
-        if category:
-            category_id = category.id
-            # 해당 카테고리의 상위 평점 3개의 음식점 제공
-            restaurants_rated = (
-                Restaurants.query.join(TotalRating)
-                .filter(Restaurants.category_id == category_id)
-                .order_by(TotalRating.integrated_rating.desc())[:3]
-            )
-            # 상위 3개 가져오기
-            rank = 1
-            result = []
-            for restaurant in restaurants_rated:
-                total_rating = TotalRating.query.filter_by(
-                    restaurant_id=restaurant.id
-                ).first()
-                tmp = {
-                    "name": restaurant.name,
-                    "restaurnt_id": restaurant.id,
-                    "integrated_rating": round(
-                        float(total_rating.integrated_rating), 2
-                    ),
-                    "rank": rank,
-                }
-                result.append(tmp)
-                rank += 1
-
-            return jsonify(status=200, data=result)
-        else:
-            return jsonify(status=404)
+        #     return jsonify(status=200, data=result)
+        # else:
+        #     return jsonify(status=404)
 
 
-api.add_resource(WhatToEatResult, "/what-to-eat/<int:id>")
+api.add_resource(WhatToEatResult, "/what-to-eat/result")
