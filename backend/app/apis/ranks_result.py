@@ -35,7 +35,9 @@ class RanksResult(Resource):
                 ).first()
                 tmp = {
                     "name": restaurant.name,
-                    "integrated_rating": total_rating.integrated_rating,
+                    "integrated_rating": round(
+                        float(total_rating.integrated_rating), 2
+                    ),
                     "img_url": restaurant.img_url,
                     "latitude": restaurant.latitude_y,
                     "longitude": restaurant.longitude_x,
