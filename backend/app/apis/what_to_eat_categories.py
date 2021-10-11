@@ -20,20 +20,12 @@ class WhatToEatCategories(Resource):
         #
         result = []
         for random_id in random_ids:
-            restaurant = (
-                Restaurants.query.join(Categories)
-                .filter(Restaurants.category_id == random_id)
-                .first()
-            )
+            restaurant = Restaurants.query.filter_by(category_id=random_id).first()
             category = Categories.query.filter_by(id=random_id).first()
-            if restaurant:
-                img_url = restaurant.img_url
-            else:
-                img_url = None
             tmp = {
                 "category_id": category.id,
                 "category": category.subcategory,
-                "img_url": img_url,
+                "img_url": restaurant.img_url,
             }
             result.append(tmp)
 
