@@ -20,7 +20,7 @@ class RanksCategories(Resource):
             tmp = {
                 "category_id": category_data.id,
                 "category": category_data.category,
-                "img_url": img_url,
+                "img_url": restaurant.img_url,
             }
             result.append(tmp)
         return jsonify(status=200, categories=result)
