@@ -12,13 +12,13 @@ parser.add_argument("subcategory", type=str)
 
 
 class WhatToEatKeywords(Resource):
-    def post(self, subcategory=None):
+    def get(self, subcategory=None):
         keywords_data = Keywords.query.filter_by(subcategory=subcategory).all()
 
         if keywords_data:
             keywords = [data.keyword for data in keywords_data]
-
             return jsonify(status=200, keywords=sorted(keywords))
+
         else:
             return jsonify(status=404)
 
