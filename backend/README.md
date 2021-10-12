@@ -1,6 +1,6 @@
 # :crown: ReviewKing Server
 
-<div><a href="http://sogang-sincheong.com/" target="_blank"> <img src="/Logo.png" alt="service-logo" width="200" height="200"/></a></div>
+<!-- <div><a href="http://sogang-sincheong.com/" target="_blank"> <img src="/Logo.png" alt="service-logo" width="200" height="200"/></a></div> -->
 
 음식점 리뷰 비교 서비스 '리뷰왕'의 백엔드 서버 입니다.
 
