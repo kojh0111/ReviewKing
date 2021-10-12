@@ -47,4 +47,4 @@ class RestaurantsReviews(Resource):
             return jsonify(status=404)
 
 
-api.add_resource(RestaurantsReviews, "/reviews")
+api.add_resource(RestaurantsReviews, "/reviews/<int:id>")
