@@ -1,8 +1,8 @@
-# :crown: ReviewKing Server
+# :crown: 리뷰왕 서버
 
 <!-- <div><a href="http://sogang-sincheong.com/" target="_blank"> <img src="/Logo.png" alt="service-logo" width="200" height="200"/></a></div> -->
 
-음식점 리뷰 비교 서비스 '리뷰왕'의 백엔드 서버 입니다.
+### 음식점 리뷰 비교 서비스 '리뷰왕'의 백엔드 서버 입니다.
 
 네이버, 카카오의 음식점 평점이 매우 달라, 한 플랫폼만 참고해 음식점을 가면
 예상과는 달리 매우 맛이 없고 서비스가 불만족 스러웠던 경험이 있었습니다.
