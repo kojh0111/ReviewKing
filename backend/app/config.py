@@ -8,8 +8,8 @@ HOST = os.environ.get("HOST")
 
 db_info = {
     "user": "jihun",
-    "password": "reviewking123",
-    "host": "reviewking.cpyzmx2pckio.us-east-2.rds.amazonaws.com",
+    "password": PASSWORD,
+    "host": HOST,
     "port": 3306,
     "database": "reviewking",
 }
@@ -22,7 +22,7 @@ SQLALCHEMY_ENGINE_OPTIONS = {
     "pool_recycle": SQLALCHEMY_POOL_RECYCLE,
     "pool_timeout": SQLALCHEMY_POOL_TIMEOUT,
     "pool_pre_ping": SQLALCHEMY_PRE_PING,
-    "pool_size": 0,
+    "pool_size": 500,
     "max_overflow": 0,
 }
 
