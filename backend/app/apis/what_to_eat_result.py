@@ -1,46 +1,58 @@
 from flask import Blueprint, jsonify
-from flask_restful import Resource, Api, reqparse
-from models import Restaurants, Categories, Reviews, TotalRating, Menus
-from app import db
-import random
+from flask_restful import Resource, Api, reqparse, request
+from models import Keywords, KeyResLink, TotalRating
+import heapq
 
-eat_result = Blueprint("what-to-eat-result", __name__)
-api = Api(eat_result)
+what_to_eat_result = Blueprint("what-to-eat-result", __name__)
+api = Api(what_to_eat_result)
 
 # request를 받기 위해서는 parser에 argument 추가 필요
 parser = reqparse.RequestParser()
-parser.add_argument("subcategory", type=str, location="json")
+parser.add_argument("key", action="append")
 
 
 class WhatToEatResult(Resource):
-    def post(self):
+    # 음식점 검색창 제공
+    def get(self):
+        # 지도 제공
         args = parser.parse_args()
-        subcategories = args["subcategory"]
+        keywords = args["key"]
 
-        category_id = category.id
-        # 해당 카테고리의 상위 평점 3개의 음식점 제공
-        restaurants_rated = (
-            Restaurants.query.join(TotalRating)
-            .filter(Restaurants.category_id == category_id)
-            .order_by(TotalRating.integrated_rating.desc())[:3]
-        )
-        # 상위 3개 가져오기
-        rank = 1
-        result = []
-        for restaurant in restaurants_rated:
-            total_rating = TotalRating.query.filter_by(
-                restaurant_id=restaurant.id
-            ).first()
-            tmp = {
-                "name": restaurant.name,
-                "restaurnt_id": restaurant.id,
-                "integrated_rating": round(float(total_rating.integrated_rating), 2),
-                "rank": rank,
-            }
-            result.append(tmp)
-            rank += 1
+        if len(keywords) != 0:
+            # 해당 keyword를 가진 음식점들 중 평점 높은 것들 heap에 저장
+            heap = []
+            for keyword in keywords:
+                key_data = Keywords.query.filter_by(keyword=keyword).first()
+                key_res_links = KeyResLink.query.filter_by(keyword_id=key_data.id).all()
+                if key_res_links:
+                    for key_res_link in key_res_links:
+                        res_id = key_res_link.restaurant_id
+                        restaurant = Restaurants.query.filter_by(id=res_id).first()
+                        heapq.heappush((-restaurant.integrated_rating, restaurant))
 
-        return jsonify(status=200, data=result)
+            # 상위 3개 가져오기
+            rank = 1
+            result = []
+            while heap and rank <= 3:
+                integrated_rating, restaurant = heapq.heappop(heap)
+                total_rating = TotalRating.query.filter_by(
+                    restaurant_id=restaurant.id
+                ).first()
+                tmp = {
+                    "name": restaurant.name,
+                    "naver": total_rating.naver,
+                    "kakao": total_rating.kakao,
+                    "mango": total_rating.mango,
+                    "siksin": total_rating.siksin,
+                    "integrated_rating": round(float(-integrated_rating), 2),
+                    "rank": rank,
+                }
+                result.append(tmp)
+                rank += 1
+
+            return jsonify(status=200, result=result)
+        else:
+            return jsonify(status=404)
 
 
 api.add_resource(WhatToEatResult, "/what-to-eat")
