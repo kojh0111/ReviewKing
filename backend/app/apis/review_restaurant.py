@@ -1,13 +1,9 @@
 from flask import Blueprint, jsonify
-from flask_restful import Resource, Api, reqparse
+from flask_restful import Resource, Api, reqparse, request
 from models import Restaurants, Reviews, TotalRating, Analysis
 
 reviews = Blueprint("reviews", __name__)
 api = Api(reviews)
-
-# request를 받기 위해서는 parser에 argument 추가 필요
-parser = reqparse.RequestParser()
-parser.add_argument("restaurant_name", type=str)
 
 
 class ReviewRestaurant(Resource):
@@ -51,4 +47,4 @@ class ReviewRestaurant(Resource):
             return jsonify(status=404)
 
 
-api.add_resource(ReviewRestaurant, "/reviews/<int:id>")
+api.add_resource(ReviewRestaurant, "/reviews")
