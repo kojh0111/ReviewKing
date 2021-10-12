@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse, request
-from models import Keywords, KeyResLink, TotalRating
+from models import Keywords, KeyResLink, TotalRating, Restaurants
+from sqlalchemy import and_
 import heapq
 
 what_to_eat_result = Blueprint("what-to-eat-result", __name__)
@@ -15,6 +16,7 @@ class WhatToEatResult(Resource):
     # 음식점 검색창 제공
     def get(self):
         # 지도 제공
+        subcategory = request.path.split("/")[-1]
         args = parser.parse_args()
         keywords = args["key"]
 
@@ -22,7 +24,9 @@ class WhatToEatResult(Resource):
             # 해당 keyword를 가진 음식점들 중 평점 높은 것들 heap에 저장
             heap = []
             for keyword in keywords:
-                key_data = Keywords.query.filter_by(keyword=keyword).first()
+                key_data = Keywords.query.filter_by(
+                    and_(keyword=keyword, subcategory=subcategory)
+                ).first()
                 key_res_links = KeyResLink.query.filter_by(keyword_id=key_data.id).all()
                 if key_res_links:
                     for key_res_link in key_res_links:
@@ -55,4 +59,4 @@ class WhatToEatResult(Resource):
             return jsonify(status=404)
 
 
-api.add_resource(WhatToEatResult, "/what-to-eat")
+api.add_resource(WhatToEatResult, "/what-to-eat/result")

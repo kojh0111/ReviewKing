@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
 from models import Keywords
-from app import db
 
 what_to_eat_keywords = Blueprint("what-to-eat-keywords", __name__)
 api = Api(what_to_eat_keywords)
