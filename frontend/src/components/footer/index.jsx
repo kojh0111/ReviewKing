@@ -27,10 +27,8 @@ export default function Footer() {
       <Marginer direction="vertical" margin="3rem" />
       <Logo />
       <Marginer direction="vertical" margin="1rem" />
-      <h1 className="IntroduceText">코로나 발생 전과 후,</h1>
-      <h1 className="IntroduceText">
-        엘리스 본사 주변의 음식점 리뷰 변화를 분석합니다.
-      </h1>
+      <h1 className="IntroduceText">엘리스 교육장 주변의 음식점</h1>
+      <h1 className="IntroduceText">플랫폼별 리뷰를 분석합니다</h1>
       <Marginer direction="vertical" margin="1rem" />
       <Button onClick={scrollToServiceSection}>오늘 뭐먹지??</Button>
       <Marginer direction="vertical" margin="5rem" />

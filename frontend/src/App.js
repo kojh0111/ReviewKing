@@ -24,8 +24,9 @@ function App() {
         <title>리뷰왕</title>
       </Helmet>
 
+      <TopSection />
+
       <Router>
-        <TopSection />
         <div className="tabContainer">
           {tabTitle.map(item => (
             <TabMenuItem

@@ -15,18 +15,28 @@ export default function IntroduceContent() {
           <br />
           알고 계셨나요?
         </p>
+      </div>
+      <Marginer direction="vertical" margin="2rem" />
 
-        <Marginer direction="vertical" margin="2rem" />
-        <p className="Description">
-          <span>리뷰를 비교해보며</span>
-          <span>
-            사용자에게 '어떤 플랫폼이 더 낫다'라고 알려주기보다는 플랫폼별로
-            비교를 할 수 있도록 합니다.
-          </span>
-          <span>사용자는 더 좋은 선택을</span>
-          <span>이를 통해 합리적인 선택을 할 수 있게 될 것입니다.</span>
+      <div className="IntroduceImage" alt="" />
+
+      <Marginer direction="vertical" margin="2rem" />
+
+      <div className="SubIntroConatiner">
+        <p className="Intro">리뷰를 비교해보며</p>
+        <p className="subIntro">
+          사용자에게 '어떤 플랫폼이 더 낫다'라고 알려주기보다는 플랫폼 별로
+          비교를 할 수 있도록 합니다.
+        </p>
+        <Marginer direction="vertical" margin="1rem" />
+        <p className="Intro">사용자는 더 좋은 선택을</p>
+        <p className="subIntro">
+          이를 통해 합리적인 선택을 할 수 있게 될 것입니다.
         </p>
       </div>
+
+      <Marginer direction="vertical" margin="4rem" />
+
       <h2 className="TitleText">팀원 소개</h2>
       <div className="PeopleIntroContainer">
         {Members.map(option => (
@@ -56,3 +66,16 @@ export default function IntroduceContent() {
 }
 
 // TODO. 이미지 구해서 슬슬 작성할 것!
+
+// eslint-disable-next-line no-lone-blocks
+{
+  /* <p className="Description">
+          <span>리뷰를 비교해보며</span>
+          <span>
+            사용자에게 '어떤 플랫폼이 더 낫다'라고 알려주기보다는
+            <br /> 플랫폼 별로 비교를 할 수 있도록 합니다.
+          </span>
+          <span>사용자는 더 좋은 선택을</span>
+          <span>이를 통해 합리적인 선택을 할 수 있게 될 것입니다.</span>
+        </p> */
+}
