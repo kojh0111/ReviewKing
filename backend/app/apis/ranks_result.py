@@ -25,7 +25,6 @@ class RanksResult(Resource):
             for restaurant in restaurants_rated:
                 if rank == 4:
                     break
-                menus = Menus.query.filter_by(restaurant_id=restaurant.id).all()
                 total_rating = TotalRating.query.filter_by(
                     restaurant_id=restaurant.id
                 ).first()
