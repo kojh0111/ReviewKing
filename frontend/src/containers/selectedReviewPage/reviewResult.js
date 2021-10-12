@@ -81,7 +81,7 @@ export default function ReviewResult() {
 
         <Marginer direction="vertical" margin="2rem" />
         <h3 className="bodyText">
-          리뷰왕은 검색하신 음식점의 대한 정보를 크롤링하여 사용자에게
+          리뷰왕은 검색하신 음식점에 대한 정보를 크롤링하여 사용자에게
           워드클라우드 형태로 제공합니다.
         </h3>
 

@@ -16,7 +16,7 @@ function TabMenuItem(props) {
         to={props.path}
         exact={props.exact ? props.exact : false}
         activeStyle={{
-          color: '#FF5722',
+          color: '#ff5722',
         }}
         onClick={scrollToServiceSection}
       >

@@ -50,7 +50,7 @@ export default function Map(props) {
 
   return (
     <>
-      <div id="map" style={{ width: '80%', height: '500px' }} />
+      <div id="map" style={{ height: '500px' }} />
     </>
   );
 }

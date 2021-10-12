@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import BeemaLogo from '../../assets/logo/logo_croped.png';
+// import BeemaLogo from '../../assets/logo/logo_croped.png';
 import Button from '../button';
 import Marginer from '../marginer';
+import KingLogo from '../../assets/logo/reviewking.png';
 import './index.scss';
 
 export default function Navbar() {
@@ -16,7 +17,7 @@ export default function Navbar() {
   return (
     <div className="NavbarContainer">
       <Link to="/" className="BrandContainer">
-        <img src={BeemaLogo} alt="logo" />
+        <img src={KingLogo} alt="logo" />
         <span>리뷰왕</span>
       </Link>
 
