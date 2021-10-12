@@ -23,4 +23,4 @@ class WhatToEatKeywords(Resource):
             return jsonify(status=404)
 
 
-api.add_resource(WhatToEatResult, "/what-to-eat/<str:subcategory>")
+api.add_resource(WhatToEatKeywords, "/what-to-eat/<string:subcategory>")
