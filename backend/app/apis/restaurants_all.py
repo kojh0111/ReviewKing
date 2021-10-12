@@ -2,8 +2,8 @@ from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
 from models import Restaurants, Categories
 
-all_restaurants = Blueprint("all-restaurant", __name__)
-api = Api(all_restaurants)
+restaurants_all = Blueprint("all-restaurant", __name__)
+api = Api(restaurants_all)
 
 
 class AllRestaurants(Resource):
