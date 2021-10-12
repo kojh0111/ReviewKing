@@ -37,9 +37,12 @@ class WhatToEatResult(Resource):
                         total_rating = TotalRating.query.filter_by(
                             restaurant_id=res_id
                         ).first()
-                        heapq.heappush(
-                            heap, (-total_rating.integrated_rating, restaurant)
-                        )
+                        if (-total_rating.integrated_rating, restaurant) not in heap:
+                            heapq.heappush(
+                                heap, (-total_rating.integrated_rating, restaurant)
+                            )
+                        else:
+                            pass
 
             # 상위 3개 가져오기
             rank = 1
