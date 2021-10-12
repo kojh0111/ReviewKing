@@ -14,9 +14,9 @@ parser.add_argument("key", action="append")
 
 class WhatToEatResult(Resource):
     # 음식점 검색창 제공
-    def get(self):
+    def get(self, subcategory=None):
         # 지도 제공
-        subcategory = request.path.split("/")[-1]
+        # subcategory = request.path.split("/")[-1]
         args = parser.parse_args()
         keywords = args["key"]
 
@@ -24,15 +24,18 @@ class WhatToEatResult(Resource):
             # 해당 keyword를 가진 음식점들 중 평점 높은 것들 heap에 저장
             heap = []
             for keyword in keywords:
-                key_data = Keywords.query.filter_by(
-                    and_(keyword=keyword, subcategory=subcategory)
-                ).first()
+                key_data = Keywords.query.filter_by(keyword=keyword).first()
                 key_res_links = KeyResLink.query.filter_by(keyword_id=key_data.id).all()
                 if key_res_links:
                     for key_res_link in key_res_links:
                         res_id = key_res_link.restaurant_id
                         restaurant = Restaurants.query.filter_by(id=res_id).first()
-                        heapq.heappush((-restaurant.integrated_rating, restaurant))
+                        total_rating = TotalRating.query.filter_by(
+                            restaurant_id=res_id
+                        ).first()
+                        heapq.heappush(
+                            heap, (-total_rating.integrated_rating, restaurant)
+                        )
 
             # 상위 3개 가져오기
             rank = 1
@@ -59,4 +62,4 @@ class WhatToEatResult(Resource):
             return jsonify(status=404)
 
 
-api.add_resource(WhatToEatResult, "/what-to-eat/result")
+api.add_resource(WhatToEatResult, "/what-to-eat/<string:subcategory>/")
