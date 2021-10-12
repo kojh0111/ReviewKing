@@ -28,8 +28,14 @@ class RanksResult(Resource):
                 total_rating = TotalRating.query.filter_by(
                     restaurant_id=restaurant.id
                 ).first()
+                category = (
+                    Categories.query.filter_by(id=restaurant.category_id)
+                    .first()
+                    .category
+                )
                 tmp = {
                     "name": restaurant.name,
+                    "cateegory": category,
                     "integrated_rating": round(
                         float(total_rating.integrated_rating), 2
                     ),
