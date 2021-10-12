@@ -35,7 +35,7 @@ export default function Footer() {
 
       <div className="GuideContainer">
         <div className="PrivacyContainer">
-          <Link to="/info/" className="Link" onClick={scrollToServiceSection}>
+          <Link to="/" className="Link" onClick={scrollToServiceSection}>
             <div className="Link">서비스 소개</div>
           </Link>
 

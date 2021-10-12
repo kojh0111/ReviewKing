@@ -1,3 +1,6 @@
+@import "../../styles/variable";
+@import url(//font.elice.io/EliceDigitalBaeum.css);
+
 .WordCloudcontainer {
     display: flex;
     flex-direction: column;
@@ -5,9 +8,11 @@
     width: 80%;
     min-height: 300px;
     background: #f1f1f1;
-    margin: 100px auto 0;
+    margin: 0;
     word-break: break-all;
     border: 1px solid rgba(0, 0, 0, 0.274);
+    font-family: "Elice Digital Baeum";
+    box-shadow: 0 4px 18px rgb(11 33 74 / 10%), 0 -2px 4px rgb(11 33 74 / 3%);
 }
 
 .bloc-tabs {
@@ -17,7 +22,11 @@
     padding: 15px;
     text-align: center;
     width: 50%;
-    background: rgba(128, 128, 128, 0.075);
+    font-family: "Elice Digital Baeum";
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: $docker-boldFont;
+    background: $main_white;
     cursor: pointer;
     border-bottom: 1px solid rgba(0, 0, 0, 0.274);
     box-sizing: content-box;
@@ -29,7 +38,8 @@
 }
 
 .active-tabs {
-    background: white;
+    background: $docker-blue;
+    color: $main_white;
     border-bottom: 1px solid transparent;
 }
 
@@ -42,7 +52,7 @@
     transform: translateX(-50%);
     width: calc(100% + 2px);
     height: 5px;
-    background: rgb(88, 147, 241);
+    background: $docker-boldFont;
 }
 
 button {
@@ -52,6 +62,8 @@ button {
     flex-grow: 1;
 }
 .content {
+    display: flex;
+    flex-direction: row;
     background: white;
     padding: 20px;
     width: 100%;
@@ -59,6 +71,10 @@ button {
     display: none;
 }
 .content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: $docker-boldFont;
+    text-align: center;
     padding: 0px 0 5px 0px;
 }
 .content hr {

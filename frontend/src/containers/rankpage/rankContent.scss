@@ -72,19 +72,27 @@
   .notice {
     height: 40rem;
     font-size: 3rem;
-    color: $main_purple;
+    color: $docker-deepblue;
     font-family: "Elice Digital Baeum";
     font-weight: 700;
+
+    @media screen and (max-width: 400px) {
+      font-size: 2.5rem;
+    }
   }
 }
 
 .loader {
   border: 16px solid $main_gray;
-  border-top: 16px solid $main_purple;
+  border-top: 16px solid $docker-deepblue;
   border-radius: 50%;
   width: 120px;
   height: 120px;
   animation: spin 2s linear infinite;
+
+  @media screen and (max-width: 400px) {
+    font-size: 2.5rem;
+  }
 
   @keyframes spin {
     0% {
@@ -105,5 +113,10 @@
   justify-content: center;
   height: 40rem;
   font-size: 3rem;
-  color: $main_purple;
+  color: $docker-deepblue;
+
+  @media screen and (max-width: 400px) {
+    padding-top: 3rem;
+    font-size: 2.3rem;
+  }
 }

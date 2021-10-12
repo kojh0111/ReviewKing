@@ -18,7 +18,7 @@ export default function ReviewContent() {
     const RestaurantsResponse = await axios
       .get(`http://3.139.100.234:5000/reviews`)
       .then(response => {
-        setReviewContent(response.data.data);
+        setReviewContent(response.data.restaurants);
       })
       .catch(e => {
         setError(e);

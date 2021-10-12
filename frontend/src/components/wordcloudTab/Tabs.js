@@ -50,9 +50,9 @@ export default function WordCloudTabs(props) {
           className={toggleState === 1 ? 'content  active-content' : 'content'}
         >
           <Marginer direction="vertical" margin="1rem" />
-          <h2>평점: {props.data.kakao}</h2>
+          <h2>평점</h2>
           <Marginer direction="vertical" margin="1rem" />
-
+          <h2 style={{ color: '#ff5722' }}>{props.data.kakao}</h2>
           <img
             src={props.data.kakaoWC}
             className="svg"
@@ -64,8 +64,9 @@ export default function WordCloudTabs(props) {
           className={toggleState === 2 ? 'content  active-content' : 'content'}
         >
           <Marginer direction="vertical" margin="1rem" />
-          <h2>평점: {props.data.mango}</h2>
+          <h2>평점</h2>
           <Marginer direction="vertical" margin="1rem" />
+          <h2 style={{ color: '#ff5722' }}>{props.data.mango}</h2>
 
           <img
             src={props.data.mangoWC}
@@ -78,8 +79,9 @@ export default function WordCloudTabs(props) {
           className={toggleState === 3 ? 'content  active-content' : 'content'}
         >
           <Marginer direction="vertical" margin="1rem" />
-          <h2>평점: {props.data.naver}</h2>
+          <h2>평점</h2>
           <Marginer direction="vertical" margin="1rem" />
+          <h2 style={{ color: '#ff5722' }}>{props.data.naver}</h2>
 
           <img
             src={props.data.naverWC}
@@ -92,8 +94,9 @@ export default function WordCloudTabs(props) {
           className={toggleState === 4 ? 'content  active-content' : 'content'}
         >
           <Marginer direction="vertical" margin="1rem" />
-          <h2>평점: {props.data.siksin}</h2>
+          <h2>평점</h2>
           <Marginer direction="vertical" margin="1rem" />
+          <h2 style={{ color: '#ff5722' }}>{props.data.siksin}</h2>
 
           <img
             src={props.data.siksinWC}

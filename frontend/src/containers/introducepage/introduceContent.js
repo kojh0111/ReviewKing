@@ -2,37 +2,40 @@ import './introduceContent.scss';
 import React from 'react';
 import Members from '../../const/member';
 import Marginer from '../../components/marginer';
+import IntroImage from '../../assets/pictures/introduceImage.PNG';
 
 export default function IntroduceContent() {
   return (
     <div className="IntroduceContainer">
       <div className="ServiceIntroContainer">
-        <p className="Intro">리뷰왕은 플랫폼 별</p>
-        <p className="Intro">리뷰의 차이를 분석합니다.</p>
+        <div className="Intro">리뷰왕은 플랫폼 별</div>
+        <div className="Intro">리뷰의 차이를 분석합니다.</div>
         <Marginer direction="vertical" margin="1rem" />
-        <p className="subIntro">
+        <div className="subIntro">
           플랫폼 별 맛집 평점이 서로 다르다는 사실.
           <br />
           알고 계셨나요?
-        </p>
+        </div>
       </div>
       <Marginer direction="vertical" margin="2rem" />
 
-      <div className="IntroduceImage" alt="" />
+      <div className="IntroduceImage">
+        <img alt="" className="IntroImage" src={IntroImage} />
+      </div>
 
       <Marginer direction="vertical" margin="2rem" />
 
       <div className="SubIntroConatiner">
-        <p className="Intro">리뷰를 비교해보며</p>
-        <p className="subIntro">
+        <div className="Intro">리뷰를 비교해보며</div>
+        <div className="subIntro">
           사용자에게 '어떤 플랫폼이 더 낫다'라고 알려주기보다는 플랫폼 별로
           비교를 할 수 있도록 합니다.
-        </p>
+        </div>
         <Marginer direction="vertical" margin="1rem" />
-        <p className="Intro">사용자는 더 좋은 선택을</p>
-        <p className="subIntro">
+        <div className="Intro">사용자는 더 좋은 선택을</div>
+        <div className="subIntro">
           이를 통해 합리적인 선택을 할 수 있게 될 것입니다.
-        </p>
+        </div>
       </div>
 
       <Marginer direction="vertical" margin="4rem" />
@@ -42,19 +45,14 @@ export default function IntroduceContent() {
         {Members.map(option => (
           <div className="CardContainer">
             <img alt="" className="CardIcon" src={option.src} />
+            <h2 className="PeopleText">{option.name}</h2>
             <h2
               className="PeopleText"
               style={{
-                color: 'rgb(86, 75, 190)',
-                fontSize: '1.5rem',
-                fontWeight: '700',
+                color: 'rgb(0, 44, 102)',
+                fontSize: '0.8rem',
+                fontWeight: '200',
               }}
-            >
-              {option.name}
-            </h2>
-            <h2
-              className="PeopleText"
-              style={{ color: 'rgb(110, 106, 146)', fontSize: '0.8rem' }}
             >
               {option.role}
             </h2>
@@ -66,16 +64,3 @@ export default function IntroduceContent() {
 }
 
 // TODO. 이미지 구해서 슬슬 작성할 것!
-
-// eslint-disable-next-line no-lone-blocks
-{
-  /* <p className="Description">
-          <span>리뷰를 비교해보며</span>
-          <span>
-            사용자에게 '어떤 플랫폼이 더 낫다'라고 알려주기보다는
-            <br /> 플랫폼 별로 비교를 할 수 있도록 합니다.
-          </span>
-          <span>사용자는 더 좋은 선택을</span>
-          <span>이를 통해 합리적인 선택을 할 수 있게 될 것입니다.</span>
-        </p> */
-}

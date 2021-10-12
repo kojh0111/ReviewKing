@@ -7,7 +7,10 @@ import './index.scss';
 
 export default function Navbar() {
   const scrollToServiceSection = () => {
-    window.scrollTo({ top: document.documentElement.clientHeight, behavior: 'smooth' });
+    window.scrollTo({
+      top: document.documentElement.clientHeight,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -18,11 +21,7 @@ export default function Navbar() {
       </Link>
 
       <div className="AccessibilityContainer">
-        <Button
-          onClick={scrollToServiceSection}
-        >
-          오늘 뭐먹지?
-        </Button>
+        <Button onClick={scrollToServiceSection}>오늘 뭐먹지?</Button>
         <Marginer direction="horizontal" margin="8px" />
         <button type="button" className="LoginButton">
           로그인 (보류)

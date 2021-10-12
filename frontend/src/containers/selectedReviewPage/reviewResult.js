@@ -23,7 +23,7 @@ export default function ReviewResult() {
     const SelectedResponse = await axios
       .get(`http://3.139.100.234:5000/reviews/${id}`)
       .then(response => {
-        setReviewResult(response.data.data);
+        setReviewResult(response.data.restaurant);
       })
       .catch(e => {
         setError(e);
@@ -64,7 +64,7 @@ export default function ReviewResult() {
             {reviewResult.name}
           </h2>
         </div>
-        <Marginer direction="vertical" margin="3rem" />
+        <Marginer direction="vertical" margin="2rem" />
 
         <div className="buttonContainer">
           <Link to="/reviews">
@@ -83,13 +83,12 @@ export default function ReviewResult() {
           워드클라우드 형태로 제공합니다.
         </h3>
 
-        <Marginer direction="vertical" margin="2rem" />
+        <Marginer direction="vertical" margin="4rem" />
         <Map data={[reviewResult]} />
-        <Marginer direction="vertical" margin="1rem" />
+        <Marginer direction="vertical" margin="2rem" />
 
         <h3 className="bodyText">
-          지도 혹은 음식점 리스트가 나오면 사용자가 선택하는 공간 (사용자와
-          상호작용)
+          지도를 움직여 해당 음식점의 위치를 확인해보세요.
         </h3>
         <Marginer direction="vertical" margin="6rem" />
       </div>
