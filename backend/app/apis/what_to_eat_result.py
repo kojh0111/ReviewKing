@@ -24,7 +24,11 @@ class WhatToEatResult(Resource):
             # 해당 keyword를 가진 음식점들 중 평점 높은 것들 heap에 저장
             heap = []
             for keyword in keywords:
-                key_data = Keywords.query.filter_by(keyword=keyword).first()
+                key_data = Keywords.query.filter(
+                    and_(
+                        Keywords.keyword == keyword, Keywords.subcategory == subcategory
+                    )
+                ).first()
                 key_res_links = KeyResLink.query.filter_by(keyword_id=key_data.id).all()
                 if key_res_links:
                     for key_res_link in key_res_links:
