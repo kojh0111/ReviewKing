@@ -8,7 +8,10 @@ import Navbar from '../../components/navbar';
 
 export default function TopSection() {
   const scrollToServiceSection = () => {
-    window.scrollTo({ top: document.documentElement.clientHeight, behavior: 'smooth' });
+    window.scrollTo({
+      top: document.documentElement.clientHeight,
+      behavior: 'smooth',
+    });
   };
 
   return (
@@ -19,7 +22,7 @@ export default function TopSection() {
 
           <div className="CenterContainer">
             <Logo />
-            <div className="IntroduceText">엘리스 교육장 주변의 음식점</div>
+            <div className="IntroduceText">선릉역 주변 음식점의</div>
             <div className="IntroduceText">플랫폼별 리뷰를 분석합니다</div>
             <Button onClick={scrollToServiceSection}>오늘 뭐먹지?</Button>
           </div>

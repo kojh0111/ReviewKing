@@ -7,6 +7,7 @@ import Map from '../../components/map/map';
 
 export default function RankResult() {
   const [rankResult, setRankResult] = useState([]);
+  const [nameValue, setNameValue] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { category } = useParams();
@@ -20,7 +21,8 @@ export default function RankResult() {
     const TopThreeResponse = await axios
       .get(`http://3.139.100.234:5000/ranks/${category}`)
       .then(response => {
-        setRankResult(response.data.data);
+        setRankResult(response.data.result);
+        setNameValue(response.data.category);
       })
       .catch(e => {
         setError(e);
@@ -34,6 +36,7 @@ export default function RankResult() {
   }, []);
 
   console.log(rankResult);
+  console.log(nameValue);
 
   if (loading)
     return (
@@ -50,7 +53,8 @@ export default function RankResult() {
     <div className="ResultContainer">
       <Marginer direction="vertical" margin="2rem" />
       <h1 style={{ display: 'flex' }}>
-        <div style={{ color: '#ff5722' }}>{category}</div>을(를) 선택하셨습니다.
+        <div style={{ color: '#ff5722' }}>{nameValue}</div>를(을)
+        선택하셨습니다.
       </h1>
       <Marginer direction="vertical" margin="1rem" />
       <h1>다음과 같은 음식점을 추천합니다.</h1>
@@ -79,7 +83,7 @@ export default function RankResult() {
       <Marginer direction="vertical" margin="1rem" />
 
       <Marginer direction="vertical" margin="4rem" />
-      <Map data={[rankResult]} />
+      <Map data={rankResult} />
 
       <div className="buttonContainer">
         <Marginer direction="vertical" margin="2rem" />

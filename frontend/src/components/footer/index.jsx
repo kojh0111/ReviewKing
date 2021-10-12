@@ -27,7 +27,7 @@ export default function Footer() {
       <Marginer direction="vertical" margin="3rem" />
       <Logo />
       <Marginer direction="vertical" margin="1rem" />
-      <h1 className="IntroduceText">엘리스 교육장 주변의 음식점</h1>
+      <h1 className="IntroduceText">선릉역 주변 음식점의</h1>
       <h1 className="IntroduceText">플랫폼별 리뷰를 분석합니다</h1>
       <Marginer direction="vertical" margin="1rem" />
       <Button onClick={scrollToServiceSection}>오늘 뭐먹지??</Button>

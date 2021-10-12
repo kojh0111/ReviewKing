@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 80%;
+    width: 100%;
     min-height: 300px;
     background: #f1f1f1;
     margin: 0;
@@ -17,6 +17,10 @@
 
 .bloc-tabs {
     display: flex;
+
+    @media screen and (max-width: 550px) {
+        font-size: 1rem;
+    }
 }
 .tabs {
     padding: 15px;
@@ -32,9 +36,17 @@
     box-sizing: content-box;
     position: relative;
     outline: none;
+
+    @media screen and (max-width: 550px) {
+        font-size: 1rem;
+    }
 }
 .tabs:not(:last-child) {
     border-right: 1px solid rgba(0, 0, 0, 0.274);
+
+    @media screen and (max-width: 550px) {
+        font-size: 1rem;
+    }
 }
 
 .active-tabs {
@@ -76,6 +88,10 @@ button {
     color: $docker-boldFont;
     text-align: center;
     padding: 0px 0 5px 0px;
+
+    @media screen and (max-width: 550px) {
+        font-size: 1.5rem;
+    }
 }
 .content hr {
     width: 100px;

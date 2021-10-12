@@ -51,7 +51,7 @@ export default function ReviewContent() {
 
       <div className="ReviewIntroContainer">
         <h3 className="bodyText">
-          리뷰를 알고 싶은 음식점의 상호명을 입력하여 주시기 바랍니다.
+          리뷰를 알고 싶은 음식점의 상호명을 입력해주세요.
         </h3>
 
         <Marginer direction="vertical" margin="2rem" />
@@ -65,8 +65,8 @@ export default function ReviewContent() {
         <Marginer direction="vertical" margin="2rem" />
 
         <h3 className="bodyText">
-          리뷰왕은 엘리스 본사 근처에 위치한 <br />
-          음식점의 대한 정보만 제공합니다.
+          리뷰왕은 선릉역 근처에 위치한 <br />
+          음식점의 대한 정보를 제공합니다.
         </h3>
 
         <Marginer direction="vertical" margin="3rem" />

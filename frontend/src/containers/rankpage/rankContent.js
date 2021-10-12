@@ -18,7 +18,7 @@ export default function RankContent() {
     const CategoryResponse = await axios
       .get(`http://3.139.100.234:5000/ranks`)
       .then(response => {
-        setRankContent(response.data.data);
+        setRankContent(response.data.categories);
       })
       .catch(e => {
         setError(e);
@@ -45,7 +45,7 @@ export default function RankContent() {
   return (
     <div className="RankContainer">
       <Marginer direction="vertical" margin="3rem" />
-      <h2 className="TitleText"> 업종별 순위 예시</h2>
+      <h2 className="TitleText"> 업종별 순위</h2>
       <Marginer direction="vertical" margin="4rem" />
 
       <div className="choiceRankContainer">
