@@ -28,14 +28,8 @@ class RanksResult(Resource):
                 total_rating = TotalRating.query.filter_by(
                     restaurant_id=restaurant.id
                 ).first()
-                category = (
-                    Categories.query.filter_by(id=restaurant.category_id)
-                    .first()
-                    .category
-                )
                 tmp = {
                     "name": restaurant.name,
-                    "cateegory": category,
                     "integrated_rating": round(
                         float(total_rating.integrated_rating), 2
                     ),
@@ -47,7 +41,7 @@ class RanksResult(Resource):
                 result.append(tmp)
                 rank += 1
 
-            return jsonify(status=200, result=result)
+            return jsonify(status=200, category=category.category, result=result)
         else:
             return jsonify(status=404)
 
