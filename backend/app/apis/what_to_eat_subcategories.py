@@ -9,7 +9,7 @@ api = Api(what_to_eat_subcategories)
 class WhatToEatSubCategories(Resource):
     def get(self):
         keywords_data = Keywords.query.all()
-        subcategories = [data.subcategory for data in keywords_data]
+        subcategories = list(set([data.subcategory for data in keywords_data]))
         return jsonify(status=200, subcategory=subcategories)
 
 
