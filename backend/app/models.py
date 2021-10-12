@@ -39,11 +39,16 @@ class KeyResLink(db.Model):
         db.Integer, db.ForeignKey("restaurants.id"), nullable=False
     )
     keyword_id = db.Column(db.Integer, db.ForeignKey("keywords.id"), nullable=True)
-    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=True)
 
     restaurants = db.relationship("Restaurants", backref=db.backref("keyreslink_set"))
     keywords = db.relationship("Keywords", backref=db.backref("keyreslink_set"))
-    categories = db.relationship("Categories", backref=db.backref("keyreslink_set"))
+
+
+class Categories(db.Model):
+    __tablename__ = "categories"
+
+    id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
+    category = db.Column(db.String(100), nullable=True)
 
 
 class Keywords(db.Model):
@@ -51,9 +56,7 @@ class Keywords(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     keyword = db.Column(db.String(100), nullable=False)
-    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
-
-    categories = db.relationship("Categories", backref=db.backref("kewywords_set"))
+    subcategory = db.Column(db.String(100), nullable=True)
 
 
 class Analysis(db.Model):
@@ -85,14 +88,6 @@ class TotalRating(db.Model):
     )
 
     restaurants = db.relationship("Restaurants", backref=db.backref("total_rating_set"))
-
-
-class Categories(db.Model):
-    __tablename__ = "categories"
-
-    id = db.Column(db.Integer(), nullable=False, primary_key=True, autoincrement=True)
-    category = db.Column(db.String(100), nullable=True)
-    subcategory = db.Column(db.String(100), nullable=True)
 
 
 class Users(db.Model):
