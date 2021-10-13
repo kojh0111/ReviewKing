@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './searchBar.scss';
-import SearchIcon from '@material-ui/icons/Search';
 import CloseIcon from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
 
@@ -36,9 +35,7 @@ export default function SearchBar(props) {
           onChange={FilterOnChangeHandler}
         />
         <div className="searchIcon">
-          {filterData.length === 0 ? (
-            <SearchIcon />
-          ) : (
+          {filterData.length !== 0 && (
             <CloseIcon className="clearBTN" onClick={clearInput} />
           )}
         </div>
