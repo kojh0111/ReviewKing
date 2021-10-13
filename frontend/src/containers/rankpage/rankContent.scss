@@ -21,7 +21,6 @@
     margin-bottom: 40px;
     text-align: center;
     font-family: "Elice Digital Baeum";
-    font-weight: 700;
     color: $docker-boldFont;
     padding: 0.7rem 3rem;
     background-image: linear-gradient(transparent 60%, $main_orange 40%);
@@ -36,7 +35,8 @@
   width: 80%;
   margin-left: auto;
   margin-right: auto;
-  display: grid;
+  max-width: 1600px;
+  @apply grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, auto));
   row-gap: 20px;
   column-gap: 20px;
