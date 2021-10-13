@@ -6,19 +6,17 @@ import Marginer from '../../components/marginer';
 
 export default function SecondChoice() {
   const { subctr } = useParams();
-
   const [secondChoice, setSecondChoice] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [checkedItems, setCheckedItems] = useState(new Set());
 
-  console.log('setCheckedItems', setCheckedItems);
-
-  console.log('checkedItems', checkedItems);
+  const [checkedItems, setCheckedItems] = useState(null);
 
   // API로 부터 키워드를 받아옴
   const GetKeywordAPI = async () => {
     // 요청이 시작 할 때 초기화
+
+    setCheckedItems(new Set());
     setError(null);
     setSecondChoice(null);
     setLoading(true);
@@ -49,6 +47,23 @@ export default function SecondChoice() {
   if (error) return <div className="notice-error">에러가 발생했습니다</div>;
   if (!secondChoice) return null;
 
+  const ChekedValueClickHandler = () => {
+    // 선택된 목록 가져오기
+    const query = 'input[name="keyword"]:checked';
+    const selectedEls = document.querySelectorAll(query);
+
+    // 선택된 목록에서 value 찾기
+    let result = '';
+    selectedEls.forEach(el => {
+      result += el.value + ' ';
+    });
+
+    // 출력
+    document.getElementById('result').innerText = result;
+  };
+
+  console.log('checkedItems', checkedItems);
+
   return (
     <div className="CategoryContainer">
       <Marginer direction="vertical" margin="2rem" />
@@ -65,10 +80,11 @@ export default function SecondChoice() {
             <input
               type="checkbox"
               className="checkbox"
+              name="keyword"
               value={keyword}
-              onClick={() => checkedItems.add(keyword)}
+              onChange={() => checkedItems.add({ keyword })}
             />
-            <label htmlFor={keyword}>{keyword}</label>
+            {keyword}
           </>
         ))}
       </div>
@@ -79,8 +95,13 @@ export default function SecondChoice() {
             이전
           </button>
         </Link>
+
         <Link to={`/what-to-eat/category/${subctr}/${checkedItems}`}>
-          <button type="button" className="button-next">
+          <button
+            type="button"
+            className="button-next"
+            onClick={ChekedValueClickHandler}
+          >
             결과 확인
           </button>
         </Link>
