@@ -2,5 +2,5 @@
 
 .ButtonWrapper {
     // color: $main_white;
-    @apply bg-dblue-700 rounded px-4 py-2 text-gray-50 outline-none cursor-pointer border-solid border-transparent transition duration-200 ease-in-out hover:bg-transparent hover:border-green-500;
+    @apply bg-dblue-700 rounded px-4 py-2 text-gray-50 outline-none cursor-pointer border-solid border-transparent transition duration-200 ease-in-out hover:bg-transparent hover:border-dblue hover:shadow-lg hover:font-bold;
 }
