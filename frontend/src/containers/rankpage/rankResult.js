@@ -54,11 +54,15 @@ export default function RankResult() {
       <Marginer direction="vertical" margin="2rem" />
       <div className="Chosen">
         <h1 style={{ display: 'flex' }}>
-          <div>{nameValue}</div>를(을)
-          선택하셨습니다.
+          <div>{nameValue}</div>를(을) 선택하셨습니다.
         </h1>
         <h1>다음과 같은 음식점을 추천합니다.</h1>
       </div>
+
+      <Link to="/rank/">
+        <div className="button-re">다시 선택하기</div>
+      </Link>
+      <Marginer direction="vertical" margin="4rem" />
 
       <div className="RankResultContainer">
         {rankResult.map(option => (
@@ -70,8 +74,9 @@ export default function RankResult() {
               <span>{option.name}</span>
               <h3>순위 {option.rank}</h3>
               <div className="ratingContainer">
-                <h3>종합 평점 :&nbsp;
-                <span>{option.integrated_rating}</span>
+                <h3>
+                  종합 평점 :&nbsp;
+                  <span>{option.integrated_rating}</span>
                 </h3>
               </div>
             </div>
@@ -82,14 +87,7 @@ export default function RankResult() {
 
       <Marginer direction="vertical" margin="4rem" />
       <Map data={rankResult} />
-
-      <Marginer direction="vertical" margin="2rem" />
-      <Link to="/rank/">
-        <div className="button-re">
-          다시 선택하기
-        </div>
-      </Link>
-      <Marginer direction="vertical" margin="3rem" />
+      <Marginer direction="vertical" margin="4rem" />
     </div>
   );
 }
