@@ -5,13 +5,16 @@ import axios from 'axios';
 import Marginer from '../../components/marginer';
 
 export default function SecondChoice() {
-  const menuSet = new Set();
   const { subctr } = useParams();
-  console.log('subctr', subctr);
 
   const [secondChoice, setSecondChoice] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [checkedItems, setCheckedItems] = useState(new Set());
+
+  console.log('setCheckedItems', setCheckedItems);
+
+  console.log('checkedItems', checkedItems);
 
   // API로 부터 키워드를 받아옴
   const GetKeywordAPI = async () => {
@@ -33,7 +36,6 @@ export default function SecondChoice() {
 
   useEffect(() => {
     GetKeywordAPI();
-    console.log('menuSet', menuSet);
   }, []);
 
   if (loading)
@@ -56,15 +58,18 @@ export default function SecondChoice() {
         <div style={{ color: '#0b214a' }}>&nbsp;최대 5개 선택가능</div>
       </h1>
       <Marginer direction="vertical" margin="2rem" />
+
       <div className="choiceContainer">
         {secondChoice.map(keyword => (
-          <button
-            type="button"
-            className="menuCategory"
-            onClick={() => menuSet.add(keyword)}
-          >
-            {keyword}
-          </button>
+          <>
+            <input
+              type="checkbox"
+              className="checkbox"
+              value={keyword}
+              onClick={() => checkedItems.add(keyword)}
+            />
+            <label htmlFor={keyword}>{keyword}</label>
+          </>
         ))}
       </div>
 
@@ -74,7 +79,7 @@ export default function SecondChoice() {
             이전
           </button>
         </Link>
-        <Link to={`/what-to-eat/category/${subctr}/${menuSet}`}>
+        <Link to={`/what-to-eat/category/${subctr}/${checkedItems}`}>
           <button type="button" className="button-next">
             결과 확인
           </button>
