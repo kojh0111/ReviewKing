@@ -22,7 +22,7 @@ SQLALCHEMY_ENGINE_OPTIONS = {
     "pool_recycle": SQLALCHEMY_POOL_RECYCLE,
     "pool_timeout": SQLALCHEMY_POOL_TIMEOUT,
     "pool_pre_ping": SQLALCHEMY_PRE_PING,
-    "pool_size": 500,
+    "pool_size": 20000,
     "max_overflow": 0,
 }
 
