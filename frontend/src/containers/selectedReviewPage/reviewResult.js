@@ -59,9 +59,7 @@ export default function ReviewResult() {
       <div className="ReviewIntroContainer">
         <Marginer direction="vertical" margin="2rem" />
         <div className="ReviewNameContainer">
-          <h2 className="SelectedText" style={{ color: '#ff5722' }}>
-            {reviewResult.name}
-          </h2>
+          <h2 className="SelectedText">{reviewResult.name}</h2>
           <h2 className="NumberText" style={{ color: '#0b214a' }}>
             종합평점 : {reviewResult.integrated_rating}
           </h2>
