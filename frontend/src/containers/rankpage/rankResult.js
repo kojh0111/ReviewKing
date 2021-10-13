@@ -85,20 +85,12 @@ export default function RankResult() {
       <Marginer direction="vertical" margin="4rem" />
       <Map data={rankResult} />
 
-      <div className="buttonContainer">
-        <Marginer direction="vertical" margin="2rem" />
-        <Link to="/rank/">
-          <button type="button" className="button-prev">
-            이전
-          </button>
-        </Link>
-
-        <Link to="/">
-          <button type="button" className="button-next">
-            홈으로
-          </button>
-        </Link>
-      </div>
+      <Marginer direction="vertical" margin="2rem" />
+      <Link to="/rank/">
+        <div type="button" className="button-prev">
+          다시 선택하기
+        </div>
+      </Link>
       <Marginer direction="vertical" margin="3rem" />
     </div>
   );

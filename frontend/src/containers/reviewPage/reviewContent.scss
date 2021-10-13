@@ -73,7 +73,6 @@
 }
 
 #map {
-  width: 100%;
-  border: 2px solid black;
   box-shadow: 0 4px 18px rgb(11 33 74 / 10%), 0 -2px 4px rgb(11 33 74 / 3%);
+  @apply w-full max-w-screen-xl border-none
 }

@@ -4,7 +4,6 @@ import './topSection.scss';
 import Button from '../../components/button';
 import DownArrow from '../../components/downArrow';
 import Logo from '../../components/logo';
-import Navbar from '../../components/navbar';
 
 export default function TopSection() {
   const scrollToServiceSection = () => {
@@ -18,8 +17,6 @@ export default function TopSection() {
     <div name="topSection">
       <div className="TopContainer">
         <div className="Background">
-          <Navbar />
-
           <div className="CenterContainer">
             <Logo />
             <div className="IntroduceText">선릉역 주변 음식점의</div>
