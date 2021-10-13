@@ -53,31 +53,27 @@ export default function RankResult() {
     <div className="ResultContainer">
       <Marginer direction="vertical" margin="2rem" />
       <h1 style={{ display: 'flex' }}>
-        <div style={{ color: '#ff5722' }}>{nameValue}</div>를(을)
+        <div>{nameValue}</div>를(을)
         선택하셨습니다.
       </h1>
-      <Marginer direction="vertical" margin="1rem" />
       <h1>다음과 같은 음식점을 추천합니다.</h1>
-      <Marginer direction="vertical" margin="4rem" />
 
       <div className="RankResultContainer">
         {rankResult.map(option => (
-          <button type="button" className="restaurantsChoice">
+          <div className="restaurantsChoice">
             <div className="top">
               <img className="rankImage" alt="" src={option.img_url} />
-              <Marginer direction="vertical" margin="1rem" />
             </div>
             <div className="down">
-              <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
-              <Marginer direction="vertical" margin="1rem" />
+              <span>{option.name}</span>
               <h3>순위 {option.rank}</h3>
-              <Marginer direction="vertical" margin="1rem" />
               <div className="ratingContainer">
-                <h3>종합 평점 :&nbsp;</h3>
-                <h3 style={{ color: '#ff5722' }}>{option.integrated_rating}</h3>
+                <h3>종합 평점 :&nbsp;
+                <span>{option.integrated_rating}</span>
+                </h3>
               </div>
             </div>
-          </button>
+          </div>
         ))}
       </div>
       <Marginer direction="vertical" margin="1rem" />
@@ -87,7 +83,7 @@ export default function RankResult() {
 
       <Marginer direction="vertical" margin="2rem" />
       <Link to="/rank/">
-        <div type="button" className="button-prev">
+        <div className="button-re">
           다시 선택하기
         </div>
       </Link>
