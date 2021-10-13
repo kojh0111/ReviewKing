@@ -1,27 +1,21 @@
 @import "../../styles/variable";
 
 .TabWrapper {
-  width: 25%;
   height: 5rem;
-  background-color: #e9ebee;
-
-  color: $main_white;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-content: center;
   text-align: center;
   flex-wrap: wrap;
+  @apply bg-dgray w-full;
 }
 
 .menu-item {
   width: 100%;
   font-size: 1.2rem;
-  color: #333;
-  font-family: "Elice Digital Baeum";
   font-weight: 700;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
+  @apply text-gray-900 hover:text-dblue-700 border-solid border-b-4 border-transparent hover:border-dblue-700;
 
   @media screen and (max-width: 500px) {
     font-size: 1rem;
@@ -31,9 +25,5 @@
   @media screen and (max-width: 400px) {
     font-size: 0.8rem;
     padding: 0rem;
-  }
-
-  &:hover {
-    color: $main_orange;
   }
 }

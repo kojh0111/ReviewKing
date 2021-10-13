@@ -10,19 +10,20 @@ function TabMenuItem(props) {
   };
 
   return (
-    <div className="TabWrapper">
-      <NavLink
+    <NavLink
         className="menu-item"
         to={props.path}
         exact={props.exact ? props.exact : false}
         activeStyle={{
-          color: '#ff5722',
+          color: '#2496ED',
+          borderBottom: 'solid 4px #2496ED',
         }}
         onClick={scrollToServiceSection}
       >
+      <div className="TabWrapper">
         {props.title}
-      </NavLink>
-    </div>
+      </div>
+    </NavLink>
   );
 }
 
