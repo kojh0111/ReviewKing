@@ -7,64 +7,68 @@
   text-align: center;
   align-items: center;
 
-  h1 {
-    font-size: 2rem;
-    @media screen and (max-width: 550px) {
-      font-size: 1.7rem;
+  .Chosen {
+    @apply my-16;
+    h1 {
+      @apply text-4xl mb-4;
+      @media screen and (max-width: 550px) {
+        font-size: 1.7rem;
+      }
+      > div {
+        @apply text-dblue-900 font-bold;
+      }
     }
-    > div {
-      @apply text-dblue-900 font-bold;
+    h1:nth-child(2) {
+      @apply text-3xl text-dlgray;
     }
-  }
-
-  h3 {
-    font-size: 1.2rem;
   }
 }
 
 .RankResultContainer {
-  margin-left: auto;
-  margin-right: auto;
   align-items: center;
-  padding: 10px 0;
-  flex-direction: column;
   @apply w-full max-w-screen-xl grid grid-cols-3 gap-6;
 
   .top {
     width: 100%;
-    height: 60%;
+    height: 25rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    @apply mt-10 mb-20;
   }
 
   .down {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: baseline;
     width: 100%;
-    height: 40%;
     > * {
-      @apply mb-4
+      @apply my-4;
     }
     span {
-      @apply text-dblue-700;
+      @apply text-dblue-700 text-4xl font-bold;
     }
+    h3 {
+      @apply text-xl;
+      > span {
+        @apply text-xl;
+
+      }
+    }
+
+
   }
 
   .restaurantsChoice {
+    height: 40rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-    @apply p-5 cursor-default;
-    height: 30rem;
+    @apply p-5 rounded-lg bg-gray-50;
     display: flex;
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
     animation: 0.3s;
-    background-color: $main_white;
-    border: 3px solid $main_white;
     text-align: center;
-    cursor: pointer;
   }
 
   .rankImage {

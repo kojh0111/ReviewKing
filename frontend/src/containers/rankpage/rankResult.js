@@ -52,11 +52,13 @@ export default function RankResult() {
   return (
     <div className="ResultContainer">
       <Marginer direction="vertical" margin="2rem" />
-      <h1 style={{ display: 'flex' }}>
-        <div>{nameValue}</div>를(을)
-        선택하셨습니다.
-      </h1>
-      <h1>다음과 같은 음식점을 추천합니다.</h1>
+      <div className="Chosen">
+        <h1 style={{ display: 'flex' }}>
+          <div>{nameValue}</div>를(을)
+          선택하셨습니다.
+        </h1>
+        <h1>다음과 같은 음식점을 추천합니다.</h1>
+      </div>
 
       <div className="RankResultContainer">
         {rankResult.map(option => (
