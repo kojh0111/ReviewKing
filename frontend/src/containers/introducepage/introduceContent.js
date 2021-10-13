@@ -2,7 +2,7 @@ import './introduceContent.scss';
 import React from 'react';
 import Members from '../../const/member';
 import Marginer from '../../components/marginer';
-import IntroImage from '../../assets/pictures/introduceImage.PNG';
+import IntroImage from '../../assets/pictures/infopicture.png';
 
 export default function IntroduceContent() {
   return (
