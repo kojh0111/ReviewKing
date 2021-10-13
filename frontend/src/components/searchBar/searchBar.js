@@ -31,7 +31,7 @@ export default function SearchBar(props) {
       <div className="searchInput">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="음식점을 검색하세요!"
           value={clearWord}
           onChange={FilterOnChangeHandler}
         />
