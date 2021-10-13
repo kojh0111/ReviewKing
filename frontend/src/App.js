@@ -60,12 +60,12 @@ function App() {
             exact={true}
           />
           <Route
-            path="/what-to-eat/category/:tastes"
+            path="/what-to-eat/category/:subctr"
             component={SecondChoice}
             exact={true}
           />
           <Route
-            path="/what-to-eat/category/:tastes/:menus"
+            path="/what-to-eat/category/:subctr/:keyword"
             component={TestResult}
             exact={true}
           />
