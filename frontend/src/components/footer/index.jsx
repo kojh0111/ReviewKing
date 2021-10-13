@@ -3,7 +3,6 @@ import { faGitlab } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
 import { scroller } from 'react-scroll';
 import { toast, ToastContainer } from 'react-toastify';
-import Button from '../button';
 import Logo from '../logo';
 import Marginer from '../marginer';
 import './index.scss';
@@ -27,20 +26,12 @@ export default function Footer() {
       <Marginer direction="vertical" margin="3rem" />
       <Logo />
       <Marginer direction="vertical" margin="1rem" />
-      <h1 className="IntroduceText">선릉역 주변 음식점의</h1>
-      <h1 className="IntroduceText">플랫폼별 리뷰를 분석합니다</h1>
-      <Marginer direction="vertical" margin="1rem" />
-      <Button onClick={scrollToServiceSection}>오늘 뭐먹지??</Button>
-      <Marginer direction="vertical" margin="5rem" />
-
       <div className="GuideContainer">
         <div className="PrivacyContainer">
           <Link to="/" className="Link" onClick={scrollToServiceSection}>
             <div className="Link">서비스 소개</div>
           </Link>
-
           <Marginer direction="horizontal" margin="2rem" />
-
           <ToastContainer autoClose={8000} />
           <div className="Link" onClick={ToastifyOnClickHandler}>
             서비스 문의
