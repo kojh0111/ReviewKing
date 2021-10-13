@@ -85,50 +85,19 @@
 }
 
 .button-prev {
-  margin: 1rem;
-  padding: 7px 15px;
-  border-radius: 5px;
-  background-color: $main_red;
-  color: $main_white;
-  font-family: Jua;
-  font-weight: bold;
-  font-size: 1rem;
-  outline: none;
-  border: 3px solid $main_red;
-  border-radius: 20px;
-  text-align: center;
-  transition: 0.3s linear all;
-  cursor: pointer;
+    font-size: 1.3rem;
+    font-family: "Elice Digital Baeum";
+    padding: 10px 15px;
+    display: block;
+    margin: auto;
+    border-radius: 6px;
+    cursor: pointer;
+    @apply bg-dblue-300 border-transparent hover:border-transparent hover:opacity-70;
 }
 
-.button-prev:hover {
-  background-color: darken($color: $main_red, $amount: 10%);
-  border: 3px solid darken($color: $main_red, $amount: 10%);
-  box-shadow: 0 0 8px 0 $main_red;
-}
-
-.button-next {
-  margin: 1rem;
-  padding: 7px 15px;
-  border-radius: 5px;
-  background-color: $main_blue;
-  color: $main_white;
-  font-family: Jua;
-  font-weight: bold;
-  font-size: 1rem;
-  outline: none;
-  border: 3px solid $main_blue;
-  border-radius: 20px;
-  text-align: center;
-  transition: 0.3s linear all;
-  cursor: pointer;
-}
-
-.button-next:hover {
-  background-color: darken($color: $main_blue, $amount: 10%);
-  border: 3px solid darken($color: $main_blue, $amount: 10%);
-  box-shadow: 0 0 8px 0 $main_blue;
-}
+// .button-prev:hover {
+//   box-shadow: 0 0 8px 0;
+// }
 
 .ResultImage {
   width: 85%;
