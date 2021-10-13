@@ -8,14 +8,14 @@
   align-content: center;
   text-align: center;
   flex-wrap: wrap;
-  @apply bg-dgray w-full;
+  @apply bg-dgray w-full border-transparent;
 }
 
 .menu-item {
   width: 100%;
   font-size: 1.2rem;
   font-weight: 700;
-  @apply text-gray-900 hover:text-dblue-700 border-solid border-b-4 border-transparent hover:border-dblue-700;
+  @apply text-gray-900 hover:text-dblue-700 border-solid border-b-4 border-dgray hover:border-dblue-700;
 
   @media screen and (max-width: 500px) {
     font-size: 1rem;
