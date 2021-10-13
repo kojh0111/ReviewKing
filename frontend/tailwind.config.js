@@ -18,6 +18,9 @@ module.exports = {
         dlgray: '#5a6774',  // lightFont, docker light gray
 
       },
+      maxWidth: {
+        '8xl': '1600px'
+      }
     },
   },
   variants: {
