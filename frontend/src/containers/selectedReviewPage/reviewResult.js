@@ -70,7 +70,7 @@ export default function ReviewResult() {
 
         <div className="buttonContainer">
           <Link to="/reviews">
-            <button type="button" className="button-prev">
+            <button type="button" className="button-re">
               다른 음식점 검색하기
             </button>
           </Link>
