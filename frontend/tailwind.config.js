@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     fontFamily: "Elice Digital Baeum",
     screens: {
-      'sm': '500px',
-      'md': '700px',
+      'sm': {'max': '500px'},
+      'md': {'max': '700px'},
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
