@@ -5,6 +5,14 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: "Elice Digital Baeum",
+    theme: {
+      screens: {
+        'sm': '500px',
+        'md': '700px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+    }
     extend: {
       colors: {
         gray: colors.coolGray,
