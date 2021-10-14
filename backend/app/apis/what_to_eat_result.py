@@ -20,7 +20,7 @@ class WhatToEatResult(Resource):
         args = parser.parse_args()
         keywords = args["key"]
 
-        if len(keywords) == 1:
+        if len(keywords) != 0:
             # 해당 keyword를 가진 음식점들 중 평점 높은 것들 heap에 저장
             heap = []
             for keyword in keywords:
@@ -29,8 +29,10 @@ class WhatToEatResult(Resource):
                         Keywords.keyword == keyword, Keywords.subcategory == subcategory
                     )
                 ).first()
-                key_res_links = KeyResLink.query.filter_by(keyword_id=key_data.id).all()
-                if key_res_links:
+                if key_data:
+                    key_res_links = KeyResLink.query.filter_by(
+                        keyword_id=key_data.id
+                    ).all()
                     for key_res_link in key_res_links:
                         res_id = key_res_link.restaurant_id
                         restaurant = Restaurants.query.filter_by(id=res_id).first()
@@ -60,53 +62,6 @@ class WhatToEatResult(Resource):
                     "mango": total_rating.mango,
                     "siksin": total_rating.siksin,
                     "integrated_rating": round(float(-integrated_rating), 2),
-                    "rank": rank,
-                }
-                result.append(tmp)
-                rank += 1
-
-            return jsonify(status=200, result=result)
-
-        elif len(keywords) != 0:
-            res_list = list()
-            for keyword in keywords:
-                key_data = Keywords.query.filter(
-                    and_(
-                        Keywords.keyword == keyword, Keywords.subcategory == subcategory
-                    )
-                ).first()
-                key_res_links = KeyResLink.query.filter_by(keyword_id=key_data.id).all()
-                if key_res_links:
-                    for key_res_link in key_res_links:
-                        res_id = key_res_link.restaurant_id
-                        restaurant = Restaurants.query.filter_by(id=res_id).first()
-                        total_rating = TotalRating.query.filter_by(
-                            restaurant_id=res_id
-                        ).first()
-                        res_list.append(
-                            (-total_rating.integrated_rating, restaurant.id)
-                        )
-            res_list = sorted(res_list)
-            final_res = [x for _, x in Counter(res_list).most_common(3)]
-
-            # 상위 3개 가져오기
-            rank = 1
-            result = []
-            for most_res_id in final_res:
-                total_rating = TotalRating.query.filter_by(
-                    restaurant_id=most_res_id
-                ).first()
-                srestaurant = Restaurants.query.filter_by(id=most_res_id).first()
-                tmp = {
-                    "name": srestaurant.name,
-                    "id": most_res_id,
-                    "naver": total_rating.naver,
-                    "kakao": total_rating.kakao,
-                    "mango": total_rating.mango,
-                    "siksin": total_rating.siksin,
-                    "integrated_rating": round(
-                        float(total_rating.integrated_rating), 2
-                    ),
                     "rank": rank,
                 }
                 result.append(tmp)
