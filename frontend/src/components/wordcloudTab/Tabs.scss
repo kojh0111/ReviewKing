@@ -10,13 +10,16 @@
     background: #f1f1f1;
     margin: 0;
     word-break: break-all;
-    border: 1px solid rgba(0, 0, 0, 0.274);
+    // border: 1px solid rgba(0, 0, 0, 0.274);
     font-family: "Elice Digital Baeum";
     box-shadow: 0 4px 18px rgb(11 33 74 / 10%), 0 -2px 4px rgb(11 33 74 / 3%);
 }
 
 .bloc-tabs {
     display: flex;
+    box-shadow: rgb(0 0 0 / 5%) 0px 6px 24px 0px,
+    rgb(0 0 0 / 8%) 0px 0px 0px 1px;
+    
 
     @media screen and (max-width: 550px) {
         font-size: 1rem;
@@ -32,7 +35,7 @@
     color: $docker-boldFont;
     background: $main_white;
     cursor: pointer;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+    // border-bottom: 1px solid rgba(0, 0, 0, 0.274);
     box-sizing: content-box;
     position: relative;
     outline: none;
@@ -42,7 +45,7 @@
     }
 }
 .tabs:not(:last-child) {
-    border-right: 1px solid rgba(0, 0, 0, 0.274);
+    // border-right: 1px solid rgba(0, 0, 0, 0.274);
 
     @media screen and (max-width: 550px) {
         font-size: 1rem;
@@ -52,19 +55,7 @@
 .active-tabs {
     background: $docker-blue;
     color: $main_white;
-    border-bottom: 1px solid transparent;
-}
-
-.active-tabs::before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% + 2px);
-    height: 5px;
-    background: $docker-boldFont;
+    // border-bottom: 1px solid transparent;
 }
 
 button {
@@ -75,7 +66,7 @@ button {
 
     .no-wordcloud {
         text-align: center;
-        @apply text-dblue text-xl mt-3;
+        @apply text-dblue text-xl mt-3 mb-20;
     }
 }
 .content {
