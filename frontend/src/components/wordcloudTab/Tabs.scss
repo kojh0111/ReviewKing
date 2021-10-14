@@ -12,19 +12,27 @@
     word-break: break-all;
     font-family: "Elice Digital Baeum";
     box-shadow: 0 4px 18px rgb(11 33 74 / 10%), 0 -2px 4px rgb(11 33 74 / 3%);
-    @apply rounded-lg;
+    @apply rounded-b-lg rounded-tl-lg rounded-tr-lg;
 }
 
 .bloc-tabs {
     display: flex;
-    box-shadow: rgb(0 0 0 / 5%) 0px 6px 24px 0px,
-    rgb(0 0 0 / 8%) 0px 0px 0px 1px;
-    
+    @apply rounded-tl-lg rounded-tr-lg;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 24px 0px,
+    rgb(0 0 0 / 8%) 0px 0px 1px 0px;
 
+    :first-child {
+        @apply rounded-tl-lg;
+    }
+
+    :last-child {
+        @apply rounded-tr-lg;
+    }
     @media screen and (max-width: 550px) {
         font-size: 1rem;
     }
 }
+
 .tabs {
     padding: 15px;
     text-align: center;
@@ -38,11 +46,16 @@
     box-sizing: content-box;
     position: relative;
     outline: none;
+    box-shadow: rgb(0 0 0 / 5%) 0px 0px 24px 0px,
+    rgb(0 0 0 / 8%) 0px 0px 1px 0px;
 
     @media screen and (max-width: 550px) {
         font-size: 1rem;
     }
 }
+
+
+
 .tabs:not(:last-child) {
     @media screen and (max-width: 550px) {
         font-size: 1rem;
@@ -51,7 +64,6 @@
 
 .active-tabs {
     background: $docker-blue;
-    color: $main_white;
 }
 
 button {
@@ -73,6 +85,8 @@ button {
     width: 100%;
     height: 100%;
     display: none;
+    @apply rounded-b-lg;
+
 }
 .content h2 {
     font-size: 2rem;
