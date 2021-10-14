@@ -76,7 +76,9 @@ export default function RankResult() {
               <div className="ratingContainer">
                 <h3>
                   종합 평점 :&nbsp;
-                  <span>{option.integrated_rating}</span>
+                  <span style={{ color: '#2496ed' }}>
+                    {option.integrated_rating}
+                  </span>
                 </h3>
               </div>
             </div>
