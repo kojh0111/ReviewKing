@@ -36,7 +36,7 @@ class RestaurantsReviews(Resource):
                 "kakao": total_rating.kakao,
                 "mango": total_rating.mango,
                 "siksin": total_rating.siksin,
-                "integrated_rating": total_rating.integrated_rating,
+                "integrated_rating": round(float(total_rating.integrated_rating), 2),
                 "naverWC": wordclouds[0],
                 "kakaoWC": wordclouds[1],
                 "mangoWC": wordclouds[2],
