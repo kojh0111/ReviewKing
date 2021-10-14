@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './secondChoice.scss';
 import React, { useEffect, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -89,7 +90,11 @@ export default function SecondChoice() {
     setNumItems(a);
 
     if (disabled === true) {
-      alert('1개 이상 5미만으로 선택해주세요');
+      toast.warn('1개 이상, 5개 미만으로 선택해주세요', {
+        className: 'custom-toast',
+        draggable: true,
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
     }
   };
 
@@ -115,17 +120,19 @@ export default function SecondChoice() {
 
   return (
     <div className="CategoryContainer">
-      <Marginer direction="vertical" margin="2rem" />
-      <h1 style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ color: '#ff5722' }}>키워드를 선택하세요</div>
-        <Marginer direction="vertical" margin="1rem" />
-        <div style={{ color: '#0b214a' }}>
-          &nbsp;최소 1개 이상, 5개 미만으로 선택하세요
-        </div>
-      </h1>
+      <Marginer direction="vertical" margin="3rem" />
+      <h2 className="TitleText"> 오늘 뭐먹지?</h2>
       <Marginer direction="vertical" margin="2rem" />
 
-      <div className="choiceContainer">
+      <h1>키워드를 선택하세요</h1>
+      <Marginer direction="vertical" margin="1rem" />
+      <div className="orderText">
+        &nbsp;최소 1개 이상, 5개 미만으로 선택하세요
+      </div>
+
+      <Marginer direction="vertical" margin="2rem" />
+
+      <div className="SecondChoiceContainer">
         {secondChoice.map(keyword => (
           <div className="choiceBox">
             <label>
@@ -146,11 +153,9 @@ export default function SecondChoice() {
       <Marginer direction="vertical" margin="2rem" />
       <div className="buttonContainer">
         <Link to="/what-to-eat/category/">
-          <button type="button" className="button-prev">
-            이전
-          </button>
+          <div className="button-prev">이전</div>
         </Link>
-
+        <Marginer direction="horizontal" margin="3rem" />
         <Link
           to={
             disabled
@@ -158,6 +163,7 @@ export default function SecondChoice() {
               : `/what-to-eat/category/${subctr}/result`
           }
         >
+          <ToastContainer autoClose={8000} />
           <button
             type="button"
             className="button-next"
@@ -167,6 +173,7 @@ export default function SecondChoice() {
           </button>
         </Link>
       </div>
+      <Marginer direction="vertical" margin="2rem" />
     </div>
   );
 }

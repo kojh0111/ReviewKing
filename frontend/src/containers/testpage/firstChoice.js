@@ -47,9 +47,14 @@ export default function FirstChoice() {
 
   return (
     <div className="CategoryContainer">
-      <Marginer direction="vertical" margin="2rem" />
+      <Marginer direction="vertical" margin="3rem" />
+      <h2 className="TitleText"> 오늘 뭐먹지?</h2>
+      <Marginer direction="vertical" margin="3rem" />
+
       <h1>카테고리를 선택하세요</h1>
-      <Marginer direction="vertical" margin="2rem" />
+
+      <Marginer direction="vertical" margin="4rem" />
+
       <div className="choiceContainer">
         {firstChoice.map(subctr => (
           <Link to={`/what-to-eat/category/${subctr}`}>
@@ -59,14 +64,7 @@ export default function FirstChoice() {
           </Link>
         ))}
       </div>
-
-      <div className="buttonContainer">
-        <Link to="/what-to-eat/">
-          <button type="button" className="button-prev">
-            이전
-          </button>
-        </Link>
-      </div>
+      <Marginer direction="vertical" margin="3rem" />
     </div>
   );
 }

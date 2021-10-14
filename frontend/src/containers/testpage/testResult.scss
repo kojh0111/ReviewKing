@@ -25,16 +25,22 @@
     font-size: 1.2rem;
     font-weight: 700;
   }
+
+  .orderText {
+    font-family: "Elice Digital Baeum";
+    color: #5a6774;
+    font-size: 1rem;
+  }
 }
 
-.choiceContainer {
+.ChoiceResultContainer {
   width: 80%;
   margin-left: auto;
   margin-right: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, auto));
-  row-gap: 10px;
-  column-gap: 10px;
+  row-gap: 40px;
+  column-gap: 40px;
   justify-content: center;
   align-items: center;
   padding: 10px 0;
@@ -68,63 +74,33 @@
   }
 }
 
-.RatingContainer {
+.buttonContainer {
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-  justify-items: center;
-
-  .reviewSite {
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .button-prev {
-  margin: 1rem;
-  padding: 7px 15px;
-  border-radius: 5px;
-  background-color: $main_red;
-  color: $main_white;
-  font-family: Jua;
-  font-weight: bold;
-  font-size: 1rem;
-  outline: none;
-  border: 3px solid $main_red;
-  border-radius: 20px;
-  text-align: center;
-  transition: 0.3s linear all;
+  width: 10rem;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  display: block;
+  margin: auto;
+  border-radius: 6px;
   cursor: pointer;
-}
-
-.button-prev:hover {
-  background-color: darken($color: $main_red, $amount: 10%);
-  border: 3px solid darken($color: $main_red, $amount: 10%);
-  box-shadow: 0 0 8px 0 $main_red;
+  @apply text-gray-50 bg-yellow-500 border-transparent hover:border-transparent hover:opacity-70 hover:font-bold;
 }
 
 .button-next {
-  margin: 1rem;
-  padding: 7px 15px;
-  border-radius: 5px;
-  background-color: $main_blue;
-  color: $main_white;
-  font-family: Jua;
-  font-weight: bold;
-  font-size: 1rem;
-  outline: none;
-  border: 3px solid $main_blue;
-  border-radius: 20px;
-  text-align: center;
-  transition: 0.3s linear all;
+  width: 10rem;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  display: block;
+  margin: auto;
+  border-radius: 6px;
   cursor: pointer;
-}
-
-.button-next:hover {
-  background-color: darken($color: $main_blue, $amount: 10%);
-  border: 3px solid darken($color: $main_blue, $amount: 10%);
-  box-shadow: 0 0 8px 0 $main_blue;
+  @apply text-gray-50 bg-green-500 border-transparent hover:border-transparent hover:opacity-70 hover:font-bold;
 }
 
 .ResultImage {

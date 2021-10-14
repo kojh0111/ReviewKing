@@ -14,10 +14,21 @@
 
 // checkbox 디자인 해야 함
 
-.choiceContainer {
+.SecondChoiceContainer {
   width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  @apply grid max-w-screen-xl;
+  grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+  row-gap: 10px;
+  column-gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  flex-direction: column;
+
+  @media screen and (max-width: 550px) {
+    width: 90%;
+  }
 }
 
 .choiceBox {
@@ -66,87 +77,21 @@
 ////////////////////////////////////
 
 .button-prev {
-  margin: 1rem;
-  padding: 7px 15px;
-  border-radius: 5px;
-  background-color: $main_red;
-  color: $main_white;
-  font-family: Jua;
-  font-weight: bold;
-  font-size: 1rem;
-  outline: none;
-  border: 3px solid $main_red;
-  border-radius: 20px;
-  text-align: center;
-  transition: 0.3s linear all;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  display: block;
+  margin: auto;
+  border-radius: 6px;
   cursor: pointer;
-}
-
-.button-prev:hover {
-  background-color: darken($color: $main_red, $amount: 10%);
-  border: 3px solid darken($color: $main_red, $amount: 10%);
-  box-shadow: 0 0 8px 0 $main_red;
+  @apply text-gray-50 bg-green-400 border-transparent hover:border-transparent hover:opacity-70 hover:font-bold;
 }
 
 .button-next {
-  margin: 1rem;
-  padding: 7px 15px;
-  border-radius: 5px;
-  background-color: $main_blue;
-  color: $main_white;
-  font-family: Jua;
-  font-weight: bold;
-  font-size: 1rem;
-  outline: none;
-  border: 3px solid $main_blue;
-  border-radius: 20px;
-  text-align: center;
-  transition: 0.3s linear all;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  display: block;
+  margin: auto;
+  border-radius: 6px;
   cursor: pointer;
-}
-
-.button-next:disabled {
-  margin: 1rem;
-  padding: 7px 15px;
-  border-radius: 5px;
-  background-color: #bdbdbd;
-  color: $main_white;
-  font-family: Jua;
-  font-weight: bold;
-  font-size: 1rem;
-  outline: none;
-  border: 3px solid $main_blue;
-  border-radius: 20px;
-  text-align: center;
-  transition: 0.3s linear all;
-  cursor: pointer;
-}
-
-.button-next:hover {
-  background-color: darken($color: $main_blue, $amount: 10%);
-  border: 3px solid darken($color: $main_blue, $amount: 10%);
-  box-shadow: 0 0 8px 0 $main_blue;
-}
-
-.button-test {
-  margin: 1rem;
-  padding: 7px 15px;
-  border-radius: 5px;
-  background-color: $main_green;
-  color: $main_white;
-  font-family: Jua;
-  font-weight: bold;
-  font-size: 1rem;
-  outline: none;
-  border: 3px solid $main_green;
-  border-radius: 20px;
-  text-align: center;
-  transition: 0.3s linear all;
-  cursor: pointer;
-}
-
-.button-test:hover {
-  background-color: darken($color: $main_green, $amount: 10%);
-  border: 3px solid darken($color: $main_green, $amount: 10%);
-  box-shadow: 0 0 8px 0 $main_blue;
+  @apply text-gray-50 bg-indigo-600 border-transparent hover:border-transparent hover:opacity-70 hover:font-bold;
 }

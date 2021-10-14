@@ -56,7 +56,7 @@ export default function TestResult() {
       <Marginer direction="vertical" margin="2rem" />
       <h1>다음과 같은 음식점을 추천합니다.</h1>
       <Marginer direction="vertical" margin="6rem" />
-      <div className="choiceContainer">
+      <div className="ChoiceResultContainer">
         {rankContent.map(option => (
           <button type="button" className="restaurantsChoice">
             <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
@@ -76,11 +76,9 @@ export default function TestResult() {
 
       <div className="buttonContainer">
         <Link to={`/what-to-eat/category/${subctr}`}>
-          <button type="button" className="button-prev">
-            이전
-          </button>
+          <div className="button-prev">이전</div>
         </Link>
-
+        <Marginer direction="horizontal" margin="3rem" />
         <Link to="/reviews">
           <button
             type="button"
@@ -91,6 +89,7 @@ export default function TestResult() {
           </button>
         </Link>
       </div>
+      <Marginer direction="vertical" margin="2rem" />
     </div>
   );
 }
