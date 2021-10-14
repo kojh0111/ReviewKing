@@ -93,7 +93,7 @@ export default function SecondChoice() {
       toast.warn('1개 이상, 5개 미만으로 선택해주세요', {
         className: 'custom-toast',
         draggable: true,
-        position: toast.POSITION.BOTTOM_CENTER,
+        position: toast.POSITION.TOP_CENTER,
       });
     }
   };
@@ -124,7 +124,7 @@ export default function SecondChoice() {
       <h2 className="TitleText"> 오늘 뭐먹지?</h2>
       <Marginer direction="vertical" margin="2rem" />
 
-      <h1>키워드를 선택하세요</h1>
+      <h2>키워드를 선택하세요</h2>
       <Marginer direction="vertical" margin="1rem" />
       <div className="orderText">
         &nbsp;최소 1개 이상, 5개 미만으로 선택하세요
