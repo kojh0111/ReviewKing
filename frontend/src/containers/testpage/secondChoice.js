@@ -14,7 +14,7 @@ export default function SecondChoice() {
 
   const [checkedItems, setCheckedItems] = useState([]);
   const [numItems, setNumItems] = useState(null);
-  const [disabled, setDisabled] = useState(false);
+  const [disabled, setDisabled] = useState(true);
   const dispatch = useDispatch();
 
   // API로 부터 키워드를 받아옴
@@ -23,7 +23,7 @@ export default function SecondChoice() {
 
     setCheckedItems(null);
     setNumItems(null);
-    setDisabled(false);
+    setDisabled(true);
     setError(null);
     setSecondChoice(null);
     setLoading(true);
@@ -39,21 +39,32 @@ export default function SecondChoice() {
     return CategoryResponse;
   };
 
-  useEffect(() => {
-    GetKeywordAPI();
-  }, []);
+  // 체크박스 누를 때마다 상태관리
+  const ChekedNumClickHandler = () => {
+    // 선택된 목록 가져오기
+    const query = 'input[name="keyword"]:checked';
+    const selectedEls = document.querySelectorAll(query);
 
-  if (loading)
-    return (
-      <div className="notice-container">
-        <div className="loader" />
-        <Marginer direction="vertical" margin="2rem" />
-        <div className="notice">로딩중....</div>
-      </div>
-    );
-  if (error) return <div className="notice-error">에러가 발생했습니다</div>;
-  if (!secondChoice) return null;
+    // 선택한 목록의 갯수 출력
+    const count = new Set();
+    selectedEls.forEach(el => {
+      count.add(el.value);
+    });
+    const a = count.size;
 
+    if (a === 0) {
+      setDisabled(true);
+      setNumItems(a);
+    } else if (a <= 5) {
+      setDisabled(false);
+      setNumItems(a);
+    } else {
+      setDisabled(true);
+      setNumItems(a);
+    }
+  };
+
+  // test 버튼 누를 때, 상태관리
   const ChekedValueClickHandler = () => {
     // 선택된 목록 가져오기
     const query = 'input[name="keyword"]:checked';
@@ -76,20 +87,30 @@ export default function SecondChoice() {
     const a = count.size;
     setNumItems(a);
 
-    if (numItems < 1) {
-      setDisabled(true);
-      alert('1개 이상, 5개 미만으로 선택해주세요');
-    } else if (numItems > 5) {
-      setDisabled(true);
-      alert('1개 이상, 5개 미만으로 선택해주세요');
-    } else {
-      setDisabled(false);
+    if (disabled === true) {
+      alert('1개 이상 5미만으로 선택해주세요');
     }
   };
+
+  useEffect(() => {
+    GetKeywordAPI();
+    ChekedNumClickHandler();
+  }, []);
 
   console.log('checkedItems', checkedItems);
   console.log('numItems', numItems);
   console.log('disabled', disabled);
+
+  if (loading)
+    return (
+      <div className="notice-container">
+        <div className="loader" />
+        <Marginer direction="vertical" margin="2rem" />
+        <div className="notice">로딩중....</div>
+      </div>
+    );
+  if (error) return <div className="notice-error">에러가 발생했습니다</div>;
+  if (!secondChoice) return null;
 
   return (
     <div className="CategoryContainer">
@@ -109,6 +130,7 @@ export default function SecondChoice() {
               className="checkbox"
               name="keyword"
               value={keyword}
+              onChange={ChekedNumClickHandler}
             />
             {keyword}
           </div>
@@ -137,14 +159,6 @@ export default function SecondChoice() {
             결과 확인
           </button>
         </Link>
-
-        <button
-          type="button"
-          className="button-test"
-          onClick={ChekedValueClickHandler}
-        >
-          테스트
-        </button>
       </div>
     </div>
   );

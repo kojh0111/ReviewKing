@@ -81,6 +81,23 @@
   cursor: pointer;
 }
 
+.button-next:disabled {
+  margin: 1rem;
+  padding: 7px 15px;
+  border-radius: 5px;
+  background-color: #bdbdbd;
+  color: $main_white;
+  font-family: Jua;
+  font-weight: bold;
+  font-size: 1rem;
+  outline: none;
+  border: 3px solid $main_blue;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.3s linear all;
+  cursor: pointer;
+}
+
 .button-next:hover {
   background-color: darken($color: $main_blue, $amount: 10%);
   border: 3px solid darken($color: $main_blue, $amount: 10%);
