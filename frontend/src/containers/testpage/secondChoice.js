@@ -2,20 +2,28 @@ import './secondChoice.scss';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import Marginer from '../../components/marginer';
+import { actionSetKey } from '../../redux/action';
 
 export default function SecondChoice() {
   const { subctr } = useParams();
   const [secondChoice, setSecondChoice] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
   const [checkedItems, setCheckedItems] = useState([]);
+  const [numItems, setNumItems] = useState(null);
+  const [disabled, setDisabled] = useState(false);
+  const dispatch = useDispatch();
 
   // API로 부터 키워드를 받아옴
   const GetKeywordAPI = async () => {
     // 요청이 시작 할 때 초기화
 
     setCheckedItems(null);
+    setNumItems(null);
+    setDisabled(false);
     setError(null);
     setSecondChoice(null);
     setLoading(true);
@@ -55,8 +63,9 @@ export default function SecondChoice() {
     let result = '';
     selectedEls.forEach(el => {
       result += `${el.value} `;
-      const arr = result.split(' ');
+      const arr = result.trim().split(' ');
       setCheckedItems(arr);
+      dispatch(actionSetKey(arr));
     });
 
     // 선택한 목록의 갯수 출력
@@ -64,13 +73,23 @@ export default function SecondChoice() {
     selectedEls.forEach(el => {
       count.add(el.value);
     });
+    const a = count.size;
+    setNumItems(a);
 
-    // 출력
-    document.getElementById('result').innerText = result;
-    document.getElementById('count').innerText = count.size;
+    if (numItems < 1) {
+      setDisabled(true);
+      alert('1개 이상, 5개 미만으로 선택해주세요');
+    } else if (numItems > 5) {
+      setDisabled(true);
+      alert('1개 이상, 5개 미만으로 선택해주세요');
+    } else {
+      setDisabled(false);
+    }
   };
 
   console.log('checkedItems', checkedItems);
+  console.log('numItems', numItems);
+  console.log('disabled', disabled);
 
   return (
     <div className="CategoryContainer">
@@ -78,13 +97,13 @@ export default function SecondChoice() {
       <h1 style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ color: '#ff5722' }}>키워드를 선택하세요</div>
         <Marginer direction="vertical" margin="1rem" />
-        <div style={{ color: '#0b214a' }}>&nbsp;최대 5개 선택가능</div>
+        <div style={{ color: '#0b214a' }}>&nbsp;최소 2개 이상 선택하세요</div>
       </h1>
       <Marginer direction="vertical" margin="2rem" />
 
       <div className="choiceContainer">
         {secondChoice.map(keyword => (
-          <>
+          <div className="choiceBox">
             <input
               type="checkbox"
               className="checkbox"
@@ -92,10 +111,10 @@ export default function SecondChoice() {
               value={keyword}
             />
             {keyword}
-          </>
+          </div>
         ))}
       </div>
-
+      <Marginer direction="vertical" margin="2rem" />
       <div className="buttonContainer">
         <Link to="/what-to-eat/category/">
           <button type="button" className="button-prev">
@@ -103,7 +122,13 @@ export default function SecondChoice() {
           </button>
         </Link>
 
-        <Link to={`/what-to-eat/category/${subctr}/${checkedItems}`}>
+        <Link
+          to={
+            disabled
+              ? `/what-to-eat/category/${subctr}`
+              : `/what-to-eat/category/${subctr}/result`
+          }
+        >
           <button
             type="button"
             className="button-next"
@@ -115,14 +140,12 @@ export default function SecondChoice() {
 
         <button
           type="button"
-          className="button-next"
+          className="button-test"
           onClick={ChekedValueClickHandler}
         >
           테스트
         </button>
       </div>
-      <div id="result" />
-      <div id="count" />
     </div>
   );
 }

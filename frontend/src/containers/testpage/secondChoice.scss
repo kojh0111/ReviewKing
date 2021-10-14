@@ -26,16 +26,18 @@
   padding: 10px 0;
   flex-direction: column;
 
-  label {
-    cursor: pointer;
-    position: relative;
-    color: #1da1f2;
-    font-size: 1.5rem;
-    border: 2px solid #1da1f2;
-    border-radius: 5rem;
-    padding: 0.5rem 2rem;
+  .choiceBox {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
+    font-size: 1.2rem;
+
+    .checkbox {
+      margin-right: 1rem;
+      height: 2rem;
+      width: 2rem;
+    }
   }
 }
 
@@ -82,5 +84,28 @@
 .button-next:hover {
   background-color: darken($color: $main_blue, $amount: 10%);
   border: 3px solid darken($color: $main_blue, $amount: 10%);
+  box-shadow: 0 0 8px 0 $main_blue;
+}
+
+.button-test {
+  margin: 1rem;
+  padding: 7px 15px;
+  border-radius: 5px;
+  background-color: $main_green;
+  color: $main_white;
+  font-family: Jua;
+  font-weight: bold;
+  font-size: 1rem;
+  outline: none;
+  border: 3px solid $main_green;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.3s linear all;
+  cursor: pointer;
+}
+
+.button-test:hover {
+  background-color: darken($color: $main_green, $amount: 10%);
+  border: 3px solid darken($color: $main_green, $amount: 10%);
   box-shadow: 0 0 8px 0 $main_blue;
 }
