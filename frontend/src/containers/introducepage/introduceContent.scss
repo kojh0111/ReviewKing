@@ -54,15 +54,14 @@
     // 소개 이미지
 
     .IntroduceImage {
-        background-color: $main_white;
-        border-radius: 10px;
-        box-shadow: 0 4px 18px rgb(11 33 74 / 10%), 0 -2px 4px rgb(11 33 74 / 3%);
-        width: 70%;
+        @apply border-b-2 border-dblue-700 border-solid;
+        width: 750px;
         height: 400px;
         display: flex;
         justify-content: center;
         align-content: center;
-        padding: 1rem;
+        padding: 1.5rem;
+        @apply mt-4 mb-4;
 
         @media screen and (max-width: 700px) {
             width: 100%;
@@ -81,7 +80,7 @@
     .SubIntroConatiner {
         display: flex;
         flex-direction: column;
-        width: 70%;
+        width: 750px;
         text-align: left;
 
         @media screen and (max-width: 550px) {
