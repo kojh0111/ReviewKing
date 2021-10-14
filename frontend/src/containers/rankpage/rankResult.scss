@@ -10,10 +10,7 @@
   .Chosen {
     @apply my-16;
     h1 {
-      @apply text-4xl mb-4;
-      @media screen and (max-width: 550px) {
-        font-size: 1.7rem;
-      }
+      @apply text-4xl sm:text-2xl mb-4;
       > div {
         @apply text-dblue-900 font-bold;
       }

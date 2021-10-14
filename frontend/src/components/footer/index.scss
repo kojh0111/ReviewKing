@@ -16,10 +16,6 @@
     color: $main_white;
     margin: 0;
     text-align: center;
-
-    @media screen and (max-width: 500px) {
-      font-size: 1.5rem;
-    }
   }
 
   @media screen and (max-width: 500px) {
@@ -51,8 +47,8 @@
 .SocialIcon {
   color: $main_white;
   font-size: 20px;
-  transition: all 200ms ease-in-out;
   cursor: pointer;
+  transition: all 200ms ease-in-out;
 
   .SocialIcon:not(:last-of-type) {
     margin-right: 11px;
@@ -83,10 +79,6 @@
     @media screen and (max-width: 480px) {
       margin-right: 9px;
     }
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 0.8rem;
   }
 
   .Link:hover {
@@ -122,14 +114,12 @@
   width: 500px;
   font-size: 1.3rem;
   font-weight: bold;
-  font-family: Jua;
   background-color: #b5b2ff;
   color: black;
   text-align: center;
   align-items: center;
-
+  @apply md:text-sm sm:text-base;
   @media screen and (max-width: 700px) {
     width: 300px;
-    font-size: 0.8rem;
   }
 }

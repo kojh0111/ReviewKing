@@ -13,15 +13,8 @@
 
 .menu-item {
   width: 100%;
-  font-size: 1.2rem;
   font-weight: 700;
-  @apply text-gray-900 hover:text-dblue-700 border-solid border-b-4 border-dgray hover:border-dblue-700;
-
-  @media screen and (max-width: 500px) {
-    font-size: 1rem;
-  }
-
-  @media screen and (max-width: 400px) {
-    font-size: 0.8rem;
-  }
+  @apply text-2xl sm:text-4xl text-gray-900 hover:text-dblue-700 border-solid border-b-4 border-dgray hover:border-dblue-700;
+  
 }
+  

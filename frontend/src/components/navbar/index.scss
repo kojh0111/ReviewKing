@@ -20,10 +20,7 @@
             text-align: center;
             font-size: 1.8rem;
             color: $main_white;
-
-            @media screen and (max-width: 500px) {
-                font-size: 2rem;
-            }
+            @apply sm:text-4xl;
         }
     }
 }
