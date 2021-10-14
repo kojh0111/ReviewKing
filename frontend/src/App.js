@@ -18,6 +18,7 @@ import SecondChoice from './containers/testpage/secondChoice';
 import TestResult from './containers/testpage/testResult';
 import RankResult from './containers/rankpage/rankResult';
 import SelectedReviewPage from './containers/selectedReviewPage';
+import Error from './containers/errorpage/error';
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
               component={TestResult}
               exact={true}
             />
+            <Route path="/*" component={Error} />
 
             <Marginer direction="vertical" margin="2em" />
           </Switch>

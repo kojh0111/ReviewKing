@@ -4,14 +4,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Error from './containers/errorpage/error';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Switch>
         <Route path="/" component={App} />
-        <Route path="/*" component={Error} />
       </Switch>
     </Router>
   </React.StrictMode>,
