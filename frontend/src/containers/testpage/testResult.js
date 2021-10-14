@@ -3,18 +3,17 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { scroller } from 'react-scroll';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import Marginer from '../../components/marginer';
-import Recommend from '../../const/recomend';
-import ReviewSites from '../../const/reviewSites';
-import Accordion from '../../components/accordion/accordion';
 
 export default function TestResult() {
   const { subctr } = useParams();
-  const { keyword } = useParams();
   const [rankContent, setRankContent] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const multikey = useSelector(state => state).keys;
+  const url = multikey.map(a => `key=${a}&`).join('');
   const scrollToServiceSection = () => {
     scroller.scrollTo('ServicePageContainer', { smooth: true, duration: 1500 });
   };
@@ -26,9 +25,9 @@ export default function TestResult() {
     setRankContent(null);
     setLoading(true);
     const CategoryResponse = await axios
-      .get(`http://3.139.100.234:5000/what-to-eat/${subctr}/key=${keyword}`)
+      .get(`http://3.139.100.234:5000/what-to-eat/${subctr}/?${url}}`)
       .then(response => {
-        setRankContent(response.data.categories);
+        setRankContent(response.data.result);
       })
       .catch(e => {
         setError(e);
@@ -36,9 +35,6 @@ export default function TestResult() {
     setLoading(false);
     return CategoryResponse;
   };
-
-  console.log('subctr', subctr);
-  console.log('keyword', keyword);
 
   useEffect(() => {
     GetRecomandAPI();
@@ -59,32 +55,24 @@ export default function TestResult() {
     <div className="CategoryContainer">
       <Marginer direction="vertical" margin="2rem" />
       <h1>다음과 같은 음식점을 추천합니다.</h1>
-      <Marginer direction="vertical" margin="4rem" />
+      <Marginer direction="vertical" margin="6rem" />
       <div className="choiceContainer">
-        {Recommend.map(option => (
+        {rankContent.map(option => (
           <button type="button" className="restaurantsChoice">
-            <h1>{option.name}</h1>
-            <h3>{option.address}</h3>
+            <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
+            <h2>순위. {option.rank}</h2>
+            <h3>종합평점: {option.integrated_rating}</h3>
+            <div className="cardBottom">
+              <h3>카카오: {option.kakao}</h3>
+              <h3>망고플레이트: {option.mango}</h3>
+              <h3>네이버: {option.naver}</h3>
+              <h3>식신: {option.siksin}</h3>
+            </div>
           </button>
         ))}
       </div>
 
       <Marginer direction="vertical" margin="5rem" />
-
-      <div className="RatingContainer">
-        {ReviewSites.map(option => (
-          <div className="reviewSite">
-            <h1>{option.name}</h1>
-            <Marginer direction="vertical" margin="1rem" />
-            <h2>{option.rating}</h2>
-            <Marginer direction="vertical" margin="2rem" />
-          </div>
-        ))}
-      </div>
-
-      <Marginer direction="vertical" margin="3rem" />
-      <Accordion />
-      <Marginer direction="vertical" margin="3rem" />
 
       <div className="buttonContainer">
         <Link to={`/what-to-eat/category/${subctr}`}>
@@ -93,13 +81,13 @@ export default function TestResult() {
           </button>
         </Link>
 
-        <Link to="/">
+        <Link to="/reviews">
           <button
             type="button"
             className="button-next"
             onClick={scrollToServiceSection}
           >
-            홈으로
+            음식점 리뷰
           </button>
         </Link>
       </div>
