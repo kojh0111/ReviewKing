@@ -30,6 +30,7 @@ class RanksResult(Resource):
                 ).first()
                 tmp = {
                     "name": restaurant.name,
+                    "restaurant_id": restaurant.id,
                     "integrated_rating": round(
                         float(total_rating.integrated_rating), 2
                     ),
