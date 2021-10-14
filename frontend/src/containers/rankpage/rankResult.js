@@ -66,23 +66,25 @@ export default function RankResult() {
 
       <div className="RankResultContainer">
         {rankResult.map(option => (
-          <div className="restaurantsChoice">
-            <div className="top">
-              <img className="rankImage" alt="" src={option.img_url} />
-            </div>
-            <div className="down">
-              <span>{option.name}</span>
-              <h3>순위 {option.rank}</h3>
-              <div className="ratingContainer">
-                <h3>
-                  종합 평점 :&nbsp;
-                  <span style={{ color: '#2496ed' }}>
-                    {option.integrated_rating}
-                  </span>
-                </h3>
+          <Link to={`/reviews/${option.restaurant_id}`}>
+            <div className="restaurantsChoice">
+              <div className="top">
+                <img className="rankImage" alt="" src={option.img_url} />
+              </div>
+              <div className="down">
+                <span>{option.name}</span>
+                <h3>순위 {option.rank}</h3>
+                <div className="ratingContainer">
+                  <h3>
+                    종합 평점 :&nbsp;
+                    <span style={{ color: '#2496ed' }}>
+                      {option.integrated_rating}
+                    </span>
+                  </h3>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
       <Marginer direction="vertical" margin="1rem" />
