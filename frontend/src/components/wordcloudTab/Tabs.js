@@ -53,11 +53,17 @@ export default function WordCloudTabs(props) {
           <h2>평점</h2>
           <Marginer direction="vertical" margin="1rem" />
           <h2 style={{ color: '#ff5722' }}>{props.data.kakao}</h2>
-          <img
-            src={props.data.kakaoWC}
-            className="svg"
-            style={{ width: '100%' }}
-          />
+          {props.data.kakaoWC ? (
+            <img
+              src={props.data.kakaoWC}
+              className="svg"
+              style={{ width: '100%' }}
+            />
+          ) : (
+            <div className="no-wordcloud">
+              리뷰가 부족한 플랫폼은 워드클라우드가 제공되지 않습니다.
+            </div>
+          )}
         </div>
 
         <div
@@ -68,11 +74,17 @@ export default function WordCloudTabs(props) {
           <Marginer direction="vertical" margin="1rem" />
           <h2 style={{ color: '#ff5722' }}>{props.data.mango}</h2>
 
-          <img
-            src={props.data.mangoWC}
-            className="svg"
-            style={{ width: '100%' }}
-          />
+          {props.data.mangoWC ? (
+            <img
+              src={props.data.mangoWC}
+              className="svg"
+              style={{ width: '100%' }}
+            />
+          ) : (
+            <div className="no-wordcloud">
+              리뷰가 부족한 플랫폼은 워드클라우드가 제공되지 않습니다.
+            </div>
+          )}
         </div>
 
         <div
@@ -83,11 +95,17 @@ export default function WordCloudTabs(props) {
           <Marginer direction="vertical" margin="1rem" />
           <h2 style={{ color: '#ff5722' }}>{props.data.naver}</h2>
 
-          <img
-            src={props.data.naverWC}
-            className="svg"
-            style={{ width: '100%' }}
-          />
+          {props.data.naverWC ? (
+            <img
+              src={props.data.naverWC}
+              className="svg"
+              style={{ width: '100%' }}
+            />
+          ) : (
+            <div className="no-wordcloud">
+              리뷰가 부족한 플랫폼은 워드클라우드가 제공되지 않습니다.
+            </div>
+          )}
         </div>
 
         <div
@@ -98,11 +116,17 @@ export default function WordCloudTabs(props) {
           <Marginer direction="vertical" margin="1rem" />
           <h2 style={{ color: '#ff5722' }}>{props.data.siksin}</h2>
 
-          <img
-            src={props.data.siksinWC}
-            className="svg"
-            style={{ width: '100%' }}
-          />
+          {props.data.siksinWC ? (
+            <img
+              src={props.data.siksinWC}
+              className="svg"
+              style={{ width: '100%' }}
+            />
+          ) : (
+            <div className="no-wordcloud">
+              리뷰가 부족한 플랫폼은 워드클라우드가 제공되지 않습니다.
+            </div>
+          )}
         </div>
       </div>
     </div>

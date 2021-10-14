@@ -72,6 +72,11 @@ button {
 }
 .content-tabs {
     flex-grow: 1;
+
+    .no-wordcloud {
+        text-align: center;
+        @apply text-dblue text-xl mt-3;
+    }
 }
 .content {
     display: flex;
