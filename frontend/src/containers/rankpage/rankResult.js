@@ -95,6 +95,3 @@ export default function RankResult() {
     </div>
   );
 }
-
-// TODO. useParams이 아닌카테고리 이름을 받아와야 함... => 000을(를) 선택하셨습니다.
-// <img /> 대신에 map 컴포넌트 삽입해야함. 상위 3개 음식점 위치 삽입해야 함. => data는 rankResult이용

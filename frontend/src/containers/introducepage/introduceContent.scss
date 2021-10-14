@@ -37,7 +37,7 @@
         }
     }
 
-    // 소개 이미지
+    // 소개 이미지 공간
 
     .IntroduceImage {
         @apply border-b-2 border-dblue-700 border-solid;
@@ -58,6 +58,10 @@
         .IntroImage {
             width: 50%;
             src: url(../../assets/pictures/introduceImage.PNG);
+
+            @media screen and (max-width: 500px) {
+                width: 80%;
+            }
         }
     }
 
@@ -132,9 +136,13 @@
                 line-height: 1.4;
                 text-align: center;
                 @apply sm:mt-1 m-0;
-                // @media screen and (max-width: 400px) {
-                //     margin: 0;
-                // }
+            }
+
+            .PeopleRoleText {
+                color: rgb(0, 44, 102);
+                font-size: 0.8rem;
+                font-weight: 200;
+                @apply sm:mt-1 m-0;
             }
         }
     }

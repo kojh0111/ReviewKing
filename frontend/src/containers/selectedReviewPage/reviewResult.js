@@ -50,13 +50,13 @@ export default function ReviewResult() {
   console.log(reviewResult);
 
   return (
-    <div className="ReviewContainer">
+    <div className="ReviewResultContainer">
       <Marginer direction="vertical" margin="3rem" />
       <h2 className="TitleText"> 음식점 리뷰 결과 </h2>
 
       <Marginer direction="vertical" margin="1rem" />
 
-      <div className="ReviewIntroContainer">
+      <div className="ReviewResultIntroContainer">
         <Marginer direction="vertical" margin="2rem" />
         <div className="ReviewNameContainer">
           <h2 className="SelectedText">{reviewResult.name}</h2>

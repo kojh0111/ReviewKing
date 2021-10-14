@@ -46,21 +46,10 @@ export default function IntroduceContent() {
           <div className="CardContainer">
             <img alt="" className="CardIcon" src={option.src} />
             <h2 className="PeopleText">{option.name}</h2>
-            <h2
-              className="PeopleText"
-              style={{
-                color: 'rgb(0, 44, 102)',
-                fontSize: '0.8rem',
-                fontWeight: '200',
-              }}
-            >
-              {option.role}
-            </h2>
+            <h2 className="PeopleRoleText">{option.role}</h2>
           </div>
         ))}
       </div>
     </div>
   );
 }
-
-// TODO. 이미지 구해서 슬슬 작성할 것!
