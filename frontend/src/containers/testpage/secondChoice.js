@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import './secondChoice.scss';
 import React, { useEffect, useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
@@ -163,7 +163,6 @@ export default function SecondChoice() {
               : `/what-to-eat/category/${subctr}/result`
           }
         >
-          <ToastContainer autoClose={8000} />
           <button
             type="button"
             className="button-next"
