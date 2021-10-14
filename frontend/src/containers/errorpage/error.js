@@ -16,7 +16,7 @@ export default function Error() {
       <img src={errorpageImage} className="errorImage" alt="not found" />
       <Marginer direction="vertical" margin="5rem" />
 
-      <Link className="button-home" to="/">
+      <Link className="button-home" to="/reviews">
         <div className="goTohome" type="button">
           홈으로
         </div>
