@@ -68,6 +68,7 @@ class WhatToEatResult(Resource):
             return jsonify(status=200, result=result)
 
         elif len(keywords) != 0:
+            res_list = list()
             for keyword in keywords:
                 key_data = Keywords.query.filter(
                     and_(
@@ -75,7 +76,6 @@ class WhatToEatResult(Resource):
                     )
                 ).first()
                 key_res_links = KeyResLink.query.filter_by(keyword_id=key_data.id).all()
-                res_list = list()
                 if key_res_links:
                     for key_res_link in key_res_links:
                         res_id = key_res_link.restaurant_id
@@ -83,10 +83,11 @@ class WhatToEatResult(Resource):
                         total_rating = TotalRating.query.filter_by(
                             restaurant_id=res_id
                         ).first()
-                        heapq.heappush(
-                            res_list, (-total_rating.integrated_rating, restaurant.id)
+                        res_list.append(
+                            (-total_rating.integrated_rating, restaurant.id)
                         )
-                    final_res = [x for x, _ in Counter(res_list).most_common(3)]
+            res_list = sorted(res_list)
+            final_res = [x for _, x in Counter(res_list).most_common(3)]
 
             # 상위 3개 가져오기
             rank = 1
