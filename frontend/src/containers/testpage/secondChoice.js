@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import './secondChoice.scss';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -118,21 +119,27 @@ export default function SecondChoice() {
       <h1 style={{ display: 'flex', flexDirection: 'column' }}>
         <div style={{ color: '#ff5722' }}>키워드를 선택하세요</div>
         <Marginer direction="vertical" margin="1rem" />
-        <div style={{ color: '#0b214a' }}>&nbsp;최소 2개 이상 선택하세요</div>
+        <div style={{ color: '#0b214a' }}>
+          &nbsp;최소 1개 이상, 5개 미만으로 선택하세요
+        </div>
       </h1>
       <Marginer direction="vertical" margin="2rem" />
 
       <div className="choiceContainer">
         {secondChoice.map(keyword => (
           <div className="choiceBox">
-            <input
-              type="checkbox"
-              className="checkbox"
-              name="keyword"
-              value={keyword}
-              onChange={ChekedNumClickHandler}
-            />
-            {keyword}
+            <label>
+              <input
+                type="checkbox"
+                className="checkbox"
+                name="keyword"
+                value={keyword}
+                onChange={ChekedNumClickHandler}
+              />
+              <div className="icon-box">
+                <span>{keyword}</span>
+              </div>
+            </label>
           </div>
         ))}
       </div>
