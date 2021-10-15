@@ -79,7 +79,7 @@ class WhatToEatResult(Resource):
                 }
                 result.append(tmp)
 
-            return jsonify(status=200, result=result)
+            return jsonify(status=200, subcategory=subcategory, result=result)
         else:
             return jsonify(status=404)
 
