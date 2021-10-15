@@ -9,7 +9,6 @@ export default function Button(props) {
       behavior: 'smooth',
     });
   };
-
   return (
     <Link to="/what-to-eat" onClick={scrollToServiceSection}>
       <div className="ButtonWrapper" {...props}>
