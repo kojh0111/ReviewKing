@@ -10,6 +10,13 @@ export default function FirstChoice() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const scrollToServiceSection = () => {
+    window.scrollTo({
+      top: document.documentElement.clientHeight,
+      behavior: 'smooth',
+    });
+  };
+
   // API로 부터 서브 카테고리 받아옴
   const GetSubcategoryAPI = async () => {
     // 요청이 시작 할 때 초기화
@@ -60,7 +67,10 @@ export default function FirstChoice() {
 
       <div className="choiceContainer">
         {firstChoice.map(subctr => (
-          <Link to={`/what-to-eat/category/${subctr}`}>
+          <Link
+            to={`/what-to-eat/category/${subctr}`}
+            onClick={scrollToServiceSection}
+          >
             <button type="button" className="menuCategory">
               {subctr}
             </button>

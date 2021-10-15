@@ -41,6 +41,13 @@ export default function SecondChoice() {
     return CategoryResponse;
   };
 
+  const scrollToServiceSection = () => {
+    window.scrollTo({
+      top: document.documentElement.clientHeight,
+      behavior: 'smooth',
+    });
+  };
+
   // 체크박스 누를 때마다 상태관리
   const ChekedNumClickHandler = () => {
     // 선택된 목록 가져오기
@@ -96,6 +103,11 @@ export default function SecondChoice() {
         position: toast.POSITION.TOP_CENTER,
       });
     }
+
+    window.scrollTo({
+      top: document.documentElement.clientHeight,
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {
@@ -152,7 +164,7 @@ export default function SecondChoice() {
       </div>
       <Marginer direction="vertical" margin="4rem" />
       <div className="buttonContainer">
-        <Link to="/what-to-eat/category/">
+        <Link to="/what-to-eat/category/" onClick={scrollToServiceSection}>
           <div className="button-prev">이전</div>
         </Link>
         <Marginer direction="horizontal" margin="3rem" />

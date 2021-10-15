@@ -1,7 +1,6 @@
 import './testResult.scss';
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { scroller } from 'react-scroll';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import ReactElasticCarousel from 'react-elastic-carousel';
@@ -23,7 +22,10 @@ export default function TestResult() {
   const multikey = useSelector(state => state).keys;
   const url = multikey.map(a => `key=${a}&`).join('');
   const scrollToServiceSection = () => {
-    scroller.scrollTo('ServicePageContainer', { smooth: true, duration: 1500 });
+    window.scrollTo({
+      top: document.documentElement.clientHeight,
+      behavior: 'smooth',
+    });
   };
 
   // API로 부터 카테고리 정보 & 이미지를 받아옴(id: 36~70)
