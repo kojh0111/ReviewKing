@@ -83,23 +83,66 @@ export default function TestResult() {
           >
             <div
               className="restaurantsResultChoice bg-cover"
-              style={{
-                backgroundImage: `url(${option.img_url})`,
-                opacity: 0.2,
-              }}
+              style={{ backgroundImage: `url(${option.img_url})` }}
             >
               <span>{option.name}</span>
               <h3>
                 종합 평점 :&nbsp;
-                <span style={{ color: '#2496ed' }}>
-                  {option.integrated_rating}
+                <span style={{ color: '#6F69AC' }}>
+                  {option.integrated_rating}점
                 </span>
               </h3>
               <div className="testRatingContainer">
-                {option.kakao ? <h3>카카오 : {option.kakao}</h3> : ''}
-                {option.mango ? <h3>망고플레이트 : {option.mango}</h3> : ''}
-                {option.naver ? <h3>네이버 : {option.naver}</h3> : ''}
-                {option.siksin ? <h3>식신 : {option.siksin}</h3> : ''}
+                <table>
+                  {option.kakao ? (
+                    <tr>
+                      <td>
+                        <h3>카카오</h3>
+                      </td>
+                      <td>
+                        <h3>{option.kakao}</h3>
+                      </td>
+                    </tr>
+                  ) : (
+                    ''
+                  )}
+                  {option.mango ? (
+                    <tr>
+                      <td>
+                        <h3>망고플레이트</h3>
+                      </td>
+                      <td>
+                        <h3>{option.mango}</h3>
+                      </td>
+                    </tr>
+                  ) : (
+                    ''
+                  )}
+                  {option.naver ? (
+                    <tr>
+                      <td>
+                        <h3>네이버</h3>
+                      </td>
+                      <td>
+                        <h3>{option.naver}</h3>
+                      </td>
+                    </tr>
+                  ) : (
+                    ''
+                  )}
+                  {option.siksin ? (
+                    <tr>
+                      <td>
+                        <h3>식신</h3>
+                      </td>
+                      <td>
+                        <h3>{option.siksin}</h3>
+                      </td>
+                    </tr>
+                  ) : (
+                    ''
+                  )}
+                </table>
               </div>
             </div>
           </Link>
