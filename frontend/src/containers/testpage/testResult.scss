@@ -29,8 +29,8 @@
   }
 
   .orderText {
-    color: #5a6774;
-    font-size: 1rem;
+    @apply text-green-600;
+    font-size: 1.3rem;
   }
 }
 
