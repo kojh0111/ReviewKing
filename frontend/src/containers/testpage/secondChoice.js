@@ -150,7 +150,7 @@ export default function SecondChoice() {
           </div>
         ))}
       </div>
-      <Marginer direction="vertical" margin="2rem" />
+      <Marginer direction="vertical" margin="4rem" />
       <div className="buttonContainer">
         <Link to="/what-to-eat/category/">
           <div className="button-prev">이전</div>

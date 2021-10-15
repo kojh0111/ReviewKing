@@ -23,7 +23,7 @@
 
 .RankResultContainer {
   align-items: center;
-  @apply w-full max-w-screen-lg grid grid-cols-3 gap-10;
+  @apply w-full max-w-screen-lg grid grid-cols-3 md:grid-cols-1 gap-10;
 
   .top {
     width: 100%;
@@ -57,7 +57,7 @@
   .restaurantsChoice {
     height: 30rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-    @apply p-5 rounded-lg bg-gray-50;
+    @apply p-5 rounded-lg bg-gray-50 md:mx-8;
     display: flex;
     align-items: center;
     justify-content: space-around;

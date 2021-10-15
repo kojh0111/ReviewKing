@@ -19,20 +19,24 @@
   margin: 0 auto;
   @apply grid max-w-screen-xl;
   grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-  row-gap: 10px;
-  column-gap: 10px;
-  justify-content: center;
+  row-gap: 40px;
+  column-gap: 40px;
+  justify-items: center;
+  justify-content: space-evenly;
   align-items: center;
   padding: 10px 0;
   flex-direction: column;
 
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 500px) {
     width: 90%;
+    row-gap: 10px;
+    column-gap: 10px;
   }
 }
 
 .choiceBox {
-  margin: 0.5rem;
+  height: 56px;
+  margin: auto;
   font-size: 1.2rem;
 
   .choiceBox label {

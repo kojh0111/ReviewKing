@@ -56,19 +56,27 @@ export default function TestResult() {
       <Marginer direction="vertical" margin="2rem" />
       <h1>다음과 같은 음식점을 추천합니다.</h1>
       <Marginer direction="vertical" margin="6rem" />
+
       <div className="ChoiceResultContainer">
         {rankContent.map(option => (
-          <button type="button" className="restaurantsChoice">
-            <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
-            <h2>순위. {option.rank}</h2>
-            <h3>종합평점: {option.integrated_rating}</h3>
-            <div className="cardBottom">
-              <h3>카카오: {option.kakao}</h3>
-              <h3>망고플레이트: {option.mango}</h3>
-              <h3>네이버: {option.naver}</h3>
-              <h3>식신: {option.siksin}</h3>
+          <Link to={`/reviews/${option.restaurant_id}`}>
+            <div className="restaurantsChoice">
+              <span>{option.name}</span>
+              <h3>순위 {option.rank}</h3>
+              <h3>
+                종합 평점 :&nbsp;
+                <span style={{ color: '#2496ed' }}>
+                  {option.integrated_rating}
+                </span>
+              </h3>
+              <div className="testRatingContainer">
+                {option.kakao ? <h3>카카오:{option.kakao}</h3> : ''}
+                {option.mango ? <h3>망고플레이트:{option.mango}</h3> : ''}
+                {option.naver ? <h3>네이버:{option.naver}</h3> : ''}
+                {option.siksin ? <h3>식신:{option.siksin}</h3> : ''}
+              </div>
             </div>
-          </button>
+          </Link>
         ))}
       </div>
 
