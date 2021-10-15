@@ -12,22 +12,6 @@ parser = reqparse.RequestParser()
 parser.add_argument("key", action="append")
 
 
-# restaurants = Restaurants.query.filter_by(
-#     subcategory=subcategory
-# ).all()
-
-# for restaurant in restaurants:
-#     restaurants_selected = Restaurants.query.join(
-#         KeyResLink,
-#         and_(
-#             KeyResLink.restaurant_id == restaurant.id,
-#             KeyResLink.keyword_id == key_data.id,
-#         ),
-#     ).all()
-
-#     print(len(restaurants_selected))
-
-
 class WhatToEatResult(Resource):
     # 음식점 검색창 제공
     def get(self, subcategory=None):
