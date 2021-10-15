@@ -28,7 +28,6 @@
   }
 
   .orderText {
-    font-family: "Elice Digital Baeum";
     color: #5a6774;
     font-size: 1rem;
   }
@@ -43,6 +42,7 @@
 
   .restaurantsResultChoice {
     height: 30rem;
+    max-width: 325px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
     @apply p-5 rounded-lg bg-gray-50 md:mx-8;
     display: flex;
@@ -130,11 +130,11 @@
 
 // active
 #root
-  > div
-  > div.CategoryContainer
-  > div.rec.rec-carousel-wrapper
-  > div.rec.rec-pagination
-  > button.rec.rec-dot.rec.rec-dot_active {
+> div
+> div.CategoryContainer
+> div.rec.rec-carousel-wrapper
+> div.rec.rec-pagination
+> button.rec.rec-dot.rec.rec-dot_active {
   background-color: #2496ed;
   box-shadow: 0 0 1px 3px #2496ed;
 }
