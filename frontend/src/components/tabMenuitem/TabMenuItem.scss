@@ -3,7 +3,7 @@
 .menu-item {
   width: 100%;
   font-weight: 700;
-  @apply text-2xl sm:text-xl text-gray-900 hover:text-dblue-700 border-solid border-b-4 border-dgray hover:border-dblue-700;
+  @apply text-xl sm:text-xl text-gray-900 hover:text-dblue-700 border-solid border-b-4 border-dgray hover:border-dblue-700;
 }
 
 .TabWrapper {
