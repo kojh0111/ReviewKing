@@ -9,6 +9,8 @@ import Marginer from '../../components/marginer';
 export default function TestResult() {
   const { subctr } = useParams();
   const [rankContent, setRankContent] = useState([]);
+  const [subCategory, setSubCategory] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -38,6 +40,7 @@ export default function TestResult() {
       .get(`http://3.139.100.234:5000/what-to-eat/${subctr}/?${url}}`)
       .then(response => {
         setRankContent(response.data.result);
+        setSubCategory(response.data.subcategory);
       })
       .catch(e => {
         setError(e);
@@ -63,8 +66,12 @@ export default function TestResult() {
 
   return (
     <div className="CategoryContainer">
+      <Marginer direction="vertical" margin="6rem" />
+      <h1>선택하신 "{subCategory}"의 키워드에 속한 음식점들입니다.</h1>
       <Marginer direction="vertical" margin="2rem" />
-      <h1>다음과 같은 음식점을 추천합니다.</h1>
+      <div className="orderText">
+        &nbsp;음식점을 클릭해 더 자세한 리뷰를 확인해 보세요!
+      </div>
       <Marginer direction="vertical" margin="6rem" />
 
       <ReactElasticCarousel breakPoints={breakPoints}>
@@ -74,8 +81,13 @@ export default function TestResult() {
             className="testLink"
             onClick={scrollToServiceSection}
           >
-            
-            <div className="restaurantsResultChoice bg-cover" style={{ backgroundImage: `url(${option.img_url})`, opacity: 0.2 }}>
+            <div
+              className="restaurantsResultChoice bg-cover"
+              style={{
+                backgroundImage: `url(${option.img_url})`,
+                opacity: 0.2,
+              }}
+            >
               <span>{option.name}</span>
               <h3>
                 종합 평점 :&nbsp;

@@ -11,6 +11,8 @@ import { actionSetKey } from '../../redux/action';
 export default function SecondChoice() {
   const { subctr } = useParams();
   const [secondChoice, setSecondChoice] = useState([]);
+  const [subCategory, setSubCategory] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -33,6 +35,7 @@ export default function SecondChoice() {
       .get(`http://3.139.100.234:5000/what-to-eat/${subctr}`)
       .then(response => {
         setSecondChoice(response.data.keywords);
+        setSubCategory(response.data.subcategory);
       })
       .catch(e => {
         setError(e);
@@ -130,16 +133,17 @@ export default function SecondChoice() {
   if (error) return <div className="notice-error">에러가 발생했습니다</div>;
   if (!secondChoice) return null;
 
+  console.log(secondChoice);
   return (
     <div className="CategoryContainer">
       <Marginer direction="vertical" margin="3rem" />
       <h2 className="TitleText"> 오늘 뭐먹지?</h2>
       <Marginer direction="vertical" margin="2rem" />
 
-      <h2>키워드를 선택하세요</h2>
+      <h2>"{subCategory}"에 대한 리뷰에 많이 언급된 키워드들입니다.</h2>
       <Marginer direction="vertical" margin="1rem" />
       <div className="orderText">
-        &nbsp;최소 1개 이상, 5개 미만으로 선택하세요
+        &nbsp;최소 1개 이상, 5개 미만으로 키워드를 선택해 주세요
       </div>
 
       <Marginer direction="vertical" margin="2rem" />
