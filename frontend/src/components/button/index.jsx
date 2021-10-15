@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 import './index.scss';
 
 export default function Button(props) {
+  const scrollToServiceSection = () => {
+    window.scrollTo({
+      top: document.documentElement.clientHeight,
+      behavior: 'smooth',
+    });
+  };
   return (
-    <Link to="/what-to-eat">
-      <button type="button" className="ButtonWrapper" {...props}>
+    <Link to="/what-to-eat" onClick={scrollToServiceSection}>
+      <div className="ButtonWrapper" {...props}>
         {props.children}
-      </button>
+      </div>
     </Link>
   );
 }
