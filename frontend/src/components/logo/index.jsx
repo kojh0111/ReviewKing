@@ -14,12 +14,11 @@ export default function Logo() {
   };
 
   return (
-    <Link to='/' onClick={scrollToServiceSection}>
       <div className="LogoContainer">
         <img src={KingLogo} alt="logo" />
+        <Link to='/' onClick={scrollToServiceSection}>
           <div className="LogoText">리뷰왕</div>
+        </Link>    
       </div>
-    </Link>
-
   );
 }
