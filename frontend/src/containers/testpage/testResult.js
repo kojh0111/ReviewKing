@@ -75,8 +75,7 @@ export default function TestResult() {
             onClick={scrollToServiceSection}
           >
             
-            <div className="restaurantsResultChoice">
-              <img src={option.img} alt={option} />
+            <div className="restaurantsResultChoice bg-cover" style={{ backgroundImage: `url(${option.img_url})`, opacity: 0.2 }}>
               <span>{option.name}</span>
               <h3>
                 종합 평점 :&nbsp;

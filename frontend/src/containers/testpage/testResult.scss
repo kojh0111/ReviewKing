@@ -10,6 +10,7 @@
   text-align: center;
   align-items: center;
   color: $docker-boldFont;
+  
 
   h1 {
     font-size: 2rem;
@@ -44,7 +45,7 @@
     height: 30rem;
     max-width: 325px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-    @apply p-5 rounded-lg bg-gray-50 md:mx-8;
+    @apply p-5 rounded-lg bg-gray-50 md:mx-8 text-opacity-100;
     display: flex;
     align-items: center;
     justify-content: space-around;
