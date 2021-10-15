@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { scroller } from 'react-scroll';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import ReactElasticCarousel from 'react-elastic-carousel';
 import Marginer from '../../components/marginer';
 
 export default function TestResult() {
@@ -11,6 +12,13 @@ export default function TestResult() {
   const [rankContent, setRankContent] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 3 },
+  ];
 
   const multikey = useSelector(state => state).keys;
   const url = multikey.map(a => `key=${a}&`).join('');
@@ -57,10 +65,10 @@ export default function TestResult() {
       <h1>다음과 같은 음식점을 추천합니다.</h1>
       <Marginer direction="vertical" margin="6rem" />
 
-      <div className="ChoiceResultContainer">
+      <ReactElasticCarousel breakPoints={breakPoints}>
         {rankContent.map(option => (
-          <Link to={`/reviews/${option.restaurant_id}`}>
-            <div className="restaurantsChoice">
+          <Link to={`/reviews/${option.restaurant_id}`} className="testLink">
+            <div className="restaurantsResultChoice">
               <span>{option.name}</span>
               <h3>순위 {option.rank}</h3>
               <h3>
@@ -78,7 +86,7 @@ export default function TestResult() {
             </div>
           </Link>
         ))}
-      </div>
+      </ReactElasticCarousel>
 
       <Marginer direction="vertical" margin="5rem" />
 
