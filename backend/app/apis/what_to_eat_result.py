@@ -73,6 +73,7 @@ class WhatToEatResult(Resource):
                     "kakao": total_rating.kakao,
                     "mango": total_rating.mango,
                     "siksin": total_rating.siksin,
+                    "img_url": restaurant.img_url,
                     "integrated_rating": round(
                         float(total_rating.integrated_rating), 2
                     ),
