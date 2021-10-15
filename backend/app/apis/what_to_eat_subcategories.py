@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api
-from models import Keywords
+from models import Restaurants
 
 what_to_eat_subcategories = Blueprint("what-to-eat-subcategories", __name__)
 api = Api(what_to_eat_subcategories)
@@ -8,8 +8,16 @@ api = Api(what_to_eat_subcategories)
 
 class WhatToEatSubCategories(Resource):
     def get(self):
-        keywords_data = Keywords.query.all()
-        subcategories = list(set([data.subcategory for data in keywords_data]))
+        restaurants = Restaurants.query.all()
+        subcategories = list(
+            set(
+                [
+                    restaurant.subcategory
+                    for restaurant in restaurants
+                    if restaurant.subcategory != ""
+                ]
+            )
+        )
         return jsonify(status=200, subcategory=subcategories)
 
 

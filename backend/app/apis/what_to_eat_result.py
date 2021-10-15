@@ -12,39 +12,54 @@ parser = reqparse.RequestParser()
 parser.add_argument("key", action="append")
 
 
+# restaurants = Restaurants.query.filter_by(
+#     subcategory=subcategory
+# ).all()
+
+# for restaurant in restaurants:
+#     restaurants_selected = Restaurants.query.join(
+#         KeyResLink,
+#         and_(
+#             KeyResLink.restaurant_id == restaurant.id,
+#             KeyResLink.keyword_id == key_data.id,
+#         ),
+#     ).all()
+
+#     print(len(restaurants_selected))
+
+
 class WhatToEatResult(Resource):
     # 음식점 검색창 제공
     def get(self, subcategory=None):
         # 지도 제공
         args = parser.parse_args()
+        restaurants = Restaurants.query.filter_by(subcategory=subcategory).all()
         keywords = args["key"]
 
         if len(keywords) != 0:
             df_all = pd.DataFrame(columns=["restaurant_id", "rating", "word"])
             for keyword in keywords:
-                key_data = Keywords.query.filter(
-                    and_(
-                        Keywords.keyword == keyword, Keywords.subcategory == subcategory
-                    )
-                ).first()
+                key_data = Keywords.query.filter(Keywords.keyword == keyword).first()
                 if key_data:
-                    key_res_links = KeyResLink.query.filter_by(
-                        keyword_id=key_data.id
-                    ).all()
                     tmp = []
-                    for key_res_link in key_res_links:
-                        res_id = key_res_link.restaurant_id
-                        restaurant = Restaurants.query.filter_by(id=res_id).first()
-                        total_rating = TotalRating.query.filter_by(
-                            restaurant_id=res_id
+                    for restaurant in restaurants:
+                        key_res_link = KeyResLink.query.filter(
+                            and_(
+                                KeyResLink.keyword_id == key_data.id,
+                                KeyResLink.restaurant_id == restaurant.id,
+                            )
                         ).first()
-                        tmp.append(
-                            [
-                                restaurant.id,
-                                total_rating.integrated_rating,
-                                True,
-                            ]
-                        )
+                        if key_res_link:
+                            total_rating = TotalRating.query.filter_by(
+                                restaurant_id=restaurant.id
+                            ).first()
+                            tmp.append(
+                                [
+                                    restaurant.id,
+                                    total_rating.integrated_rating,
+                                    True,
+                                ]
+                            )
                     df = pd.DataFrame(tmp, columns=["restaurant_id", "rating", "word"])
                     df_all = df_all.merge(
                         df,

@@ -9,6 +9,7 @@ class Restaurants(db.Model):
     longitude_x = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     latitude_y = db.Column(db.String(100), nullable=True)  # 정확한 값이 필요하므로 String으로 저장
     img_url = db.Column(db.String(3600), nullable=True)
+    subcategory = db.Column(db.String(100), nullable=True)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"), nullable=False)
 
     categories = db.relationship("Categories", backref=db.backref("restaurants_set"))
@@ -56,7 +57,6 @@ class Keywords(db.Model):
 
     id = db.Column(db.Integer, nullable=False, primary_key=True, autoincrement=True)
     keyword = db.Column(db.String(100), nullable=False)
-    subcategory = db.Column(db.String(100), nullable=True)
 
 
 class Analysis(db.Model):

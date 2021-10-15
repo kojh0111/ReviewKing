@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
-from models import Keywords
+from models import Restaurants, KeyResLink, Keywords
 
 what_to_eat_keywords = Blueprint("what-to-eat-keywords", __name__)
 api = Api(what_to_eat_keywords)
@@ -12,11 +12,20 @@ parser.add_argument("subcategory", type=str)
 
 class WhatToEatKeywords(Resource):
     def get(self, subcategory=None):
-        keywords_data = Keywords.query.filter_by(subcategory=subcategory).all()
+        restaurants = Restaurants.query.filter_by(subcategory=subcategory).all()
 
-        if keywords_data:
-            keywords = [data.keyword for data in keywords_data]
-            return jsonify(status=200, keywords=sorted(keywords))
+        if restaurants:
+            tmp = []
+            for restaurant in restaurants:
+                keyword_data = KeyResLink.query.filter_by(
+                    restaurant_id=restaurant.id
+                ).all()
+                for data in keyword_data:
+                    key = Keywords.query.filter_by(id=data.keyword_id).first()
+                    if key:
+                        tmp.append(key.keyword)
+
+            return jsonify(status=200, keywords=sorted(tmp))
 
         else:
             return jsonify(status=404)
