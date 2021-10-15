@@ -59,7 +59,7 @@
       @apply text-dblue-700 text-2xl font-bold;
     }
     h3 {
-      @apply text-xl;
+      @apply text-xl text-center;
       > span {
         @apply text-xl;
       }
@@ -78,7 +78,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  @apply mt-10;
+  @apply mt-10 mb-10;
 }
 
 .button-prev {

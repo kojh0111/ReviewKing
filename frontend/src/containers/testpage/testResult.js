@@ -81,10 +81,10 @@ export default function TestResult() {
                 </span>
               </h3>
               <div className="testRatingContainer">
-                {option.kakao ? <h3>카카오:{option.kakao}</h3> : ''}
-                {option.mango ? <h3>망고플레이트:{option.mango}</h3> : ''}
-                {option.naver ? <h3>네이버:{option.naver}</h3> : ''}
-                {option.siksin ? <h3>식신:{option.siksin}</h3> : ''}
+                {option.kakao ? <h3>카카오 : {option.kakao}</h3> : ''}
+                {option.mango ? <h3>망고플레이트 : {option.mango}</h3> : ''}
+                {option.naver ? <h3>네이버 : {option.naver}</h3> : ''}
+                {option.siksin ? <h3>식신 : {option.siksin}</h3> : ''}
               </div>
             </div>
           </Link>
