@@ -87,9 +87,14 @@ export default function TestResult() {
             >
               <span>{option.name}</span>
               <h3>
-                종합 평점 :&nbsp;
-                <span style={{ color: '#6F69AC' }}>
-                  {option.integrated_rating}점
+                종합 평점&nbsp;&nbsp;
+                <span
+                  style={{
+                    color: '#f59e0b',
+                    marginLeft: '1.5rem',
+                  }}
+                >
+                  {option.integrated_rating}
                 </span>
               </h3>
               <div className="testRatingContainer">
@@ -100,7 +105,7 @@ export default function TestResult() {
                         <h3>카카오</h3>
                       </td>
                       <td>
-                        <h3>{option.kakao}</h3>
+                        <h4>{option.kakao}</h4>
                       </td>
                     </tr>
                   ) : (
@@ -112,7 +117,7 @@ export default function TestResult() {
                         <h3>망고플레이트</h3>
                       </td>
                       <td>
-                        <h3>{option.mango}</h3>
+                        <h4>{option.mango}</h4>
                       </td>
                     </tr>
                   ) : (
@@ -124,7 +129,7 @@ export default function TestResult() {
                         <h3>네이버</h3>
                       </td>
                       <td>
-                        <h3>{option.naver}</h3>
+                        <h4>{option.naver}</h4>
                       </td>
                     </tr>
                   ) : (
@@ -136,7 +141,7 @@ export default function TestResult() {
                         <h3>식신</h3>
                       </td>
                       <td>
-                        <h3>{option.siksin}</h3>
+                        <h4>{option.siksin}</h4>
                       </td>
                     </tr>
                   ) : (
@@ -165,7 +170,7 @@ export default function TestResult() {
             className="button-next"
             onClick={scrollToServiceSection}
           >
-            음식점 리뷰
+            리뷰 보러가기
           </button>
         </Link>
       </div>

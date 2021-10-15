@@ -53,17 +53,27 @@
       @apply my-4;
     }
     > span {
-      @apply text-dblue-700 text-2xl font-bold row-span-2 bg-opacity-60 bg-dblue-700 m-0 px-10 py-16;
+      @apply rounded-t-xl text-gray-50 text-3xl font-bold row-span-2 bg-opacity-50 bg-gray-900 m-0 px-10 py-16 break-words;
     }
     > h3 {
-      @apply text-xl text-center bg-opacity-60 bg-dblue-700 m-0;
+      @apply text-2xl text-gray-50 text-center bg-opacity-50 bg-gray-900 m-0;
       > span {
-        @apply text-xl;
+        @apply text-2xl;
       }
     }
     div {
-      @apply row-span-2 bg-opacity-60 bg-dblue-700 m-0 p-10;
+      @apply rounded-b-xl text-gray-50 row-span-2 bg-opacity-50 bg-gray-900 m-0 p-10;
+
+      h4 {
+        @apply text-green-400 font-bold text-xl;
+      }
+
+      >table>tr>td:nth-child(1) {
+        @apply w-3/4 
+      }
+
     }
+
   }
 
   .testRatingContainer {
