@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from flask_restful import Resource, Api, reqparse
+from flask_restful import Resource, Api
 from models import Restaurants, Categories
 
 restaurants_all = Blueprint("all-restaurant", __name__)

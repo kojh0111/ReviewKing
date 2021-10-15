@@ -1,8 +1,6 @@
 from flask import Blueprint, jsonify
-from flask_restful import Resource, Api, reqparse
-from models import Restaurants, Categories, TotalRating
-from sqlalchemy.sql import func
-from app import db
+from flask_restful import Resource, Api
+from models import Restaurants, Categories
 
 ranks_categories = Blueprint("ranks_categories", __name__)
 api = Api(ranks_categories)

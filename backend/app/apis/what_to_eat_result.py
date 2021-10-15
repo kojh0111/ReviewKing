@@ -2,8 +2,7 @@ from flask import Blueprint, jsonify
 from flask_restful import Resource, Api, reqparse
 from models import Keywords, KeyResLink, TotalRating, Restaurants
 from sqlalchemy import and_
-from collections import Counter
-import heapq
+import pandas as pd
 
 what_to_eat_result = Blueprint("what-to-eat-result", __name__)
 api = Api(what_to_eat_result)
@@ -21,8 +20,7 @@ class WhatToEatResult(Resource):
         keywords = args["key"]
 
         if len(keywords) != 0:
-            # 해당 keyword를 가진 음식점들 중 평점 높은 것들 heap에 저장
-            heap = []
+            df_all = pd.DataFrame(columns=["restaurant_id", "rating", "word"])
             for keyword in keywords:
                 key_data = Keywords.query.filter(
                     and_(
@@ -33,39 +31,53 @@ class WhatToEatResult(Resource):
                     key_res_links = KeyResLink.query.filter_by(
                         keyword_id=key_data.id
                     ).all()
+                    tmp = []
                     for key_res_link in key_res_links:
                         res_id = key_res_link.restaurant_id
                         restaurant = Restaurants.query.filter_by(id=res_id).first()
                         total_rating = TotalRating.query.filter_by(
                             restaurant_id=res_id
                         ).first()
-                        if (-total_rating.integrated_rating, restaurant) not in heap:
-                            heapq.heappush(
-                                heap, (-total_rating.integrated_rating, restaurant)
-                            )
-                        else:
-                            pass
+                        tmp.append(
+                            [
+                                restaurant.id,
+                                total_rating.integrated_rating,
+                                True,
+                            ]
+                        )
+                    df = pd.DataFrame(tmp, columns=["restaurant_id", "rating", "word"])
+                    df_all = df_all.merge(
+                        df,
+                        how="outer",
+                        on=["restaurant_id", "rating"],
+                    )
+            df_cnt = (
+                pd.DataFrame(
+                    df_all.set_index(["restaurant_id", "rating"]).sum(axis=1),
+                    columns=["count"],
+                )
+                .reset_index("rating")
+                .sort_values(by=["count", "rating"], ascending=False)
+            )
+            id_list = [value[0] for _, value in df_cnt.reset_index().iterrows()]
 
-            # 상위 3개 가져오기
-            rank = 1
-            result = []
-            while heap and rank <= 3:
-                integrated_rating, restaurant = heapq.heappop(heap)
-                total_rating = TotalRating.query.filter_by(
-                    restaurant_id=restaurant.id
-                ).first()
+            result = list()
+            for res_id in id_list:
+                total_rating = TotalRating.query.filter_by(restaurant_id=res_id).first()
+                restaurant = Restaurants.query.filter_by(id=res_id).first()
+
                 tmp = {
                     "name": restaurant.name,
-                    "id": restaurant.id,
+                    "restaurant_id": restaurant.id,
                     "naver": total_rating.naver,
                     "kakao": total_rating.kakao,
                     "mango": total_rating.mango,
                     "siksin": total_rating.siksin,
-                    "integrated_rating": round(float(-integrated_rating), 2),
-                    "rank": rank,
+                    "integrated_rating": round(
+                        float(total_rating.integrated_rating), 2
+                    ),
                 }
                 result.append(tmp)
-                rank += 1
 
             return jsonify(status=200, result=result)
         else:
