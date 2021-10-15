@@ -25,7 +25,7 @@ class WhatToEatKeywords(Resource):
                     if key:
                         tmp.append(key.keyword)
 
-            return jsonify(status=200, keywords=sorted(tmp))
+            return jsonify(status=200, keywords=sorted(list(set(tmp))))
 
         else:
             return jsonify(status=404)
