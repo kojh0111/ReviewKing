@@ -41,7 +41,7 @@ export default function ReviewResult() {
       <div className="notice-container">
         <div className="loader" />
         <Marginer direction="vertical" margin="2rem" />
-        <div className="notice">로딩중....</div>
+        <div className="notice">잠시만 기다려 주세요!</div>
       </div>
     );
   if (error) return <div className="notice-error ">에러가 발생했습니다</div>;

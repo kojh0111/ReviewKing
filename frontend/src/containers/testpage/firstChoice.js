@@ -39,7 +39,7 @@ export default function FirstChoice() {
       <div className="notice-container">
         <div className="loader" />
         <Marginer direction="vertical" margin="2rem" />
-        <div className="notice">로딩중....</div>
+        <div className="notice">잠시만 기다려 주세요!</div>
       </div>
     );
   if (error) return <div className="notice-error">에러가 발생했습니다</div>;
@@ -48,11 +48,14 @@ export default function FirstChoice() {
   return (
     <div className="CategoryContainer">
       <Marginer direction="vertical" margin="3rem" />
-      <h2 className="TitleText"> 오늘 뭐먹지?</h2>
+      <h2 className="TitleText"> 오늘 뭐 먹지?</h2>
       <Marginer direction="vertical" margin="3rem" />
 
-      <h1>카테고리를 선택하세요</h1>
-
+      <h2>오늘 어떤 음식이 먹고 싶으신가요?</h2>
+      <Marginer direction="vertical" margin="1rem" />
+      <div className="orderText">
+        &nbsp;먹고 싶은 메뉴 하나를 선택해 주세요!
+      </div>
       <Marginer direction="vertical" margin="4rem" />
 
       <div className="choiceContainer">

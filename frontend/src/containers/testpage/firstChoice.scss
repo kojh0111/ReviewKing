@@ -8,7 +8,7 @@
   text-align: center;
 
   h1 {
-    font-size: 2em;
+    font-size: 1.8rem;
   }
 
   .TitleText {
@@ -19,7 +19,12 @@
     color: $docker-boldFont;
     padding: 0.7rem 3rem;
     background-image: linear-gradient(transparent 60%, $docker-blue 40%);
-    @apply text-5xl;
+  }
+
+  .orderText {
+    font-family: "Elice Digital Baeum";
+    color: #5a6774;
+    font-size: 1rem;
   }
 }
 
