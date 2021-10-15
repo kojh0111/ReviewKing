@@ -30,5 +30,6 @@ module.exports = {
     'consistent-return': 0,
     'no-new-object': 0,
     'no-console': 0,
+    'import/no-named-as-default': 0,
   },
 };

@@ -74,9 +74,8 @@ export default function TestResult() {
             className="testLink"
             onClick={scrollToServiceSection}
           >
-            
             <div className="restaurantsResultChoice">
-              <img src={option.img} alt={option} />
+              <img src={option.img_url} alt={option} />
               <span>{option.name}</span>
               <h3>
                 종합 평점 :&nbsp;
