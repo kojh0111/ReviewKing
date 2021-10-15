@@ -67,10 +67,13 @@ export default function TestResult() {
 
       <ReactElasticCarousel breakPoints={breakPoints}>
         {rankContent.map(option => (
-          <Link to={`/reviews/${option.restaurant_id}`} className="testLink">
+          <Link
+            to={`/reviews/${option.restaurant_id}`}
+            className="testLink"
+            onClick={scrollToServiceSection}
+          >
             <div className="restaurantsResultChoice">
               <span>{option.name}</span>
-              <h3>순위 {option.rank}</h3>
               <h3>
                 종합 평점 :&nbsp;
                 <span style={{ color: '#2496ed' }}>
@@ -91,7 +94,10 @@ export default function TestResult() {
       <Marginer direction="vertical" margin="5rem" />
 
       <div className="buttonContainer">
-        <Link to={`/what-to-eat/category/${subctr}`}>
+        <Link
+          to={`/what-to-eat/category/${subctr}`}
+          onClick={scrollToServiceSection}
+        >
           <div className="button-prev">이전</div>
         </Link>
         <Marginer direction="horizontal" margin="3rem" />
