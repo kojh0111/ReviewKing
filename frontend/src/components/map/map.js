@@ -6,7 +6,7 @@ export default function Map(props) {
   useEffect(() => {
     // eslint-disable-next-line no-use-before-define
     mapscript();
-  }, []);
+  }, [props]);
 
   const mapscript = () => {
     const container = document.getElementById('map');
@@ -22,7 +22,7 @@ export default function Map(props) {
       'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png'; // 마커이미지의 주소.
 
     const imageSize = new kakao.maps.Size(23, 26); // 마커이미지의 크기
-    const imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+    const imageOption = { offset: new kakao.maps.Point(0, 22) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 
     // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
     const markerImage = new kakao.maps.MarkerImage(
@@ -50,7 +50,10 @@ export default function Map(props) {
 
   return (
     <>
-      <div id="map" style={{ width: '80%', height: '500px' }} />
+      <div id="map" style={{ height: '500px' }} />
     </>
   );
 }
+
+// TODO. 로컬에서 MAP 정상작동 하였으나, 현재 Review page에서 오류 발생 => 해결해야함
+// 이상하게 코드를 추가로 작성하고 저장하면, 마커가 뜸... => 로딩관련 알아볼것

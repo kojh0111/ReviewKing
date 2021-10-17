@@ -7,28 +7,29 @@
 }
 
 .errorText {
-  font-size: 4rem;
+  font-size: 2rem;
   text-align: center;
 }
 
 .errorImage {
-  width: 50%;
+  width: 30%;
 }
 
 a.button-home .goTohome {
   background-color: $main_red;
-  font-size: 2rem;
+  font-size: 1.4rem;
   color: white;
   text-decoration: none;
   cursor: pointer;
-  padding: 1rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   display: block;
   border: 3px solid $main_red;
-  border-radius: 20px;
+  border-radius: 6px;
   text-align: center;
   transition: 0.3s linear all;
+  @apply mt-10;
 }
 
 a.button-home .goTohome:hover {

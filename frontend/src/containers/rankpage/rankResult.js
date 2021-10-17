@@ -1,98 +1,97 @@
 import './rankResult.scss';
-import React from 'react';
-// import useEffect from 'react';
-// import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
 import Marginer from '../../components/marginer';
-import Recommend from '../../const/recomend';
+import Map from '../../components/map/map';
 
 export default function RankResult() {
+  const [rankResult, setRankResult] = useState([]);
+  const [nameValue, setNameValue] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const { category } = useParams();
-  console.log(category);
 
   // API로 부터 상위 3개 식당 정보 받아옴 (이미지 url, 평점, 메뉴, 이름, 순위) => key: category_id
-  // const GetTopThreeAPI = async () => {
-  //   const TopThreeResponse = await axios
-  //     .get(``)
-  //     .then(Response => {
-  //       console.log(Response.data);
-  //     })
-  //     .catch(Error => {
-  //       console.log(Error);
-  //     });
-  //   return TopThreeResponse.data;
-  // };
+  const GetTopThreeAPI = async () => {
+    // 요청이 시작 할 때 초기화
+    setError(null);
+    setRankResult(null);
+    setLoading(true);
+    const TopThreeResponse = await axios
+      .get(`http://3.139.100.234:5000/ranks/${category}`)
+      .then(response => {
+        setRankResult(response.data.result);
+        setNameValue(response.data.category);
+      })
+      .catch(e => {
+        setError(e);
+      });
+    setLoading(false);
+    return TopThreeResponse;
+  };
 
-  // useEffect(() => {
-  //   GetTopThreeAPI();
-  // }, []);
+  useEffect(() => {
+    GetTopThreeAPI();
+  }, []);
+
+  console.log(rankResult);
+  console.log(nameValue);
+
+  if (loading)
+    return (
+      <div className="notice-container">
+        <div className="loader" />
+        <Marginer direction="vertical" margin="2rem" />
+        <div className="notice">잠시만 기다려 주세요!</div>
+      </div>
+    );
+  if (error) return <div className="notice-error ">에러가 발생했습니다</div>;
+  if (!rankResult) return null;
 
   return (
     <div className="ResultContainer">
       <Marginer direction="vertical" margin="2rem" />
-      <h1 style={{ display: 'flex' }}>
-        <div style={{ color: '#ff5722' }}>{category}</div>을(를) 선택하셨습니다.
-      </h1>
-      <Marginer direction="vertical" margin="1rem" />
-      <h1>다음과 같은 음식점을 추천합니다.</h1>
+      <div className="Chosen">
+        <h1 style={{ display: 'flex' }}>
+          <div>{nameValue}</div>를(을) 선택하셨습니다.
+        </h1>
+        <h1>다음과 같은 음식점을 추천합니다.</h1>
+      </div>
+
+      <Link to="/rank/">
+        <div className="button-re">다시 선택하기</div>
+      </Link>
       <Marginer direction="vertical" margin="4rem" />
 
       <div className="RankResultContainer">
-        {Recommend.map(option => (
-          <button type="button" className="restaurantsChoice">
-            <Marginer direction="vertical" margin="1rem" />
-            <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
-            <Marginer direction="vertical" margin="1rem" />
-            <h3>{option.address}</h3>
-            <Marginer direction="vertical" margin="1rem" />
-            <h3>추천 메뉴 1. {option.menu1}</h3>
-            <h3>추천 메뉴 2. {option.menu2}</h3>
-            <h3>추천 메뉴 3. {option.menu3}</h3>
-            <Marginer direction="vertical" margin="1rem" />
-            <div className="ratingContainer">
-              <h3>종합 평점 :&nbsp;</h3>
-              <h3 style={{ color: '#ff5722' }}>{option.rating}</h3>
+        {rankResult.map(option => (
+          <Link to={`/reviews/${option.restaurant_id}`}>
+            <div className="restaurantsChoice">
+              <div className="top">
+                <img className="rankImage" alt="" src={option.img_url} />
+              </div>
+              <div className="down">
+                <span>{option.name}</span>
+                <h3>순위 {option.rank}</h3>
+                <div className="ratingContainer">
+                  <h3>
+                    종합 평점 :&nbsp;
+                    <span style={{ color: '#2496ed' }}>
+                      {option.integrated_rating}
+                    </span>
+                  </h3>
+                </div>
+              </div>
             </div>
-            <Marginer direction="vertical" margin="1rem" />
-          </button>
+          </Link>
         ))}
       </div>
       <Marginer direction="vertical" margin="1rem" />
 
       <Marginer direction="vertical" margin="4rem" />
-      <img alt="" className="ResultImage" />
-
-      <div className="buttonContainer">
-        <Marginer direction="vertical" margin="2rem" />
-        <Link to="/rank/">
-          <button type="button" className="button-prev">
-            이전
-          </button>
-        </Link>
-
-        <Link to="/">
-          <button type="button" className="button-next">
-            홈으로
-          </button>
-        </Link>
-      </div>
-      <Marginer direction="vertical" margin="3rem" />
+      <Map data={rankResult} />
+      <Marginer direction="vertical" margin="4rem" />
     </div>
   );
 }
-
-// TODO. API 완성되면 test 해볼 부분 => 식당명 뜨나 확인!
-// {
-//   GetTopThreeAPI.map(option => (
-//     <button type="button" className="restaurantsChoice">
-//       <Marginer direction="vertical" margin="1rem" />
-//       <h1 style={{ color: '#ff5722' }}>{option.name}</h1>
-//       <Marginer direction="vertical" margin="1rem" />
-//       <div className="ratingContainer">
-//         <h3>종합 평점 :&nbsp;</h3>
-//         <h3 style={{ color: '#ff5722' }}>{option.integrated_rating}</h3>
-//       </div>
-//       <Marginer direction="vertical" margin="1rem" />
-//     </button>
-//   ));
-// }

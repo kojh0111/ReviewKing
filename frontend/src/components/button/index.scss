@@ -1,20 +1,5 @@
 @import "../../styles/variable";
-
 .ButtonWrapper {
-    padding: 7px 15px;
-    border-radius: 5px;
-    background-color: $main_green;
-    color: $main_white;
-    font-family: Jua;
-    font-weight: bold;
-    font-size: 1rem;
-    outline: none;
-    border: 2px solid transparent;
-    transition: all 220ms ease-in-out;
-    cursor: pointer;
-}
-
-.ButtonWrapper:hover {
-    background-color: transparent;
-    border: 2px solid $main_green;
+    // color: $main_white;
+    @apply m-auto p-4 text-3xl text-center justify-self-center bg-dblue-700 w-max rounded text-gray-50 outline-none cursor-pointer border-4 border-solid border-transparent transition duration-200 ease-in-out hover:bg-transparent hover:border-dblue hover:shadow-lg hover:font-bold;
 }

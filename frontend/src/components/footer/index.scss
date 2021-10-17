@@ -2,11 +2,11 @@
 
 .FooterContainer {
   width: 100%;
-  height: 550px;
+  height: 350px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #1f1f1f;
+  background-color: $docker-deepblue;
   position: relative;
 
   .IntroduceText {
@@ -43,8 +43,8 @@
 .SocialIcon {
   color: $main_white;
   font-size: 20px;
-  transition: all 200ms ease-in-out;
   cursor: pointer;
+  transition: all 200ms ease-in-out;
 
   .SocialIcon:not(:last-of-type) {
     margin-right: 11px;
@@ -52,10 +52,6 @@
     @media screen and (max-width: 480px) {
       margin-right: 9px;
     }
-  }
-
-  @media screen and (max-width: 480px) {
-    font-size: 14px;
   }
 
   .SocialIcon:hover {
@@ -81,10 +77,6 @@
     }
   }
 
-  @media screen and (max-width: 480px) {
-    font-size: 0.8rem;
-  }
-
   .Link:hover {
     color: #adadad;
   }
@@ -92,7 +84,7 @@
 
 .RightsReserved {
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   margin-top: 20px;
   text-align: center;
   position: absolute;
@@ -106,6 +98,7 @@
 .FooterContainer > div.LogoContainer {
   .LogoText {
     font-size: 2rem;
+    color: $main_white;
   }
   img {
     width: 4.8rem;
@@ -117,8 +110,12 @@
   width: 500px;
   font-size: 1.3rem;
   font-weight: bold;
-  font-family: Jua;
   background-color: #b5b2ff;
   color: black;
   text-align: center;
+  align-items: center;
+  @apply md:text-sm sm:text-base;
+  @media screen and (max-width: 700px) {
+    width: 300px;
+  }
 }

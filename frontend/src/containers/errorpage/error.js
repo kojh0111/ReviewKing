@@ -13,14 +13,14 @@ export default function Error() {
       <Marginer direction="vertical" margin="1rem" />
       <div className="errorText">페이지를 찾을 수 없습니다.</div>
 
-      <img src={errorpageImage} className="errorImage" alt="not found" />
-      <Marginer direction="vertical" margin="5rem" />
-
-      <Link className="button-home" to="/">
+      <Link className="button-home" to="/reviews">
         <div className="goTohome" type="button">
           홈으로
         </div>
       </Link>
+
+      <img src={errorpageImage} className="errorImage" alt="not found" />
+      <Marginer direction="vertical" margin="5rem" />
     </div>
   );
 }

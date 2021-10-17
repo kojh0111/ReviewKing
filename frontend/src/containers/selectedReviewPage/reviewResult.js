@@ -1,76 +1,99 @@
+/* eslint-disable jsx-a11y/alt-text */
 import './reviewResult.scss';
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import axios from 'axios';
 import Marginer from '../../components/marginer';
-import SearchBar from '../../components/searchBar/searchBar';
 import Map from '../../components/map/map';
-import ReviewSites from '../../const/reviewSites';
-import dummy from '../../const/responses.json';
+import WordCloudTabs from '../../components/wordcloudTab/Tabs';
 
 export default function ReviewResult() {
-  const { name } = useParams();
-  console.log(name);
+  const [reviewResult, setReviewResult] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { id } = useParams();
 
-  const data = Object.values(dummy.data);
+  // API로 부터 선릉역 주변 식당 정보 받아옴 (category, img, lat, lng, name)
 
-  // 선택한 음식점의 정보만 가져옴(selectedData)
-  const selectedData = data.find(value => {
-    if (value.name === name) {
-      return value;
-    }
-  });
+  const GetSelectedInfoAPI = async () => {
+    // 요청이 시작 할 때 초기화
+    setError(null);
+    setReviewResult(null);
+    setLoading(true);
+    const SelectedResponse = await axios
+      .get(`http://3.139.100.234:5000/reviews/${id}`)
+      .then(response => {
+        setReviewResult(response.data.restaurant);
+      })
+      .catch(e => {
+        setError(e);
+      });
+    setLoading(false);
+    return SelectedResponse;
+  };
+
+  useEffect(() => {
+    GetSelectedInfoAPI();
+  }, []);
+
+  if (loading)
+    return (
+      <div className="notice-container">
+        <div className="loader" />
+        <Marginer direction="vertical" margin="2rem" />
+        <div className="notice">잠시만 기다려 주세요!</div>
+      </div>
+    );
+  if (error) return <div className="notice-error ">에러가 발생했습니다</div>;
+  if (!reviewResult) return null;
+
+  console.log(reviewResult);
 
   return (
-    <div className="ReviewContainer">
+    <div className="ReviewResultContainer">
       <Marginer direction="vertical" margin="3rem" />
-      <h2 className="TitleText"> 음식점 리뷰 결과 예시</h2>
+      <h2 className="TitleText"> 음식점 리뷰 결과 </h2>
 
       <Marginer direction="vertical" margin="1rem" />
 
-      <div className="ReviewIntroContainer">
+      <div className="ReviewResultIntroContainer">
+        <Marginer direction="vertical" margin="2rem" />
+        <div className="ReviewNameContainer">
+          <h2 className="SelectedText">{reviewResult.name}</h2>
+          <h2 className="NumberText" style={{ color: '#0b214a' }}>
+            종합평점 : {reviewResult.integrated_rating}
+          </h2>
+        </div>
+        <Marginer direction="vertical" margin="2rem" />
+
+        <div className="buttonContainer">
+          <Link to="/reviews">
+            <button type="button" className="button-re">
+              다른 음식점 검색하기
+            </button>
+          </Link>
+        </div>
+        <Marginer direction="vertical" margin="2rem" />
+
+        <WordCloudTabs data={reviewResult} />
+
+        <Marginer direction="vertical" margin="2rem" />
         <h3 className="bodyText">
-          음식점 리뷰 페이지는 사용자가 선택한 음식점의 리뷰 변화를 한 눈에 볼
-          수 있는 페이지입니다. (설명이 들어갈 공간)
+          리뷰왕은 검색하신 음식점에 대한 정보를 크롤링하여 사용자에게
+          워드클라우드 형태로 제공합니다.
         </h3>
 
+        <Marginer direction="vertical" margin="4rem" />
+        <Map data={[reviewResult]} />
         <Marginer direction="vertical" margin="2rem" />
-        <div className="NameContainer">
-          <h3 className="bodyText">선택하신 음식점:</h3>
-          <h3 className="bodyText" style={{ color: '#ff5722' }}>
-            {name}
-          </h3>
-        </div>
-        <Marginer direction="vertical" margin="2rem" />
-
-        <SearchBar />
-        <Marginer direction="vertical" margin="3rem" />
-
-        <div className="ReviewRatingContainer">
-          {ReviewSites.map(option => (
-            <div className="reviewSite">
-              <h1>{option.name}</h1>
-              <Marginer direction="vertical" margin="1rem" />
-              <h2 style={{ color: '#ff5722' }}>{option.rating}</h2>
-              <Marginer direction="vertical" margin="2rem" />
-            </div>
-          ))}
-        </div>
-
-        <Marginer direction="vertical" margin="2rem" />
-        <img alt="" className="WordCloudImage" />
-        <Marginer direction="vertical" margin="1rem" />
-        <h3 className="bodyText">워드클라우드가 출력되는 공간</h3>
-
-        <Marginer direction="vertical" margin="2rem" />
-        <Map data={[selectedData]} />
-        <Marginer direction="vertical" margin="1rem" />
 
         <h3 className="bodyText">
-          지도 혹은 음식점 리스트가 나오면 사용자가 선택하는 공간 (사용자와
-          상호작용)
+          지도를 움직여 해당 음식점의 위치를 확인해보세요.
         </h3>
         <Marginer direction="vertical" margin="6rem" />
       </div>
     </div>
   );
 }
+
+// TODO. 로컬에서 MAP 정상작동 하였으나, 현재 오류가 있어 주석처리 => 해결해야함

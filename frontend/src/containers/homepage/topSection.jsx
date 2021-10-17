@@ -1,40 +1,38 @@
 import React from 'react';
 import './topSection.scss';
-import { Element, scroller } from 'react-scroll';
 
+import { Link } from 'react-router-dom';
 import Button from '../../components/button';
 import DownArrow from '../../components/downArrow';
 import Logo from '../../components/logo';
-import Marginer from '../../components/marginer';
-import Navbar from '../../components/navbar';
 
 export default function TopSection() {
   const scrollToServiceSection = () => {
-    scroller.scrollTo('ServicePageContainer', { smooth: true, duration: 1500 });
+    window.scrollTo({
+      to: '/reviews',
+      top: document.documentElement.clientHeight,
+      behavior: 'smooth',
+    });
   };
 
   return (
-    <Element name="topSection">
+    <div name="topSection">
       <div className="TopContainer">
         <div className="Background">
-          <Navbar />
-          <Marginer direction="vertical" margin="8rem" />
-          <Logo />
-
-          <Marginer direction="vertical" margin="4rem" />
-          <div className="IntroduceText">코로나 발생 전과 후,</div>
-          <div className="IntroduceText">
-            엘리스 본사 주변의 음식점 리뷰 변화를 분석합니다.
+          <div className="CenterContainer">
+            <Logo />
+            <div className="IntroduceText">선릉역 주변 음식점의</div>
+            <div className="IntroduceText">플랫폼별 리뷰를 분석합니다</div>
+            <Link to="/reviews" onClick={scrollToServiceSection}>
+              <Button>리뷰 비교하기</Button>
+            </Link>
           </div>
-          <Marginer direction="vertical" margin="2rem" />
-
-          <Button onClick={scrollToServiceSection}>오늘 뭐먹지?</Button>
 
           <div className="DownArrowContainer" onClick={scrollToServiceSection}>
             <DownArrow />
           </div>
         </div>
       </div>
-    </Element>
+    </div>
   );
 }
